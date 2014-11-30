@@ -1,0 +1,261 @@
+Network Working Group                                           C.bajdek
+Request for Comments: 4242                                       Epitech
+Obsoletes: none                                            November 2014
+Category : Standarts Track                                           
+
+                             R-Type Protocol                           
+
+Abstract
+
+   This protocol is intended to povide the R-Type service, and be used
+   between clients and servers on host computers. 
+
+Status of This Memo
+
+   This document specifies an Internet standards track protocol for the
+   Internet community, and requests discussion and suggestions for
+   improvements.  Please refer to the current edition of the "Internet
+   Official Protocol Standards" (STD 1) for the standardization state
+   and status of this protocol.  Distribution of this memo is unlimited.
+
+Copyright Notice
+
+   Copyright (C) Epitech (November 2014).  All Rights Reserved.
+
+Table of Contents
+
+   1. Introduction .....................................................2
+      1.1. Conventions Used in This Document ...........................2
+   2. Pre Game Session Management ......................................2
+   3. Pre Game Message Exchanges .......................................3
+   4. Pre Game Data Unit Format ........................................4
+   5. Pre Game Request & Responses Values ..............................4
+      5.1. Request Values ..............................................5
+      5.2. Responses Values ............................................5
+   6. In Game Session Management .......................................6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bajdek                       Standarts tracks                    [page 1]
+
+RFC 4242                     R-Type Protocol                November 2014
+
+1.   Introduction
+
+   This Document describes how the R-Type project is runing using both
+   TCP and UDP client-server connection. TCP is described in [RFC0793].
+   UDP is described in [RFC0768].
+
+1.1.   Conventions Used in This Document
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC2119].
+
+2.   Pre Game Session Management
+
+   The in-game protocol used for data transfer is UDP, however, all the
+   pre game session including Connection, Authentication, Room creation
+   , Room joining and Game Launching, are to be processed using the TCP
+   protocol. The TCP connection occurs between two peers, one that 
+   initiate the connection request and one that responds to the
+   connection request. The initiating peer is called the "client", and
+   the responding peer is called the "server". An R-Type server must
+   listen for TCP connection on a standart port (4242).
+
+   The client MUST issue a connection to the server specifying the 
+   standart port (4242). The server MAY accept or not the new client,
+   depending on several parameters (server's occupation, availlable CPU,
+   ...)
+
+   At Session start, the client MUST send a LOGIN command (wich contains
+   the nickname of the user). The client nickname MUST be unique on 
+   the server, if this is not the case, the server SHALL send a NOK    
+   response to the client so that he can try again using another name.
+
+   The session is normally ended by the client sending the LOGOUT
+   command. A server receiving the LOGOUT command MUST end the session
+   and close the TCP connection. A client MAY end a session in some
+   cases (game crash, unavaillable services ...).
+
+   A server MAY limit the life span of an established TCP connection.
+   Sessions that are inactive for more than a server-defined period
+   MAY be ended by a server.  A server MAY also
+   close TCP connections that have been open and active for longer than
+   a server-defined period.
+
+
+
+
+
+Bajdek                       Standarts tracks                    [page 2]
+
+RFC 4242                     R-Type Protocol                November 2014
+
+3.   Pre Game Messages Exchanges
+
+   All Pre Game messages are in form of paquets as defined on the
+   section 4. The messages are initiated by the client in the form
+   of commands. A R-Type server MUST return a well formated response
+   to any command he receives on the same TCP connection that carried
+   the command. The clients commands and server responses are defined in
+   section 5.
+   
+   General client-server message exhanging using TCP tropsport is
+   illustrated Figure 1.
+
+
+
+
+                       Client                  Server
+                  |                                     |
+                  |                Connect              |
+                  | >>------------------------------->> |
+                  |                                     |
+                  |             Send Login              |
+                  | >>------------------------------->> |
+                  |                                     |
+                  |             Send Response           |
+                  | <<-------------------------------<< |
+                  |                                     |
+                  |             Send Command            |
+                  | >>------------------------------->> |
+                  |                                     |
+                  |             Send Response           |
+                  | <<-------------------------------<< |
+                  |                                     |
+                  |             Send LOGOUT             |
+                  | >>------------------------------->> |
+                  |                                     |
+                  |     Send Response & Disconnect      |
+                  | <<-------------------------------<< |
+                  |                                     |
+
+               Figure 1: TCP Client-Server Message Exchange
+
+
+
+
+
+
+
+
+Bajdek                       Standarts tracks                    [page 3]
+
+RFC 4242                     R-Type Protocol                November 2014
+
+4.   Pre Game Data Unit Format
+
+   The Pre Game data unit contains three fields :
+   A 32 bits field containing the Request/Response Type (see section 5).
+   A 32 bits field containing the length of the Additional Data field
+   measured in octects.
+   An additional Data field.
+
+        Data Unit Format (one tick mark represents one bit position):
+
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                      Request/Response Type                    |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                     Additional Data Length                    |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                        Additional Data                        |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+   Request Type (32 bits): The type of the request initiated by the
+   client. Different request types are defined in section 5.
+
+   Additional Data Length (32 bits): The length of the Additional Data
+   measured in octects int network (big endian)	byte order.   
+
+   Additional Data (variable length): A field containing any additional
+   data necessary for the intended request/response.
+
+5.   Pre Game Request & Responses Values
+ 
+   5.1.   Request Values      
+ 
+      This section describes the values of the field "Request/Response
+      Type" (see section 4), for the Request part. The Request are
+      initiated by the client only.
+
+      
+
+
+
+
+
+
+
+
+
+
+Bajdek                       Standarts tracks                    [page 4]
+
+RFC 4242                     R-Type Protocol                November 2014
+
+      Request Code:          Request Meaning:           Request Value:
+           
+        LOGIN           To resister to the server              1
+        LOGOUT           Disconnect from server                2
+      JOIN ROOM            Join a game room                    3
+      LEAVE ROOM           Leave a game room                   4
+      CREATE ROOM          Create a game room                  5
+      START GAME             Start the game                    6
+
+
+   5.2.   Responses Values
+
+      This session describes the values of the field "Request/Response
+      Type" (see section 4), for the Response part. The responses are
+      sent by the server only and MAY respond to a client Request.
+      The responses may also be used to inform the client about the
+      state of the room (if he is in a room of course).
+
+      Response Code:          Response Meaning:           Response Value:
+           
+        OK                The request is fullfilled            1
+        NOK             The request is not fullfilled          2
+        BUSY                  The server is busy               3
+      ADD_ALLY       Add an ally in the current room           4
+    REMOVE_ALLY    Remove an ally from the current room        5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bajdek                       Standarts tracks                    [page 5]
