@@ -27,12 +27,17 @@ Table of Contents
    1. Introduction .....................................................2
       1.1. Conventions Used in This Document ...........................2
    2. Pre Game Session Management ......................................2
-   3. Pre Game Message Exchanges .......................................3
-   4. Pre Game Data Unit Format ........................................4
+   3. Pre Game Message Exchanges .......................................2
+   4. Pre Game Data Unit Format ........................................3
    5. Pre Game Request & Responses Values ..............................4
-      5.1. Request Values ..............................................5
-      5.2. Responses Values ............................................5
-   6. In Game Session Management .......................................6
+      5.1. Request Values ..............................................4
+      5.2. Responses Values ............................................4
+	  5.3. Login Request ...............................................4
+	  5.4. Join Room Request ...........................................5
+	  5.5. Create Room Request .........................................6
+	  5.6. Room Informations ...........................................6
+	  5.7. Other Requests ..............................................7
+   6. In Game Session Management .......................................7
 
 
 
@@ -48,7 +53,8 @@ Table of Contents
 
 
 
-
+   
+   
 Bajdek                       Standarts tracks                    [page 1]
 
 RFC 4242                     R-Type Protocol                November 2014
@@ -59,11 +65,11 @@ RFC 4242                     R-Type Protocol                November 2014
    TCP and UDP client-server connection. TCP is described in [RFC0793].
    UDP is described in [RFC0768].
 
-1.1.   Conventions Used in This Document
+   1.1.   Conventions Used in This Document
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in [RFC2119].
+      The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in 
+      this document are to be interpreted as described in [RFC2119].
 
 2.   Pre Game Session Management
 
@@ -93,17 +99,9 @@ RFC 4242                     R-Type Protocol                November 2014
 
    A server MAY limit the life span of an established TCP connection.
    Sessions that are inactive for more than a server-defined period
-   MAY be ended by a server.  A server MAY also
-   close TCP connections that have been open and active for longer than
+   MAY be ended by a server.  A server MAY also close
+   TCP connections that have been open and active for longer than
    a server-defined period.
-
-
-
-
-
-Bajdek                       Standarts tracks                    [page 2]
-
-RFC 4242                     R-Type Protocol                November 2014
 
 3.   Pre Game Messages Exchanges
 
@@ -113,6 +111,13 @@ RFC 4242                     R-Type Protocol                November 2014
    to any command he receives on the same TCP connection that carried
    the command. The clients commands and server responses are defined in
    section 5.
+
+
+
+   
+Bajdek                       Standarts tracks                    [page 2]
+
+RFC 4242                     R-Type Protocol                November 2014
    
    General client-server message exhanging using TCP tropsport is
    illustrated Figure 1.
@@ -146,17 +151,6 @@ RFC 4242                     R-Type Protocol                November 2014
 
                Figure 1: TCP Client-Server Message Exchange
 
-
-
-
-
-
-
-
-Bajdek                       Standarts tracks                    [page 3]
-
-RFC 4242                     R-Type Protocol                November 2014
-
 4.   Pre Game Data Unit Format
 
    The Pre Game data unit contains three fields :
@@ -186,6 +180,15 @@ RFC 4242                     R-Type Protocol                November 2014
    Additional Data (variable length): A field containing any additional
    data necessary for the intended request/response.
 
+   Note that the additional data length (and therefore the additonal data
+   size MUST NOT exceed 256 bytes.
+ 
+
+
+Bajdek                       Standarts tracks                    [page 3]
+
+RFC 4242                     R-Type Protocol                November 2014
+
 5.   Pre Game Request & Responses Values
  
    5.1.   Request Values      
@@ -194,29 +197,14 @@ RFC 4242                     R-Type Protocol                November 2014
       Type" (see section 4), for the Request part. The Request are
       initiated by the client only.
 
-      
-
-
-
-
-
-
-
-
-
-
-Bajdek                       Standarts tracks                    [page 4]
-
-RFC 4242                     R-Type Protocol                November 2014
-
       Request Code:          Request Meaning:           Request Value:
            
-        LOGIN           To resister to the server              1
+        LOGIN           To register to the server              1
         LOGOUT           Disconnect from server                2
-      JOIN ROOM            Join a game room                    3
-      LEAVE ROOM           Leave a game room                   4
-      CREATE ROOM          Create a game room                  5
-      START GAME             Start the game                    6
+      JOIN_ROOM            Join a game room                    3
+      LEAVE_ROOM           Leave a game room                   4
+      CREATE_ROOM          Create a game room                  5
+      START_GAME             Start the game                    6
 
 
    5.2.   Responses Values
@@ -233,29 +221,201 @@ RFC 4242                     R-Type Protocol                November 2014
         NOK             The request is not fullfilled          2
         BUSY                  The server is busy               3
       ADD_ALLY       Add an ally in the current room           4
-    REMOVE_ALLY    Remove an ally from the current room        5
+    REMOVE_ALLY    Remove an ally from the current room        5      
 
+   5.3.   Login Request  
+      
+	  The LOGIN request MUST be the first request that the client 
+	  makes. As long as the client has not received an OK response 
+	  to his LOGIN request, he MUST try again with another name.
+	  
+      The client SHOULD NOT send other request type if he has not
+	  fullfilled the LOGIN request, as the server's answer will 
+	  always be NOK if the client is not logged in.
+	  
 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 
+	  
+	  
+Bajdek                       Standarts tracks                    [page 4]
 
+RFC 4242                     R-Type Protocol                November 2014
 
+      The LOGIN request MUST be formated like the following example :
 
+	    Data Unit Format (one tick mark represents one bit position):
 
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                            LOGIN                              |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                     	     12                               |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                         USERNAMETEST                          |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+	  
+   5.4.   Join Room Request
+        
+      The JOIN_ROOM request MUST be sent only when you are not already in	  
+      a room. If you are already in a room and wish to join another one,
+      you SHOULD send a LEAVE_ROOM request before sending the JOIN_ROOM 
+	  one.
 
+      The JOIN_ROOM request MUST be formated like the following example :
 
+	    Data Unit Format (one tick mark represents one bit position):
 
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                          JOIN_ROOM                            |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                     	     12                               |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                         ROOMNAMETEST                          |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-
-
-
-
-
-
-
-
-
-
-
-
+	  Each room has a maximum of 4 clients in it. This means that even
+	  if your request contains a valid room name, you MAY receive a NOK
+	  answer from the server if the room is full.
+	  
+      Once you have joined the room (meaning once the server has answered
+      an OK response to your request). You MAY receive asynchronous
+      informations about what is happening in the room you are (i.e. if
+	  someone leave/join the room). For more informations about this 
+	  matter, see section 5.6.
+	  
+	  
+	  
 
 Bajdek                       Standarts tracks                    [page 5]
+
+RFC 4242                     R-Type Protocol                November 2014
+
+   5.5.   Create Room Request
+
+      The CREATE_ROOM request MUST be sent only when you are not already
+	  in a room. If you are already in a room and wish to create one, you
+      SHOULD send a LEAVE_ROOM request before sending the JOIN_ROOM one.
+   
+    The CREATE_ROOM request MUST be formated like the following example :
+
+	    Data Unit Format (one tick mark represents one bit position):
+
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                         CREATE_ROOM                           |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                     	     12                               |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                         ROOMNAMETEST                          |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+      You MUST use a room name that is not already in use on the server.
+      You SHOULD NOT use other characters than the one defined in the 
+      ASCII format. If you choose not to follow this rule, it might 
+      provoque undefined behavior on some systems.
+   
+   5.6.   Room Informations
+   
+      When you join/create a room, you MAY receive informations about
+      what is going on in your room.
+   
+      For every client present in the room you joined, you will receive
+      an ADD_ALLY request from the server.
+   
+      Everytime a new client join the room, you will receive an
+      ADD_ALLY request from the server.
+   
+      Everytime a client leaves the room, you will receive an 
+      REMOVE_ALLY request from the server.
+   
+      The ADD_ALLY and REMOVE_ALLY requests will be formated like 
+      the following example :
+   
+   	    Data Unit Format (one tick mark represents one bit position):
+
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                     ADD_ALLY/REMOVE_ALLY                      |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                     	     12                               |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                         ALLYNAMETEST                          |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   
+   
+
+Bajdek                       Standarts tracks                    [page 6]
+
+RFC 4242                     R-Type Protocol                November 2014
+
+      Once a room is empty, it is automatically deleted by the server.
+   
+      This means that if a client creates a room, and then leave it while
+	  he is alone in it, he will not be able to (re)join it after. He will 
+	  have to create a new one.
+   
+   5.7.   Other Requests
+   
+      This section describes the expected behavior of every other request
+	  that are not defined above (in a 5.x section).
+	  
+	  For all theses requests, the "Additional Data" field MUST NOT be
+	  used. Therefore all theses requests must fill the "Data Length"
+	  field with the value 0, as in the following example :
+	  
+	    Data Unit Format (one tick mark represents one bit position):
+
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                  LOGOUT/LEAVE_ROOM/START_GAME                 |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                     	     0                                |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+	  
+6.   In Game Session Management
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bajdek                       Standarts tracks                    [page 7]   
+	  
