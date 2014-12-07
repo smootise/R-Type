@@ -33,11 +33,12 @@ Table of Contents
       5.1. Request Values ..............................................4
       5.2. Responses Values ............................................4
 	  5.3. Login Request ...............................................4
-	  5.4. Join Room Request ...........................................5
-	  5.5. Create Room Request .........................................6
-	  5.6. Room Informations ...........................................6
-	  5.7. Other Requests ..............................................7
-   6. In Game Session Management .......................................7
+	  5.4  Get Rooms request ...........................................5
+	  5.5. Join Room Request ...........................................6
+	  5.6. Create Room Request .........................................6
+	  5.7. Room Informations ...........................................7
+	  5.8. Other Requests ..............................................7
+   6. In Game Session Management .......................................8
 
 
 
@@ -53,7 +54,6 @@ Table of Contents
 
 
 
-   
    
 Bajdek                       Standarts tracks                    [page 1]
 
@@ -201,10 +201,11 @@ RFC 4242                     R-Type Protocol                November 2014
            
         LOGIN           To register to the server              1
         LOGOUT           Disconnect from server                2
-      JOIN_ROOM            Join a game room                    3
-      LEAVE_ROOM           Leave a game room                   4
-      CREATE_ROOM          Create a game room                  5
-      START_GAME             Start the game                    6
+	  GET_ROOMS			To get the list of rooms			   3
+      JOIN_ROOM            Join a game room                    4
+      LEAVE_ROOM           Leave a game room                   5
+      CREATE_ROOM          Create a game room                  6
+      START_GAME             Start the game                    7
 
 
    5.2.   Responses Values
@@ -244,7 +245,6 @@ RFC 4242                     R-Type Protocol                November 2014
 	  
 
 	  
-	  
 Bajdek                       Standarts tracks                    [page 4]
 
 RFC 4242                     R-Type Protocol                November 2014
@@ -262,8 +262,46 @@ RFC 4242                     R-Type Protocol                November 2014
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                         USERNAMETEST                          |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+   5.5.   Get Rooms Request
 	  
-   5.4.   Join Room Request
+      The GET_ROOMS request is used by the client to get the list of the
+	  current availlable rooms.
+	  
+	  This request does not require the use of the "Additional Data" 
+	  field, if you want more informations about this particular type
+	  of requests, see section 5.8.
+	  
+	  The server's answer will contain all the rooms that are availlable
+	  separated by a "|" (to avoid issues, this character MUST be 
+	  forbidden in a room name).
+	  
+	  The server's answer SHALL be formated like the following example :
+	  
+	         0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                              OK                               |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                     	     17                               |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                        ROOM1|ROOM2|ROOM3                      |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+	  
+	  Of course, this example assumes that the request is valid and the
+	  anwser is OK.
+	  If it is not the case, the server will return a NOK paquet with no
+	  "Additional Data"
+	  
+	  
+	  
+	  
+	  	  
+Bajdek                       Standarts tracks                    [page 5]
+
+RFC 4242                     R-Type Protocol                November 2014
+
+   5.5.   Join Room Request
         
       The JOIN_ROOM request MUST be sent only when you are not already in	  
       a room. If you are already in a room and wish to join another one,
@@ -292,16 +330,9 @@ RFC 4242                     R-Type Protocol                November 2014
       an OK response to your request). You MAY receive asynchronous
       informations about what is happening in the room you are (i.e. if
 	  someone leave/join the room). For more informations about this 
-	  matter, see section 5.6.
-	  
-	  
-	  
+	  matter, see section 5.7.
 
-Bajdek                       Standarts tracks                    [page 5]
-
-RFC 4242                     R-Type Protocol                November 2014
-
-   5.5.   Create Room Request
+   5.6.   Create Room Request
 
       The CREATE_ROOM request MUST be sent only when you are not already
 	  in a room. If you are already in a room and wish to create one, you
@@ -323,10 +354,14 @@ RFC 4242                     R-Type Protocol                November 2014
 
       You MUST use a room name that is not already in use on the server.
       You SHOULD NOT use other characters than the one defined in the 
-      ASCII format. If you choose not to follow this rule, it might 
-      provoque undefined behavior on some systems.
+      ASCII format. Also, you MUST NOT use the character "|" in your
+      room's name, as it is used for separation purposes.
    
-   5.6.   Room Informations
+Bajdek                       Standarts tracks                    [page 6]
+
+RFC 4242                     R-Type Protocol                November 2014
+
+   5.7.   Room Informations
    
       When you join/create a room, you MAY receive informations about
       what is going on in your room.
@@ -354,20 +389,14 @@ RFC 4242                     R-Type Protocol                November 2014
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                         ALLYNAMETEST                          |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   
-   
-
-Bajdek                       Standarts tracks                    [page 6]
-
-RFC 4242                     R-Type Protocol                November 2014
-
+  
       Once a room is empty, it is automatically deleted by the server.
    
       This means that if a client creates a room, and then leave it while
 	  he is alone in it, he will not be able to (re)join it after. He will 
 	  have to create a new one.
    
-   5.7.   Other Requests
+   5.8.   Other Requests
    
       This section describes the expected behavior of every other request
 	  that are not defined above (in a 5.x section).
@@ -381,41 +410,71 @@ RFC 4242                     R-Type Protocol                November 2014
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      |                  LOGOUT/LEAVE_ROOM/START_GAME                 |
+      |               GET_ROOMS/LOGOUT/LEAVE_ROOM/START_GAME          |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                     	     0                                |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 	  
-6.   In Game Session Management
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Bajdek                       Standarts tracks                    [page 7]   
 	  
+RFC 4242                     R-Type Protocol                November 2014	  
+	  
+	  6.   In Game Session Management
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+Bajdek                       Standarts tracks                    [page 8]
