@@ -4,6 +4,8 @@
 
 #include "Selector.h"
 
+
+// a modifier
 enum
 {
 	UNKNOWN,
@@ -18,7 +20,7 @@ protected:
 	std::string		_nickname;
 	SOCKET			_socket;
 	int				_id;
-	int				_state;
+	int				_state; //reserved for further user
 	int				_room;
 
 public:

@@ -14,12 +14,14 @@ Server::Server(int port)
 	#else
 		_socket = new TCPLinServerSocket(_clients);
 	#endif
+	_comhandler = new CommandHandler(_writebuff, _readbuff, _clients);
 }
 
 Server::~Server(void)
 {
 	if (_socket != NULL)
 		delete _socket;
+	delete _comhandler;
 }
 
 bool		Server::init(void)
@@ -34,5 +36,6 @@ bool		Server::update(void)
 		return (false);
 	_socket->SendData(_writebuff, _sel);
 	_socket->ReadData(_readbuff, _sel);
+	_comhandler->ReceiptCommand();
 	return (true);
 }

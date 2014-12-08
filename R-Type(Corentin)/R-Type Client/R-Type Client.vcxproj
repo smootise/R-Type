@@ -67,6 +67,8 @@
   <ItemGroup>
     <ClInclude Include="CircularBuff.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="Commands.h" />
+    <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="ITCPSocket.h" />
     <ClInclude Include="TCPLinSocket.h" />
     <ClInclude Include="Message.h" />
@@ -76,6 +78,7 @@
   <ItemGroup>
     <ClCompile Include="CircularBuff.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="CommandHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TCPLinSocket.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

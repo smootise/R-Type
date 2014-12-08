@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include "CommandHandler.h"
 #include "ITCPServSocket.h"
 #include "CircularBuff.h"
 
@@ -14,6 +15,7 @@ protected:
 	CircularBuff				_writebuff;
 	Selector					_sel;
 	std::vector<Client>			_clients;
+	CommandHandler				*_comhandler;
 
 public:
 	Server(int port);

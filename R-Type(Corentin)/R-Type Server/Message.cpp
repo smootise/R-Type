@@ -21,7 +21,8 @@ void	Message::to_string() const
 {
 	std::cout << "requete type :" << _rq_type << std::endl;
 	std::cout << "data_length :" <<	_data_length << std::endl;
-	std::cout << "paquet additonnel :" << (char *)_packet << std::endl;
+	if (_data_length != 0)
+		std::cout << "paquet additonnel :" << (char *)_packet << std::endl;
 	//Ici on pourra rajouter un client.to_string() pour plus d'info (une fois qu'il sera codé)
 }
 

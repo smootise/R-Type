@@ -218,11 +218,11 @@ RFC 4242                     R-Type Protocol                November 2014
 
       Response Code:          Response Meaning:           Response Value:
            
-        OK                The request is fullfilled            1
-        NOK             The request is not fullfilled          2
-        BUSY                  The server is busy               3
-      ADD_ALLY       Add an ally in the current room           4
-    REMOVE_ALLY    Remove an ally from the current room        5      
+        OK                The request is fullfilled            11
+        NOK             The request is not fullfilled          12
+        BUSY                  The server is busy               13
+      ADD_ALLY       Add an ally in the current room           14
+    REMOVE_ALLY    Remove an ally from the current room        15      
 
    5.3.   Login Request  
       

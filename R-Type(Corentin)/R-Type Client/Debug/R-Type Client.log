@@ -1,11 +1,12 @@
-﻿Build started 02/12/2014 22:04:46.
+﻿Build started 08/12/2014 01:21:31.
      1>Project "C:\Users\Corentin\documents\visual studio 2013\Projects\R-Type Server\R-Type Client\R-Type Client.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Work\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt TCPWinSocket.cpp
-         TCPWinSocket.cpp
+         D:\Work\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Message.cpp
+         Message.cpp
        Link:
          D:\Work\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Corentin\documents\visual studio 2013\Projects\R-Type Server\Debug\R-Type Client.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Corentin\documents\visual studio 2013\Projects\R-Type Server\Debug\R-Type Client.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Corentin\documents\visual studio 2013\Projects\R-Type Server\Debug\R-Type Client.lib" /MACHINE:X86 Debug\CircularBuff.obj
          Debug\Client.obj
+         Debug\CommandHandler.obj
          Debug\main.obj
          Debug\Message.obj
          Debug\Selector.obj
@@ -15,4 +16,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.50
+Time Elapsed 00:00:00.55

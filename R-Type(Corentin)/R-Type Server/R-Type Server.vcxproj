@@ -67,6 +67,8 @@
   <ItemGroup>
     <ClInclude Include="CircularBuff.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="CommandHandler.h" />
+    <ClInclude Include="Commands.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="ITCPServSocket.h" />
     <ClInclude Include="Selector.h" />
@@ -79,6 +81,7 @@
   <ItemGroup>
     <ClCompile Include="CircularBuff.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="CommandHandler.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Selector.cpp" />

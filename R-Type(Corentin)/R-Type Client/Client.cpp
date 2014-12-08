@@ -16,12 +16,20 @@ Client::Client(std::string &hostname, std::string &strport) :
 	#else
 		_socket = new TCPLinSocket();
 	#endif
+	_comhandler = new CommandHandler(_writebuff, _readbuff, _state, &_lastcommand);
+
+//initialisation of state values
+	_state["Logged"] = false;
+	_state["Playing"] = false;
+	_state["Pending"] = false;
+	_lastcommand = 0;
 }
 
 
 Client::~Client(void)
 {
 	delete _socket;
+	delete _comhandler;
 }
 
 bool	Client::init()
@@ -32,15 +40,18 @@ bool	Client::init()
 bool	Client::update()
 {
 	std::string		line;
-	std::string		*test = new std::string("toto");
-	Message			mess(1, 4, (void *)(test->c_str())); 
+	int				rq_type;
 
 	_sel.Select();
 	std::getline(std::cin, line);
-	
-	_writebuff.add_data(mess);
+	if (line != std::string("next"))
+	{
+		rq_type = atoi(line.c_str());
+		_comhandler->SendCommand(rq_type, new std::string("Default"));
+	}
 	_socket->SendData(_writebuff, _sel);
 	if ((_socket->ReadData(_readbuff, _sel)) == false)
 		return (false);
+	_comhandler->ReceiptCommand();
 	return (true);
 }

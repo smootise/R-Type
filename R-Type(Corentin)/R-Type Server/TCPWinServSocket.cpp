@@ -150,6 +150,7 @@ void		TCPWinServSocket::SendData(CircularBuff &circbuff, Selector &sel)
 			memcpy(&third_buff, (char *)(to_send->at(i).get_packet()), data_length);
 
 			// et on les envoi
+			std::cout << "j'envois :"; to_send->at(i).to_string(); std::cout << std::endl;
 			WSASend(_clients[i].get_socket(), databuf, 3, &sentbytes, 0, NULL, NULL);  
 		}
 	delete to_send;
