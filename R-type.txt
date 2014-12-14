@@ -38,6 +38,7 @@ Table of Contents
 	  5.6. Create Room Request .........................................6
 	  5.7. Room Informations ...........................................7
 	  5.8. Other Requests ..............................................7
+	  5.9. Server Answers ..............................................8
    6. In Game Session Management .......................................8
 
 
@@ -263,7 +264,7 @@ RFC 4242                     R-Type Protocol                November 2014
       |                         USERNAMETEST                          |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-   5.5.   Get Rooms Request
+   5.4.   Get Rooms Request
 	  
       The GET_ROOMS request is used by the client to get the list of the
 	  current availlable rooms.
@@ -421,7 +422,17 @@ Bajdek                       Standarts tracks                    [page 7]
 	  
 RFC 4242                     R-Type Protocol                November 2014	  
 	  
-	  6.   In Game Session Management
+   5.9.   Server Answers
+
+      If the "additionnal data" field is used in the client's request,
+      the server answers packets will always contain the same 
+	  "additionnal data" field that they received from the client.
+	  
+      This allow the client not to keeps tracks of the data send, but
+	  only of the type of request to know what do do upon receiving an
+	  OK / NOK / BUSY answer.
+	  
+  6.   In Game Session Management
 
 
 
