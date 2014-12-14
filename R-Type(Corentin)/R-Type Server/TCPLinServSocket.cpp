@@ -104,9 +104,10 @@ void				TCPLinServSocket::ReadData(CircularBuff &circbuff, Selector &sel)
 		}
 		else
 		{
-			Message		message((uint32_t)*((char *)(databuf[0].iov_base)),
-								(uint32_t)*((char *)(databuf[1].iov_base)),
-								(void *)(databuf[2].iov_base), _clients[i]);
+			std::string		*str = new std::string(databuf[2].iov_base);
+			Message			message((uint32_t)*((char *)(databuf[0].iov_base)),
+									(uint32_t)*((char *)(databuf[1].iov_base)),
+									(void *)(str->c_str()), str, _clients[i]);
 
 			std::cout << "je recois :"; message.to_string(); std::cout << std::endl;
 			circbuff.add_data(message);
@@ -152,7 +153,7 @@ void		TCPLinServSocket::SendData(CircularBuff &circbuff, Selector &sel)
 			memcpy(&third_buff, (char *)(to_send->at(i).get_packet()), data_length);
 
 			// et on les envoi
-			sentbytes = writev(_clients[i].get_socket(), databuf, 3);
+			sentbytes = writev(to_send->at(i).get_client().get_socket(), databuf, 3);
 		}
 	delete to_send;
 }

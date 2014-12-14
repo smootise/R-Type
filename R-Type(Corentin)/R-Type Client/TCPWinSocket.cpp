@@ -65,7 +65,8 @@ bool				TCPWinSocket::ReadData(CircularBuff &circbuff, Selector &sel)
 			std::cout << "Connection lost with the server" << std::endl;
 			return (false);
 		}
-		Message		Message((uint32_t)*(databuf[0].buf), (uint32_t)*(databuf[1].buf), (void *)databuf[2].buf);
+		std::string		*str = new std::string(databuf[2].buf);
+		Message			Message((uint32_t)*(databuf[0].buf), (uint32_t)*(databuf[1].buf), (void *)(str->c_str()), str);
 
 		std::cout << "je recois :"; Message.to_string(); std::cout << std::endl;
 		circbuff.add_data(Message);

@@ -71,6 +71,7 @@
     <ClInclude Include="Commands.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="ITCPServSocket.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="Selector.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="TCPLinServSocket.h">
@@ -84,6 +85,7 @@
     <ClCompile Include="CommandHandler.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="Selector.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="TCPLinServSocket.cpp">

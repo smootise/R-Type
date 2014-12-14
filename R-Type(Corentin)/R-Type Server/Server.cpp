@@ -14,7 +14,7 @@ Server::Server(int port)
 	#else
 		_socket = new TCPLinServerSocket(_clients);
 	#endif
-	_comhandler = new CommandHandler(_writebuff, _readbuff, _clients);
+	_comhandler = new CommandHandler(_writebuff, _readbuff, _clients, _rooms);
 }
 
 Server::~Server(void)

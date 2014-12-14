@@ -3,6 +3,7 @@
 #include <vector>
 #include "Commands.h"
 #include "CircularBuff.h"
+#include "Room.h"
 
 class CommandHandler;
 
@@ -15,9 +16,11 @@ protected:
 	CircularBuff					&_readbuff;
 	std::vector<Client>				&_clients;
 	std::map<int, FuncType1>		_receiptfunctions;
+	std::vector<Room>				&_rooms;
 
 public:
-	CommandHandler(CircularBuff &writebuff, CircularBuff &readbuff, std::vector<Client> &clients);
+	CommandHandler(CircularBuff &writebuff, CircularBuff &readbuff, std::vector<Client> &clients,
+				   std::vector<Room> &rooms);
 	virtual ~CommandHandler();
 
 	void	ReceiptCommand();

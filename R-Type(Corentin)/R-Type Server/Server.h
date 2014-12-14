@@ -5,6 +5,7 @@
 #include "CommandHandler.h"
 #include "ITCPServSocket.h"
 #include "CircularBuff.h"
+#include "Room.h"
 
 class Server
 {
@@ -15,6 +16,7 @@ protected:
 	CircularBuff				_writebuff;
 	Selector					_sel;
 	std::vector<Client>			_clients;
+	std::vector<Room>			_rooms;
 	CommandHandler				*_comhandler;
 
 public:

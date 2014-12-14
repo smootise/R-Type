@@ -7,12 +7,14 @@
 class Message
 {
 protected:
-	uint32_t	_rq_type;
-	uint32_t	_data_length;
-	void		*_packet;
+	uint32_t		_rq_type;
+	uint32_t		_data_length;
+	void			*_packet;
+	std::string		*_src;
 
 public:
-	Message(uint32_t rq_type, uint32_t data_length, void *packet);
+	Message(uint32_t rq_type, uint32_t data_length, void *packet, std::string *src);
+	Message(const Message &mess);
 	virtual ~Message(void);
 
 	//setters & getters

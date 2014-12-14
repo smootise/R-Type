@@ -1,13 +1,24 @@
 #include "Message.h"
 
-Message::Message(uint32_t rq_type, uint32_t data_length, void *packet) :
-	_rq_type(rq_type), _data_length(data_length), _packet(packet)
+Message::Message(uint32_t rq_type, uint32_t data_length, void *packet, std::string *src) :
+_rq_type(rq_type), _data_length(data_length), _packet(packet), _src(src)
 {
 
 }
 
-Message::~Message(void)
+Message::Message(const Message &mess)
 {
+	this->_rq_type = mess._rq_type;
+	this->_data_length = mess._data_length;
+	this->_packet = mess._packet;
+	this->_src = mess._src;
+	const_cast<std::string *>(mess._src) = NULL;
+}
+
+Message::~Message(void)
+{	
+	if (_src != NULL)
+		delete (_src);
 }
 
 //setters & getters

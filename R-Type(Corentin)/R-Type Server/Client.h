@@ -4,39 +4,28 @@
 
 #include "Selector.h"
 
-
-// a modifier
-enum
-{
-	UNKNOWN,
-	KNOWN,
-	DISCONNECTED,
-	CONNECTED,
-};
-
 class Client
 {
 protected:
 	std::string		_nickname;
 	SOCKET			_socket;
 	int				_id;
-	int				_state; //reserved for further user
-	int				_room;
+	std::string		_roomname;
 
 public:
-	Client(SOCKET socket, int id, int state = UNKNOWN, std::string nickname  = std::string("DefaultName"), int room = -1);
+	Client(SOCKET socket, int id, std::string nickname = std::string("DefaultName"), std::string roomname = std::string("DefaultName"));
+	//Client();
 	virtual ~Client();
+	//Client(const Client &other);
 
 	//setters & getters
-	std::string		&get_nickname(void);
-	SOCKET			get_socket(void);
-	int				get_id(void);
-	int				get_state(void);
-	int				get_room(void);
+	std::string				get_nickname(void) const;
+	SOCKET					get_socket(void) const;
+	int						get_id(void) const;
+	std::string				get_room(void) const;
 
 	void			set_nickname(std::string &nickname);
 	void			set_id(int id);
-	void			set_state(int state);
-	void			set_room(int room);
+	void			set_room(std::string &roomname);
 };
 

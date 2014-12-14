@@ -2,6 +2,7 @@
 #include <map>
 #include "Commands.h"
 #include "CircularBuff.h"
+#include "Room.h"
 
 class CommandHandler;
 
@@ -17,9 +18,12 @@ protected:
 	std::map<int, FuncType2>		_receiptfunctions;
 	std::map<std::string, bool>		_state;
 	int								*_lastcommand;
+	Room							*_room;
+	std::vector<std::string>		*_availlablerooms;
 
 public:
-	CommandHandler(CircularBuff &writebuff, CircularBuff &readbuff, std::map<std::string, bool> &state, int *lastcommand);
+	CommandHandler(CircularBuff &writebuff, CircularBuff &readbuff, std::map<std::string, bool> &state,
+					int *lastcommand, Room *room, std::vector<std::string> *availlablerooms);
 	virtual ~CommandHandler();
 
 	void	SendCommand(int value, std::string *arg);
@@ -41,7 +45,7 @@ protected:
 	void	LoginAnswer(Message &answer);
 	void	GetRoomsAnswer(Message &answer);
 	void	JoinRoomAnswer(Message &answer);
-	void	LeaveRoomeAnswer(Message &answer);
+	void	LeaveRoomAnswer(Message &answer);
 	void	CreateRoomAnswer(Message &answer);
 	void	StartGameAnswer(Message &answer);
 };

@@ -70,6 +70,7 @@
     <ClInclude Include="Commands.h" />
     <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="ITCPSocket.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="TCPLinSocket.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="Selector.h" />
@@ -80,6 +81,7 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="CommandHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="TCPLinSocket.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>

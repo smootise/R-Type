@@ -69,9 +69,11 @@ bool		TCPLinSocket::ReadData(CircularBuff &circbuff, Selector &sel)
 			std::cout << "Connection lost with the server" << std::endl;
 			return (false);
 		}
+		std::string		*str = new std::string(databuf[2].iov_base);
 		Message		Message((uint32_t)*((char *)(databuf[0].iov_base)),
 			(uint32_t)*((char *)(databuf[1].iov_base)),
-			(void *)databuf[2].iov_base);
+			(void *)(str->c_str()), str);
+
 		circbuff.add_data(Message);
 	}
 	return (true);
