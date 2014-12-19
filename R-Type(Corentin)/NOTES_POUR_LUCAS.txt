@@ -1,0 +1,17 @@
+Pour Lucas :
+
+Pour decommenter, facile j'ai presque rien commenté ^^.
+Par contre j'ai du reset toutes les config du projet pour pas qu'il ajoute 
+la lib donc tu as trois possibilités :
+
+_Soit tu copies tous les fichiers dans ton ancien projet de visual studio
+_Soit tu remets les settings a la main.
+_Soit tu save tes settings avec ton projet qui a les bons 
+(tools->import and export-> export settings), et tu les copie/colle ici puis 
+les load dans ce projet.
+Je ferai de même avec des settings vierges et on pourra changer rapidos de l'un a l'autre.
+
+Pour le code :
+
+J'envoi maintenant le nomdujoueur a ta fonction, fais en ce que tu veux ^^
+Pour savoir si le join/create room a  succeed tu check si room est NULL

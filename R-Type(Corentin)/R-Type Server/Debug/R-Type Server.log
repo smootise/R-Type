@@ -1,4 +1,4 @@
-﻿Build started 16/12/2014 01:53:41.
+﻿Build started 19/12/2014 23:56:34.
      1>Project "D:\Github\R-Type\R-Type(Corentin)\R-Type Server\R-Type Server.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Work\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CircularBuff.cpp Client.cpp CommandHandler.cpp Message.cpp main.cpp Room.cpp Selector.cpp Server.cpp TCPWinServSocket.cpp
@@ -27,4 +27,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:09.43
+Time Elapsed 00:00:08.03
