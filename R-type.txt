@@ -55,7 +55,6 @@ Table of Contents
 
 
 
-   
 Bajdek                       Standarts tracks                    [page 1]
 
 RFC 4242                     R-Type Protocol                November 2014

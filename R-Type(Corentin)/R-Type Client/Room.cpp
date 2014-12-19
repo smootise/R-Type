@@ -39,7 +39,12 @@ void	Room::To_String() const
 		std::cout << "ally n * " << i << " : " << _allys.at(i) << std::endl;
 }
 
-std::string		Room::get_name()
+const std::string		&Room::get_name() const
 {
 	return (_name);
+}
+
+const std::vector<std::string>	&Room::get_allys() const
+{
+	return (_allys);
 }

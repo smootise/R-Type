@@ -17,7 +17,8 @@ public:
 	void	Remove_Ally(const std::string &allyname);
 	
 
-	std::string		get_name();
+	const std::string				&get_name() const;
+	const std::vector<std::string>	&get_allys() const;
 
 	void	To_String() const;
 };

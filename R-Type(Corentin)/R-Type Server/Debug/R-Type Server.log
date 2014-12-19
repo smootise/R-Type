@@ -1,16 +1,19 @@
-﻿Build started 14/12/2014 21:12:47.
-     1>Project "C:\Users\Corentin\documents\visual studio 2013\Projects\R-Type Server\R-Type Server\R-Type Server.vcxproj" on node 2 (Build target(s)).
+﻿Build started 16/12/2014 01:53:41.
+     1>Project "D:\Github\R-Type\R-Type(Corentin)\R-Type Server\R-Type Server.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Work\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CommandHandler.cpp Server.cpp TCPWinServSocket.cpp
-         CommandHandler.cpp
-         Generating Code...
-         Compiling...
-         Server.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
+         D:\Work\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CircularBuff.cpp Client.cpp CommandHandler.cpp Message.cpp main.cpp Room.cpp Selector.cpp Server.cpp TCPWinServSocket.cpp
          TCPWinServSocket.cpp
+         Server.cpp
+         Selector.cpp
+         Room.cpp
+         main.cpp
+         Message.cpp
+         CommandHandler.cpp
+         Client.cpp
+         CircularBuff.cpp
+         Generating Code...
        Link:
-         D:\Work\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Corentin\documents\visual studio 2013\Projects\R-Type Server\Debug\R-Type Server.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Corentin\documents\visual studio 2013\Projects\R-Type Server\Debug\R-Type Server.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Corentin\documents\visual studio 2013\Projects\R-Type Server\Debug\R-Type Server.lib" /MACHINE:X86 Debug\CircularBuff.obj
+         D:\Work\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.lib" /MACHINE:X86 Debug\CircularBuff.obj
          Debug\Client.obj
          Debug\CommandHandler.obj
          Debug\Message.obj
@@ -19,9 +22,9 @@
          Debug\Selector.obj
          Debug\Server.obj
          Debug\TCPWinServSocket.obj
-         R-Type Server.vcxproj -> C:\Users\Corentin\documents\visual studio 2013\Projects\R-Type Server\Debug\R-Type Server.exe
-     1>Done Building Project "C:\Users\Corentin\documents\visual studio 2013\Projects\R-Type Server\R-Type Server\R-Type Server.vcxproj" (Build target(s)).
+         R-Type Server.vcxproj -> D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.exe
+     1>Done Building Project "D:\Github\R-Type\R-Type(Corentin)\R-Type Server\R-Type Server.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.54
+Time Elapsed 00:00:09.43
