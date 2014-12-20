@@ -2,8 +2,8 @@
 
 
 CommandHandler::CommandHandler(CircularBuff &writebuff, CircularBuff &readbuff, std::map<std::string, bool> &state, int *lastcommand,
-	Room *room, std::vector<std::string> *availlablerooms, std::string *name) :
-	_writebuff(writebuff), _readbuff(readbuff), _state(state), _lastcommand(lastcommand), _room(room), _availlablerooms(availlablerooms), _name(name)
+	 std::vector<std::string> *availlablerooms) :
+	_writebuff(writebuff), _readbuff(readbuff), _state(state), _lastcommand(lastcommand), _availlablerooms(availlablerooms)
 {
 	_sendfunctions[LOGIN] = &CommandHandler::SendLogin;
 	_sendfunctions[LOGOUT] = &CommandHandler::SendLogout;
@@ -21,11 +21,18 @@ CommandHandler::CommandHandler(CircularBuff &writebuff, CircularBuff &readbuff, 
 	_receiptfunctions[START_GAME] = &CommandHandler::StartGameAnswer;
 	_receiptfunctions[ADD_ALLY] = &CommandHandler::AddAllyAnswer;
 	_receiptfunctions[REMOVE_ALLY] = &CommandHandler::RemoveAllyAnswer;
+	_receiptfunctions[GAME_STARTED] = &CommandHandler::GameStartedAnswer;
+
+	_name = NULL;
+	_room = NULL;
 }
 
 CommandHandler::~CommandHandler()
 {
-	
+	if (_room)
+		delete _room;
+	if (_name)
+		delete _name;
 }
 
 void	CommandHandler::SendCommand(int value, std::string *arg)
@@ -62,7 +69,7 @@ void							CommandHandler::ReceiptCommand(void)
 			*_lastcommand = NONE;
 			_state["Pending"] = false;
 		}
-		else if (answers->at(i).get_rq_type() == REMOVE_ALLY || answers->at(i).get_rq_type() == ADD_ALLY)
+		else if (answers->at(i).get_rq_type() == REMOVE_ALLY || answers->at(i).get_rq_type() == ADD_ALLY || answers->at(i).get_rq_type() == GAME_STARTED)
 			(this->*_receiptfunctions[answers->at(i).get_rq_type()])(answers->at(i));
 		else
 			std::cerr << "INVALID ANSWER RECEVEID FROM THE SERVER" << std::endl;
@@ -165,11 +172,16 @@ void	CommandHandler::StartGameAnswer(Message &answer)
 
 }
 
+void	CommandHandler::GameStartedAnswer(Message &answer)
+{
+	std::cout << "tu vas commencer ta game sur le port " << (char *)answer.get_packet() << std::endl;
+}
+
 
 // fonctions that send data
 void	CommandHandler::SendLogin(std::string *arg)
 {
-	Message		mess((uint32_t)LOGIN, (uint32_t)(arg->size()), (void *)(arg->c_str()), arg);
+	Message		mess(LOGIN, arg->size(), (void *)(arg->c_str()), arg);
 
 	_writebuff.add_data(mess);
 	_state["Pending"] = true;
@@ -177,14 +189,14 @@ void	CommandHandler::SendLogin(std::string *arg)
 
 void	CommandHandler::SendLogout(std::string *arg)
 {
-	Message		mess((uint32_t)LOGOUT, (uint32_t)(arg->size()), (void *)(arg->c_str()), arg);
+	Message		mess(LOGOUT, arg->size(), (void *)(arg->c_str()), arg);
 
 	_writebuff.add_data(mess);
 }
 
 void	CommandHandler::SendGetRooms(std::string *arg)
 {
-	Message		mess((uint32_t)GET_ROOMS, (uint32_t)(arg->size()), (void *)(arg->c_str()), arg);
+	Message		mess(GET_ROOMS, arg->size(), (void *)(arg->c_str()), arg);
 
 	_writebuff.add_data(mess);
 	_state["Pending"] = true;
@@ -192,7 +204,7 @@ void	CommandHandler::SendGetRooms(std::string *arg)
 
 void	CommandHandler::SendJoinRoom(std::string *arg)
 {
-	Message		mess((uint32_t)JOIN_ROOM, (uint32_t)(arg->size()), (void *)(arg->c_str()), arg);
+	Message		mess(JOIN_ROOM, arg->size(), (void *)(arg->c_str()), arg);
 
 	_writebuff.add_data(mess);
 	_state["Pending"] = true;
@@ -201,7 +213,7 @@ void	CommandHandler::SendJoinRoom(std::string *arg)
 void	CommandHandler::SendLeaveRoom(std::string *arg)
 {
 	std::string	*str = new std::string(_room->get_name());
-	Message		mess((uint32_t)LEAVE_ROOM, (uint32_t)(str->size()), (void *)(str->c_str()), str);
+	Message		mess(LEAVE_ROOM, str->size(), (void *)(str->c_str()), str);
 
 	delete arg;
 	_writebuff.add_data(mess);
@@ -210,7 +222,7 @@ void	CommandHandler::SendLeaveRoom(std::string *arg)
 
 void	CommandHandler::SendCreateRoom(std::string *arg)
 {
-	Message		mess((uint32_t)CREATE_ROOM, (uint32_t)(arg->size()), (void *)(arg->c_str()), arg);
+	Message		mess(CREATE_ROOM, arg->size(), (void *)(arg->c_str()), arg);
 
 	_writebuff.add_data(mess);
 	_state["Pending"] = true;
@@ -218,7 +230,17 @@ void	CommandHandler::SendCreateRoom(std::string *arg)
 
 void	CommandHandler::SendStartGame(std::string *arg)
 {
-	Message		mess((uint32_t)START_GAME, (uint32_t)(arg->size()), (void *)(arg->c_str()), arg);
+	Message		mess(START_GAME, arg->size(), (void *)(arg->c_str()), arg);
 
 	_writebuff.add_data(mess);
+}
+	
+Room			*CommandHandler::get_room() const
+{
+	return (_room);
+}
+
+std::string		*CommandHandler::get_name() const
+{
+	return (_name);
 }

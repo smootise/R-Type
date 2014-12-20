@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <vector>
+#include <sstream>
 #include "Commands.h"
 #include "CircularBuff.h"
 #include "Room.h"
@@ -17,6 +18,7 @@ protected:
 	std::vector<Client>				&_clients;
 	std::map<int, FuncType1>		_receiptfunctions;
 	std::vector<Room>				&_rooms;
+	int								_nextport;
 
 public:
 	CommandHandler(CircularBuff &writebuff, CircularBuff &readbuff, std::vector<Client> &clients,

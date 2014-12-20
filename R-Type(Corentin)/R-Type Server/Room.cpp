@@ -22,7 +22,7 @@ void	Room::Add_Ally(Client &client, CircularBuff &writebuff)
 	for (size_t i = 0; i < _people.size() - 1; i++)
 	{
 		std::string	*allyname = new std::string(_people[i].get_nickname());
-		Message		newmess((uint32_t)ADD_ALLY, (uint32_t)(allyname->size()), (void *)(allyname->c_str()), allyname, client);
+		Message		newmess(ADD_ALLY, allyname->size(), (void *)(allyname->c_str()), allyname, client);
 
 		writebuff.add_data(newmess);
 	}
@@ -31,7 +31,7 @@ void	Room::Add_Ally(Client &client, CircularBuff &writebuff)
 	for (size_t i = 0; i < _people.size() - 1; i++)
 	{
 		std::string	*allyname = new std::string(client.get_nickname());
-		Message		newmess((uint32_t)ADD_ALLY, (uint32_t)(allyname->size()), (void *)(allyname->c_str()), allyname, _people.at(i));
+		Message		newmess(ADD_ALLY, allyname->size(), (void *)(allyname->c_str()), allyname, _people.at(i));
 
 		writebuff.add_data(newmess);
 	}
@@ -56,7 +56,7 @@ void	Room::Remove_Ally(Client &client, CircularBuff &writebuff)
 	//on envoi la reponse
 	if (ret == OK)
 	{
-		Message		newmess((uint32_t)ret, (uint32_t)0, (void *)(std::string("").c_str()), NULL, client);
+		Message		newmess(ret, 0, NULL, NULL, client);
 		writebuff.add_data(newmess);
 	}
 	//si le gars a bien été viré
@@ -66,7 +66,7 @@ void	Room::Remove_Ally(Client &client, CircularBuff &writebuff)
 		for (size_t i = 0; i < _people.size(); i++)
 		{
 			std::string	*allyname = new std::string(client.get_nickname());
-			Message		newmess((uint32_t)REMOVE_ALLY, (uint32_t)(allyname->size()), (void *)(allyname->c_str()), allyname, _people.at(i));
+			Message		newmess(REMOVE_ALLY, allyname->size(), (void *)(allyname->c_str()), allyname, _people.at(i));
 			
 			writebuff.add_data(newmess);
 		}
@@ -82,7 +82,7 @@ void	Room::To_String() const
 }
 
 //getters
-std::string		Room::Get_Name() const
+const std::string		&Room::Get_Name() const
 {
 	return (_name);
 }
@@ -92,3 +92,7 @@ int				Room::Get_Nb_People() const
 	return (_people.size());
 }
 
+std::vector<Client>		&Room::get_people()
+{
+	return (_people);
+}

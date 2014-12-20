@@ -22,9 +22,8 @@ Client::Client(std::string &hostname, std::string &strport) :
 	#else
 		_socket = new TCPLinSocket();
 	#endif
-	_comhandler = new CommandHandler(_writebuff, _readbuff, _state, &_lastcommand, _room, _availlablerooms);
+	_comhandler = new CommandHandler(_writebuff, _readbuff, _state, &_lastcommand, _availlablerooms);
 	_lastcommand = 0;
-	_room = NULL;
 }
 
 
@@ -32,8 +31,6 @@ Client::~Client(void)
 {
 	delete _socket;
 	delete _comhandler;
-	if (_room)
-		delete _room;
 }
 
 bool	Client::init()
@@ -61,7 +58,7 @@ bool	Client::update()
 	if ((_socket->ReadData(_readbuff, _sel)) == false)
 		return (false);
 	_comhandler->ReceiptCommand();
-	//if ((ret = _graphic.affScreen(_state, _comhandler, _availlablerooms, _room, _name)) == Gui::Error)
+	//if ((ret = _graphic.affScreen(_state, _comhandler, _availlablerooms, commhandler->get_room(), comhandler->get_name())) == Gui::Error)
 	//{
 	//	std::cerr << "graphical error " << std::endl;
 	//	return (false);

@@ -21,8 +21,9 @@ public:
 	void	Remove_Ally(Client &client, CircularBuff &_writebuff);
 	void	To_String() const;
 
+	std::vector<Client>		&get_people();
 	//getters
-	std::string		Get_Name() const;
-	int				Get_Nb_People() const;
+	const std::string		&Get_Name() const;
+	int						Get_Nb_People() const;
 };
 

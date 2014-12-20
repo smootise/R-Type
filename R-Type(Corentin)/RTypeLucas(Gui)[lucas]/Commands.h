@@ -19,4 +19,5 @@ enum Answers
 	BUSY = 12,
 	ADD_ALLY = 13,
 	REMOVE_ALLY = 14,
+	GAME_STARTED = 15,
 };

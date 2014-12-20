@@ -25,9 +25,7 @@ protected:
 	CommandHandler					*_comhandler;
 	std::map <std::string, bool>	_state;
 	int								_lastcommand;
-	Room							*_room;
 	std::vector<std::string>		*_availlablerooms;
-	std::string						*_name;
 	//Gui							_graphic;							
 
 public:

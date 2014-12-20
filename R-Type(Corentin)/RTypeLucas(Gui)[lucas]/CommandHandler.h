@@ -24,7 +24,7 @@ protected:
 
 public:
 	CommandHandler(CircularBuff &writebuff, CircularBuff &readbuff, std::map<std::string, bool> &state,
-					int *lastcommand, Room *room, std::vector<std::string> *availlablerooms, std::string *name);
+					int *lastcommand, std::vector<std::string> *availlablerooms);
 	virtual ~CommandHandler();
 
 	void	SendCommand(int value, std::string *arg);
@@ -49,5 +49,9 @@ protected:
 	void	LeaveRoomAnswer(Message &answer);
 	void	CreateRoomAnswer(Message &answer);
 	void	StartGameAnswer(Message &answer);
+	void	GameStartedAnswer(Message &answer);
+
+	Room		*get_room() const;
+	std::string	*get_name() const;
 };
 

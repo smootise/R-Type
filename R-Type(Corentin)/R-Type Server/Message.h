@@ -24,7 +24,7 @@ public:
 	uint32_t			get_rq_type(void) const;
 	uint32_t			get_data_length(void) const;
 	void				*get_packet(void) const;
-	Client				&get_client(void) const;
+	Client		&get_client(void) const;
 
 	//utilitaire
 	void	to_string() const;

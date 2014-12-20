@@ -1,14 +1,3 @@
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\r-type server\debug\vc120.pdb
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\r-type server\debug\vc120.idb
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\r-type server\debug\circularbuff.obj
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\r-type server\debug\client.obj
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\r-type server\debug\message.obj
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\r-type server\debug\main.obj
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\r-type server\debug\selector.obj
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\r-type server\debug\server.obj
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\r-type server\debug\tcpwinservsocket.obj
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\r-type server\debug\commandhandler.obj
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\r-type server\debug\room.obj
 d:\github\r-type\r-type(corentin)\r-type server\debug\vc120.pdb
 d:\github\r-type\r-type(corentin)\r-type server\debug\vc120.idb
 d:\github\r-type\r-type(corentin)\r-type server\debug\circularbuff.obj
@@ -20,9 +9,6 @@ d:\github\r-type\r-type(corentin)\r-type server\debug\room.obj
 d:\github\r-type\r-type(corentin)\r-type server\debug\selector.obj
 d:\github\r-type\r-type(corentin)\r-type server\debug\server.obj
 d:\github\r-type\r-type(corentin)\r-type server\debug\tcpwinservsocket.obj
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\debug\r-type server.ilk
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\debug\r-type server.exe
-c:\users\corentin\documents\visual studio 2013\projects\r-type server\debug\r-type server.pdb
 d:\github\r-type\r-type(corentin)\debug\r-type server.ilk
 d:\github\r-type\r-type(corentin)\debug\r-type server.exe
 d:\github\r-type\r-type(corentin)\debug\r-type server.pdb

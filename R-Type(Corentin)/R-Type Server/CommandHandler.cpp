@@ -3,7 +3,7 @@
 
 CommandHandler::CommandHandler(CircularBuff &writebuff, CircularBuff &readbuff, std::vector<Client> &clients,
 								std::vector<Room> &rooms) :
-	_writebuff(writebuff), _readbuff(readbuff), _clients(clients), _rooms(rooms)
+	_writebuff(writebuff), _readbuff(readbuff), _clients(clients), _rooms(rooms), _nextport(4243)
 {
 	_receiptfunctions[LOGIN] = &CommandHandler::ReceiptLogin;
 	_receiptfunctions[LOGOUT] = &CommandHandler::ReceiptLogout;
@@ -51,7 +51,7 @@ void	CommandHandler::ReceiptLogin(Message &mess)
 	}
 	std::string	*str = new std::string(wantedname);
 
-	Message		retmess((uint32_t)ret, (uint32_t)(str->size()), (void *)(str->c_str()), str, mess.get_client());
+	Message		retmess(ret, str->size(), (void *)(str->c_str()), str, mess.get_client());
 	_writebuff.add_data(retmess);
 }
 
@@ -72,7 +72,7 @@ void				CommandHandler::ReceiptGetRooms(Message &mess)
 		roomlist->append(_rooms.at(i).Get_Name().c_str());
 	}
 	
-	Message		retmess((uint32_t)OK, (uint32_t)(roomlist->size()), (void *)(roomlist->c_str()), roomlist, mess.get_client());
+	Message		retmess(OK, roomlist->size(), (void *)(roomlist->c_str()), roomlist, mess.get_client());
 	_writebuff.add_data(retmess);
 }
 
@@ -91,7 +91,7 @@ void				CommandHandler::ReceiptJoinRoom(Message &mess)
 
 	//we send response to the client that wanted to join
 	std::string		*str = new std::string((char *)mess.get_packet());
-	Message			retmess((uint32_t)ret, (uint32_t)(str->size()), (void *)(str->c_str()), str, mess.get_client());
+	Message			retmess(ret, str->size(), (void *)(str->c_str()), str, mess.get_client());
 	_writebuff.add_data(retmess);
 
 	if (ret == OK)
@@ -121,7 +121,7 @@ void	CommandHandler::ReceiptLeaveRoom(Message &mess)
 		}
 	if (ret == NOK)
 	{
-		Message		newmess((uint32_t)ret, (uint32_t)0, (void *)(std::string("").c_str()), NULL, mess.get_client());
+		Message		newmess(ret, 0, NULL, NULL, mess.get_client());
 		_writebuff.add_data(newmess);
 	}
 }
@@ -136,7 +136,7 @@ void				CommandHandler::ReceiptCreateRoom(Message &mess)
 			ret = NOK;
 
 	std::string		*str = new std::string((char *)mess.get_packet());
-	Message			retmess((uint32_t)ret, (uint32_t)(str->size()), (void *)(str->c_str()), str, mess.get_client());
+	Message			retmess(ret, str->size(), (void *)(str->c_str()), str, mess.get_client());
 	_writebuff.add_data(retmess);
 
 	if (ret == OK)
@@ -153,5 +153,33 @@ void				CommandHandler::ReceiptCreateRoom(Message &mess)
 
 void	CommandHandler::ReceiptStartGame(Message &mess)
 {
+	int	ret = NOK;
 
+	if (mess.get_client().get_room() == std::string("DefaultName"))
+		{
+			std::cerr << "un client n'etant aps dans une room veut start" << std::endl;
+			Message		retmess(ret, 0, NULL, NULL, mess.get_client());
+			_writebuff.add_data(retmess);
+			return ;
+		}
+
+	for (size_t i = 0; i < _clients.size(); i++)
+		if (mess.get_client().get_room() == _clients[i].get_room())
+		{
+			std::ostringstream		oss;
+			oss << _nextport;
+				
+			std::string		*port = new std::string(oss.str());
+			Message			retmess(GAME_STARTED, port->size(), (void *)(port->c_str()), port, _clients.at(i));
+			
+			_writebuff.add_data(retmess);
+			ret = OK;
+		}
+	Message		retmess(ret, 0, NULL, NULL, mess.get_client());
+	_writebuff.add_data(retmess);
+	if (ret == OK)
+	{
+		//lancer les threads
+		_nextport++;
+	}
 }
