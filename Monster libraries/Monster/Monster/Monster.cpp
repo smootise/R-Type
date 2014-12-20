@@ -26,19 +26,3 @@ void Monster::draw()
 {
 	std::cout << "This Monster has been redrawn" << std::endl;
 }
-
-M_light::M_light(){}
-
-M_light::~M_light(){}
-
-M_heavy::M_heavy(){}
-
-M_heavy::~M_heavy(){}
-
-M_medium::M_medium(){}
-
-M_medium::~M_medium(){}
-
-M_boss::M_boss(){}
-
-M_boss::~M_boss(){}

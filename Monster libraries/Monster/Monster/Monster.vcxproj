@@ -159,10 +159,18 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="M_boss.cpp" />
+    <ClCompile Include="M_heavy.cpp" />
+    <ClCompile Include="M_light.cpp" />
+    <ClCompile Include="M_medium.cpp" />
     <ClCompile Include="Spawner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="M_boss.h" />
+    <ClInclude Include="M_heavy.h" />
+    <ClInclude Include="M_light.h" />
+    <ClInclude Include="M_medium.h" />
     <ClInclude Include="Spawner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

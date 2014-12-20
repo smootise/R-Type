@@ -18,35 +18,9 @@ public:
 	void move(float x, float y);
 };
 
-class M_light :
-	public Monster
-{
-public:
-	M_light();
-	~M_light();
-};
-
-class M_heavy :
-	public Monster
-{
-public:
-	M_heavy();
-	~M_heavy();
-};
-
-class M_medium :
-	public Monster
-{
-public:
-	M_medium();
-	~M_medium();
-};
-
-class M_boss :
-	public Monster
-{
-public:
-	M_boss();
-	~M_boss();
-};
-
+/*
+M_light
+M_heavy
+M_medium
+M_boss
+*/
