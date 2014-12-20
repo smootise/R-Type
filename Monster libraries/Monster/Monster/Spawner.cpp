@@ -1,13 +1,15 @@
 #include "Spawner.h"
-
+#include <iostream>
 
 Spawner::Spawner()
 {
+	std::cout << "Creation of a Mob Spawner !" << std::endl;
 }
 
 
 Spawner::~Spawner()
 {
+	std::cout << "The Mob Spawner is down !" << std::endl;
 }
 
 void Spawner::update()
