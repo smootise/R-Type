@@ -8,7 +8,8 @@ class Spawner
 {
 	std::vector<Monster> mobs;
 public:
-	Spawner(std::string file);
+	Spawner();
+	Spawner(char* file);
 	~Spawner();
 	void update();
 	void draw();

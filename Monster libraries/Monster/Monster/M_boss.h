@@ -7,4 +7,3 @@ public:
 	M_boss();
 	~M_boss();
 };
-

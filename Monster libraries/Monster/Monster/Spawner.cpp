@@ -1,11 +1,30 @@
 #include "Spawner.h"
 #include <iostream>
+#include <fstream>
 
 Spawner::Spawner()
 {
 	std::cout << "Creation of a Mob Spawner !" << std::endl;
 }
 
+Spawner::Spawner(char* fileName)
+{
+	std::string line;
+	std::ifstream myfile(fileName);
+	if (myfile.is_open())
+	{
+		while (getline(myfile, line))
+		{
+			std::cout << line << std::endl;
+		}
+		myfile.close();
+	}
+
+	else std::cout << "Unable to open file";
+
+
+	std::cout << "Creation of a Mob Spawner !" << std::endl;
+}
 
 Spawner::~Spawner()
 {

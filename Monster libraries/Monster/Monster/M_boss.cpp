@@ -5,7 +5,6 @@ M_boss::M_boss()
 {
 }
 
-
 M_boss::~M_boss()
 {
 }

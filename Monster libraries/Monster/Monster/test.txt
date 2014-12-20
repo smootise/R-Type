@@ -1,0 +1,10 @@
+light:25
+light:30
+light:35
+medium:240
+medium:245
+medium:250
+heavy:500
+heavy:505
+heavy:510
+boss:770

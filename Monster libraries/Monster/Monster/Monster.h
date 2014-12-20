@@ -17,10 +17,3 @@ public:
 	void draw();
 	void move(float x, float y);
 };
-
-/*
-M_light
-M_heavy
-M_medium
-M_boss
-*/
