@@ -9,14 +9,27 @@ Spawner::Spawner()
 
 Spawner::Spawner(char* fileName)
 {
+	std::size_t length;
+	char type[10];
+	char timing[10];
 	std::string line;
 	std::ifstream myfile(fileName);
+
 	if (myfile.is_open())
 	{
 		while (getline(myfile, line))
 		{
-			// PARSER ICI
-			//_mobs.push_back( MONSTER DU BON TYPE );
+			if (line.empty() == false && line[0] != '#')
+			{
+				length = line.copy(type, line.find_first_of(":"));
+				type[length] = '\0';
+				length = line.copy(timing, 10, line.find_first_of(":"));
+				timing[length] = '\0';
+				std::cout << "type : " << type << ", timing : " << timing << std::endl;
+				if (
+				// PARSER ICI
+				//_mobs.push_back( MONSTER DU BON TYPE );
+			}
 		}
 		myfile.close();
 	}
@@ -45,5 +58,13 @@ void Spawner::draw()
 	for (unsigned int i = 0; i < _mobs.size(); ++i)
 	{
 		_mobs[i].draw();
+	}
+}
+
+void Spawner::afftiming()
+{
+	for (unsigned int i = 0; i < _mobs.size(); ++i)
+	{
+		_mobs[i].afftiming();
 	}
 }

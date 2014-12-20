@@ -5,5 +5,6 @@ class M_light :
 {
 public:
 	M_light();
+	M_light(int time);
 	~M_light();
 };

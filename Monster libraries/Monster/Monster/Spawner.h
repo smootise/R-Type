@@ -13,5 +13,6 @@ public:
 	~Spawner();
 	void update();
 	void draw();
+	void afftiming();
 };
 

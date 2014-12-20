@@ -5,6 +5,11 @@ M_boss::M_boss()
 {
 }
 
+M_boss::M_boss(int time)
+{
+	_timing = time;
+}
+
 M_boss::~M_boss()
 {
 }

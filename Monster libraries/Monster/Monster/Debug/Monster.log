@@ -1,19 +1,14 @@
-﻿Build started 20/12/2014 20:05:17.
-     1>Project "C:\Users\Thibaud\Documents\GitHub\R-Type\Monster libraries\Monster\Monster\Monster.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
+﻿Build started 20/12/2014 22:57:50.
+     1>Project "C:\Users\theo\Documents\R-Type\Monster libraries\Monster\Monster\Monster.vcxproj" on node 2 (build target(s)).
+       Project file contains ToolsVersion="12.0". This toolset may be unknown or missing, in which case you may be able to resolve this by installing the appropriate version of MSBuild, or the build may have been forced to a particular ToolsVersion for policy reasons. Treating the project as if it had ToolsVersion="4.0". For more information, please see http://go.microsoft.com/fwlink/?LinkId=291333.
+     1>InitializeBuildStatus:
+         Touching "Debug\Monster.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Thibaud\Documents\GitHub\R-Type\Monster libraries\Monster\Debug\Monster.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML\SFML-2.1\Libs\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Thibaud\Documents\GitHub\R-Type\Monster libraries\Monster\Debug\Monster.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Thibaud\Documents\GitHub\R-Type\Monster libraries\Monster\Debug\Monster.lib" /MACHINE:X86 Debug\Main.obj
-         Debug\Monster.obj
-         Debug\M_boss.obj
-         Debug\M_heavy.obj
-         Debug\M_light.obj
-         Debug\M_medium.obj
-         Debug\Spawner.obj
-         Monster.vcxproj -> C:\Users\Thibaud\Documents\GitHub\R-Type\Monster libraries\Monster\Debug\Monster.exe
-     1>Done Building Project "C:\Users\Thibaud\Documents\GitHub\R-Type\Monster libraries\Monster\Monster\Monster.vcxproj" (Build target(s)).
+     1>c:\users\theo\documents\r-type\monster libraries\monster\monster\main.cpp(11): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+     1>Done Building Project "C:\Users\theo\Documents\R-Type\Monster libraries\Monster\Monster\Monster.vcxproj" (build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:02.51
+Time Elapsed 00:00:00.43

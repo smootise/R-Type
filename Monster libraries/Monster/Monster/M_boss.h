@@ -5,5 +5,6 @@ class M_boss :
 {
 public:
 	M_boss();
+	M_boss(int time);
 	~M_boss();
 };

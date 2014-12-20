@@ -5,6 +5,7 @@ class M_heavy :
 {
 public:
 	M_heavy();
+	M_heavy(int time);
 	~M_heavy();
 };
 

@@ -26,3 +26,8 @@ void Monster::draw()
 {
 	std::cout << "This Monster has been redrawn" << std::endl;
 }
+
+void Monster::afftiming()
+{
+	std::cout << "timing = " << _timing << std::endl;
+}

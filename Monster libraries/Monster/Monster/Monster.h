@@ -1,8 +1,9 @@
 #pragma once
 class Monster
 {
-private:
-	int _health; 
+protected:
+	int _timing;
+	int _health;
 	int _dmg;
 	float _speed;
 	float _size;
@@ -16,4 +17,5 @@ public:
 	void update();
 	void draw();
 	void move(float x, float y);
+	void afftiming();
 };

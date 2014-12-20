@@ -5,6 +5,7 @@ class M_medium :
 {
 public:
 	M_medium();
+	M_medium(int time);
 	~M_medium();
 };
 
