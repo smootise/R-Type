@@ -6,7 +6,7 @@
 
 class Spawner
 {
-	std::vector<Monster> mobs;
+	std::vector<Monster> _mobs;
 public:
 	Spawner();
 	Spawner(char* file);

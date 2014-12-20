@@ -15,7 +15,8 @@ Spawner::Spawner(char* fileName)
 	{
 		while (getline(myfile, line))
 		{
-			std::cout << line << std::endl;
+			// PARSER ICI
+			//_mobs.push_back( MONSTER DU BON TYPE );
 		}
 		myfile.close();
 	}
@@ -33,16 +34,16 @@ Spawner::~Spawner()
 
 void Spawner::update()
 {
-	for (unsigned int i = 0; i < mobs.size(); ++i)
+	for (unsigned int i = 0; i < _mobs.size(); ++i)
 	{
-		mobs[i].update();
+		_mobs[i].update();
 	}
 }
 
 void Spawner::draw()
 {
-	for (unsigned int i = 0; i < mobs.size(); ++i)
+	for (unsigned int i = 0; i < _mobs.size(); ++i)
 	{
-		mobs[i].draw();
+		_mobs[i].draw();
 	}
 }
