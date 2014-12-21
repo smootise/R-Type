@@ -1,10 +1,10 @@
 #include "Monster.h"
 #include <iostream>
 
-
-Monster::Monster()
+Monster::Monster(int time)
+	:	_timing(time)
 {
-	std::cout << "Creation of a Monster" << std::endl;
+	std::cout << "Creation of a GOOD Monster" << std::endl;
 }
 
 Monster::~Monster()

@@ -12,7 +12,7 @@ protected:
 	bool _alive;
 
 public:
-	Monster();
+	Monster(int time);
 	~Monster();
 	void update();
 	void draw();

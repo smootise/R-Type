@@ -4,7 +4,6 @@ class M_heavy :
 	public Monster
 {
 public:
-	M_heavy();
 	M_heavy(int time);
 	~M_heavy();
 };

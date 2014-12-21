@@ -1,13 +1,9 @@
 #include "M_medium.h"
+#include <iostream>
 
-
-M_medium::M_medium()
+M_medium::M_medium(int time) : Monster(time)
 {
-}
-
-M_medium::M_medium(int time)
-{
-	_timing = time;
+	std::cout << "M_Medium created !" << std::endl;
 }
 
 M_medium::~M_medium()

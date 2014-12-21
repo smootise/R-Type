@@ -15,7 +15,7 @@
 int main()
 {
 	Spawner Test("test.txt");
-	//Test.afftiming();
+	Test.afftiming();
 	getchar();
 	return 0;
 }
