@@ -51,6 +51,7 @@ protected:
 	void	StartGameAnswer(Message &answer);
 	void	GameStartedAnswer(Message &answer);
 
+public:
 	Room		*get_room() const;
 	std::string	*get_name() const;
 };

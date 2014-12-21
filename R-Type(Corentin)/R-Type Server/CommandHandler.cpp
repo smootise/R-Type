@@ -179,6 +179,15 @@ void	CommandHandler::ReceiptStartGame(Message &mess)
 	_writebuff.add_data(retmess);
 	if (ret == OK)
 	{
+#ifdef _WIN32
+		IThread		*T1 = new WinThread(_nextport);
+		_beginthread(&WinThread::call_run, 0, T1);
+#else
+		IThread		*T1 = new LinThread(_nextport);
+		pthread_t	thread;
+
+		pthread_create(&thread, NULL, &LinThread::call_run, T1);
+#endif
 		//lancer les threads
 		_nextport++;
 	}

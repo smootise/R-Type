@@ -6,6 +6,12 @@
 #include "CircularBuff.h"
 #include "Room.h"
 
+#ifdef _WIN32
+	#include "WinThread.h"
+#else
+	#include "LinThread.h"
+#endif
+
 class CommandHandler;
 
 typedef void (CommandHandler::*FuncType1)(Message &mess);

@@ -60,6 +60,15 @@
     <ClInclude Include="CircularBuff.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IThread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinThread.h">
+      <Filter>Header Files\WindowsOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="LinThread.h">
+      <Filter>Header Files\LinuxOnly</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -91,6 +100,12 @@
     </ClCompile>
     <ClCompile Include="Room.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinThread.cpp">
+      <Filter>Source Files\WindowsOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="LinThread.cpp">
+      <Filter>Source Files\LinuxOnly</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
