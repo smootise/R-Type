@@ -1,6 +1,12 @@
 #include "Spawner.h"
+#include "Monster.h"
+#include "M_boss.h"
+#include "M_heavy.h"
+#include "M_medium.h"
+#include "M_light.h"
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 
 Spawner::Spawner()
 {
@@ -26,9 +32,14 @@ Spawner::Spawner(char* fileName)
 				length = line.copy(timing, 10, line.find_first_of(":"));
 				timing[length] = '\0';
 				std::cout << "type : " << type << ", timing : " << timing << std::endl;
-				if (
-				// PARSER ICI
-				//_mobs.push_back( MONSTER DU BON TYPE );
+				if (line.compare("light"))
+					_mobs.push_back(M_light(atoi(timing)));
+				if (line.compare("medium"))
+					_mobs.push_back(M_medium(atoi(timing)));
+				if (line.compare("heavy"))
+					_mobs.push_back(M_heavy(atoi(timing)));
+				if (line.compare("boss"))
+					_mobs.push_back(M_boss(atoi(timing)));
 			}
 		}
 		myfile.close();
