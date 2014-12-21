@@ -33,6 +33,7 @@ public:
 	bool LoadMonsters(char *filename);
 	void update();
 	void draw();
+	void isAlive(int timing);
 	void afftiming();
 };
 

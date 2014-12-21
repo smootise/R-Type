@@ -85,6 +85,10 @@ void Spawner::update()
 	for (unsigned int i = 0; i < _mobs.size(); ++i)
 	{
 		_mobs[i]->update();
+		if (_mobs[i]->isDead() == true)
+		{
+			_mobs.erase(_mobs.begin() + i);
+		}
 	}
 }
 
@@ -93,6 +97,14 @@ void Spawner::draw()
 	for (unsigned int i = 0; i < _mobs.size(); ++i)
 	{
 		_mobs[i]->draw();
+	}
+}
+
+void Spawner::isAlive(int time)
+{
+	for (unsigned int i = 0; i < _mobs.size(); ++i)
+	{
+		_mobs[i]->isAlive(time);
 	}
 }
 

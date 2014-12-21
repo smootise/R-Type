@@ -16,6 +16,9 @@ int main()
 {
 	Spawner Test("test.txt");
 	Test.afftiming();
+	Test.isAlive(100);
+	Test.update();
+	Test.afftiming();
 	getchar();
 	return 0;
 }
