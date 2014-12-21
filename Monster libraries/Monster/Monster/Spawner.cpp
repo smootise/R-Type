@@ -87,6 +87,12 @@ void Spawner::update()
 		_mobs[i]->update();
 		if (_mobs[i]->isDead() == true)
 		{
+			if (_mobs.size() == 1)
+			{
+				delete _mobs.at(0);
+				_mobs.clear();
+			}
+			delete _mobs.at(i);
 			_mobs.erase(_mobs.begin() + i);
 		}
 	}
