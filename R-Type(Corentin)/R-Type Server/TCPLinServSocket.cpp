@@ -70,49 +70,49 @@ bool			TCPLinServSocket::SearchNewClients(Selector &sel)
 
 void				TCPLinServSocket::ReadData(CircularBuff &circbuff, Selector &sel)
 {
-	struct iovec			databuf[3];
-	char				first_buff[4];
-	char				second_buff[4];
-	char				third_buff[256];
-	int				recvbytes = 0;
+  struct iovec			databuf[3];
+  char				first_buff[4];
+  char				second_buff[4];
+  char				third_buff[256];
+  int				recvbytes = 0;
 
-	databuf[0].iov_len = 4;
-	databuf[0].iov_base = first_buff;
-	databuf[1].iov_len = 4;
-	databuf[1].iov_base = second_buff;
-	databuf[2].iov_len = 256;
-	databuf[2].iov_base = third_buff;
+  databuf[0].iov_len = 4;
+  databuf[0].iov_base = first_buff;
+  databuf[1].iov_len = 4;
+  databuf[1].iov_base = second_buff;
+  databuf[2].iov_len = 256;
+  databuf[2].iov_base = third_buff;
 
-	// pour toutes les sockets
-	for (size_t i = 0; i < _clients.size(); i++)
-		// si il y a de la data a lire
-	if ((sel.Is_readable(_clients[i].get_socket())) == true)
-	{
-		//on reset les bails
-		memset(&first_buff, '\0', 4);
-		memset(&second_buff, '\0', 4);
-		memset(&third_buff, '\0', 256);
-		recvbytes = readv(_clients[i].get_socket(), databuf, 3);
-		if (recvbytes == 0 || (std::string("").compare((char *)databuf[0].iov_base)) == 0)
-		{
-			sel.Remove_checkread(_clients[i].get_socket());
-			sel.Remove_checkwrite(_clients[i].get_socket());
-			if (_clients.size() != 1)
-				_clients.erase(_clients.begin() + i);
-			else
-				_clients.clear();
-		}
-		else
-		{
-			std::string		*str = new std::string(databuf[2].iov_base);
-			Message			message((uint32_t)*((char *)(databuf[0].iov_base)),
-									(uint32_t)*((char *)(databuf[1].iov_base)),
-									(void *)(str->c_str()), str, _clients[i]);
+  // pour toutes les sockets
+  for (size_t i = 0; i < _clients.size(); i++)
+    // si il y a de la data a lire
+    if ((sel.Is_readable(_clients[i].get_socket())) == true)
+      {
+	//on reset les bails
+	memset(&first_buff, '\0', 4);
+	memset(&second_buff, '\0', 4);
+	memset(&third_buff, '\0', 256);
+	recvbytes = readv(_clients[i].get_socket(), databuf, 3);
+	if (recvbytes == 0 || (std::string("").compare((char *)databuf[0].iov_base)) == 0)
+	  {
+	    sel.Remove_checkread(_clients[i].get_socket());
+	    sel.Remove_checkwrite(_clients[i].get_socket());
+	    if (_clients.size() != 1)
+	      _clients.erase(_clients.begin() + i);
+	    else
+	      _clients.clear();
+	  }
+	else
+	  {
+	    std::string		*str = new std::string((char *)databuf[2].iov_base);
+	    Message			message((uint32_t)*((char *)(databuf[0].iov_base)),
+						(uint32_t)*((char *)(databuf[1].iov_base)),
+						(void *)(str->c_str()), str, _clients[i]);
 
-			std::cout << "je recois :"; message.to_string(); std::cout << std::endl;
-			circbuff.add_data(message);
-		}
-	}
+	    std::cout << "je recois :"; message.to_string(); std::cout << std::endl;
+	    circbuff.add_data(message);
+	  }
+      }
 }
 
 // ICI l'id du client correspond a l'id du client auquel on veut envoyer les bails

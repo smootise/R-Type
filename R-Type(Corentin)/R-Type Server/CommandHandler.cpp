@@ -109,21 +109,22 @@ void				CommandHandler::ReceiptJoinRoom(Message &mess)
 
 void	CommandHandler::ReceiptLeaveRoom(Message &mess)
 {
-	std::string		wantedroom((char *)mess.get_packet());
-	int				ret = NOK;
+  std::string		wantedroom((char *)mess.get_packet());
+  int				ret = NOK;
+  std::string		Default("DefaultName");
 
-	for (size_t i = 0; i < _rooms.size(); i++)
-		if (_rooms[i].Get_Name() == wantedroom)
-		{
-			_rooms[i].Remove_Ally(mess.get_client(), _writebuff);
-			mess.get_client().set_room(std::string("DefaultName"));
-			ret = OK;
-		}
-	if (ret == NOK)
-	{
-		Message		newmess(ret, 0, NULL, NULL, mess.get_client());
-		_writebuff.add_data(newmess);
-	}
+  for (size_t i = 0; i < _rooms.size(); i++)
+    if (_rooms[i].Get_Name() == wantedroom)
+      {
+	_rooms[i].Remove_Ally(mess.get_client(), _writebuff);
+	mess.get_client().set_room(Default);
+	ret = OK;
+      }
+  if (ret == NOK)
+    {
+      Message		newmess(ret, 0, NULL, NULL, mess.get_client());
+      _writebuff.add_data(newmess);
+    }
 }
 
 void				CommandHandler::ReceiptCreateRoom(Message &mess)
@@ -153,42 +154,42 @@ void				CommandHandler::ReceiptCreateRoom(Message &mess)
 
 void	CommandHandler::ReceiptStartGame(Message &mess)
 {
-	int	ret = NOK;
+  int	ret = NOK;
 
-	if (mess.get_client().get_room() == std::string("DefaultName"))
-		{
-			std::cerr << "un client n'etant aps dans une room veut start" << std::endl;
-			Message		retmess(ret, 0, NULL, NULL, mess.get_client());
-			_writebuff.add_data(retmess);
-			return ;
-		}
+  if (mess.get_client().get_room() == std::string("DefaultName"))
+    {
+      std::cerr << "un client n'etant aps dans une room veut start" << std::endl;
+      Message		retmess(ret, 0, NULL, NULL, mess.get_client());
+      _writebuff.add_data(retmess);
+      return ;
+    }
 
-	for (size_t i = 0; i < _clients.size(); i++)
-		if (mess.get_client().get_room() == _clients[i].get_room())
-		{
-			std::ostringstream		oss;
-			oss << _nextport;
+  for (size_t i = 0; i < _clients.size(); i++)
+    if (mess.get_client().get_room() == _clients[i].get_room())
+      {
+	std::ostringstream		oss;
+	oss << _nextport;
 				
-			std::string		*port = new std::string(oss.str());
-			Message			retmess(GAME_STARTED, port->size(), (void *)(port->c_str()), port, _clients.at(i));
+	std::string		*port = new std::string(oss.str());
+	Message			retmess(GAME_STARTED, port->size(), (void *)(port->c_str()), port, _clients.at(i));
 			
-			_writebuff.add_data(retmess);
-			ret = OK;
-		}
-	Message		retmess(ret, 0, NULL, NULL, mess.get_client());
 	_writebuff.add_data(retmess);
-	if (ret == OK)
-	{
+	ret = OK;
+      }
+  Message		retmess(ret, 0, NULL, NULL, mess.get_client());
+  _writebuff.add_data(retmess);
+  if (ret == OK)
+    {
 #ifdef _WIN32
-		IThread		*T1 = new WinThread(_nextport);
-		_beginthread(&WinThread::call_run, 0, T1);
+      IThread		*T1 = new WinThread(_nextport);
+      _beginthread(&WinThread::call_run, 0, T1);
 #else
-		IThread		*T1 = new LinThread(_nextport);
-		pthread_t	thread;
+      IThread		*T1 = new LinThread(_nextport);
+      pthread_t		thread;
 
-		pthread_create(&thread, NULL, &LinThread::call_run, T1);
+      pthread_create(&thread, NULL, &LinThread::call_run, T1);
 #endif
-		//lancer les threads
-		_nextport++;
-	}
+      //lancer les threads
+      _nextport++;
+    }
 }

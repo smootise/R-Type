@@ -2,7 +2,9 @@
 
 #include <string>
 #include <iostream>
-#include <process.h>
+#include <pthread.h>
+#include <stdlib.h>
+#include <assert.h>
 #include <stdio.h>
 
 #include "IThread.h"
@@ -18,6 +20,6 @@ public:
 
 	virtual bool	start();
 	virtual bool	run();
-	static void		call_run(void *ptr);
+	static void	*call_run(void *ptr);
 };
 

@@ -6,9 +6,6 @@
 
 #ifdef _WIN32
 	#pragma comment(lib, "Ws2_32.lib")
-#else
-	# define EXIT_SUCCESS 0
-	# define EXIT_FAILURE -1
 #endif
 
 int		main(int ac, char **av)

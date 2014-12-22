@@ -95,5 +95,6 @@ bool			UDPLinServSocket::send_data(struct sockaddr_in *target)
       std::cerr << "coudldn't use send to" << std::endl;
       return (false);
     }
+  std::cout << " j'ai renvoyé " << buff << std::endl;
   return (true);
 }

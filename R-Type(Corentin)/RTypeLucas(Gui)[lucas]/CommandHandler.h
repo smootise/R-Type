@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include <stdlib.h>
 #include "Commands.h"
 #include "CircularBuff.h"
 #include "Room.h"
@@ -11,50 +12,50 @@ typedef void (CommandHandler::*FuncType2)(Message &answer);
 
 class CommandHandler
 {
-protected:
-	CircularBuff					&_writebuff;
-	CircularBuff					&_readbuff;
-	std::map<int, FuncType1>		_sendfunctions;
-	std::map<int, FuncType2>		_receiptfunctions;
-	std::map<std::string, bool>		&_state;
-	int								*_lastcommand;
-	Room							*_room;
-	std::vector<std::string>		*_availlablerooms;
-	std::string						*_name;
-	int								_wantedport;
+ protected:
+  CircularBuff					&_writebuff;
+  CircularBuff					&_readbuff;
+  std::map<int, FuncType1>		_sendfunctions;
+  std::map<int, FuncType2>		_receiptfunctions;
+  std::map<std::string, bool>		&_state;
+  int								*_lastcommand;
+  Room							*_room;
+  std::vector<std::string>		*_availlablerooms;
+  std::string						*_name;
+  int								_wantedport;
 
-public:
-	CommandHandler(CircularBuff &writebuff, CircularBuff &readbuff, std::map<std::string, bool> &state,
-					int *lastcommand, std::vector<std::string> *availlablerooms);
-	virtual ~CommandHandler();
+ public:
+  CommandHandler(CircularBuff &writebuff, CircularBuff &readbuff, std::map<std::string, bool> &state,
+		 int *lastcommand, std::vector<std::string> *availlablerooms);
+  virtual ~CommandHandler();
 
-	void	SendCommand(int value, std::string *arg);
-	void	ReceiptCommand();
+  void	SendCommand(int value, std::string *arg);
+  void	ReceiptCommand();
 
-//sendcommands
-protected:
-	void	SendLogin(std::string *arg);
-	void	SendLogout(std::string *arg);
-	void	SendGetRooms(std::string *arg);
-	void	SendJoinRoom(std::string *arg);
-	void	SendLeaveRoom(std::string *arg);
-	void	SendCreateRoom(std::string *arg);
-	void	SendStartGame(std::string *arg);
+  //sendcommands
+ protected:
+  void	SendLogin(std::string *arg);
+  void	SendLogout(std::string *arg);
+  void	SendGetRooms(std::string *arg);
+  void	SendJoinRoom(std::string *arg);
+  void	SendLeaveRoom(std::string *arg);
+  void	SendCreateRoom(std::string *arg);
+  void	SendStartGame(std::string *arg);
 
-//receiptcommands
-	void	AddAllyAnswer(Message &answer);
-	void	RemoveAllyAnswer(Message &answer);
-	void	LoginAnswer(Message &answer);
-	void	GetRoomsAnswer(Message &answer);
-	void	JoinRoomAnswer(Message &answer);
-	void	LeaveRoomAnswer(Message &answer);
-	void	CreateRoomAnswer(Message &answer);
-	void	StartGameAnswer(Message &answer);
-	void	GameStartedAnswer(Message &answer);
+  //receiptcommands
+  void	AddAllyAnswer(Message &answer);
+  void	RemoveAllyAnswer(Message &answer);
+  void	LoginAnswer(Message &answer);
+  void	GetRoomsAnswer(Message &answer);
+  void	JoinRoomAnswer(Message &answer);
+  void	LeaveRoomAnswer(Message &answer);
+  void	CreateRoomAnswer(Message &answer);
+  void	StartGameAnswer(Message &answer);
+  void	GameStartedAnswer(Message &answer);
 
-public:
-	Room		*get_room() const;
-	std::string	*get_name() const;
-	int			 get_port() const;
+ public:
+  Room		*get_room() const;
+  std::string	*get_name() const;
+  int			 get_port() const;
 };
 

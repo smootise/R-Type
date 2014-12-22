@@ -140,12 +140,14 @@ void				CommandHandler::GetRoomsAnswer(Message &answer)
 
 void	CommandHandler::JoinRoomAnswer(Message &answer)
 {
-	if (answer.get_rq_type() == OK)
-	{
-		_room = new Room(std::string((char *)answer.get_packet()));
-		//debug
-		_room->To_String();
-	}
+  std::string		roomname((char *)answer.get_packet());
+
+  if (answer.get_rq_type() == OK)
+    {
+      _room = new Room(roomname);
+      //debug
+      _room->To_String();
+    }
 }
 
 void	CommandHandler::LeaveRoomAnswer(Message &answer)
@@ -159,12 +161,14 @@ void	CommandHandler::LeaveRoomAnswer(Message &answer)
 
 void	CommandHandler::CreateRoomAnswer(Message &answer)
 {	
-	if (answer.get_rq_type() == OK)
-	{
-		_room = new Room(std::string((char *)answer.get_packet()));
-		//debug
-		_room->To_String();
-	}
+  std::string		roomname((char *)answer.get_packet());
+
+  if (answer.get_rq_type() == OK)
+    {
+      _room = new Room(roomname);
+      //debug
+      _room->To_String();
+    }
 }
 
 void	CommandHandler::StartGameAnswer(Message &answer)

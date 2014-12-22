@@ -40,43 +40,43 @@ bool			TCPLinSocket::ConnectToServer(std::string &hostname, std::string port,
 
 bool		TCPLinSocket::ReadData(CircularBuff &circbuff, Selector &sel)
 {
-	struct iovec	databuf[3];
-	char		first_buff[4];
-	char		second_buff[4];
-	char		third_buff[256];
-	int		recvbytes = 0;
+  struct iovec	databuf[3];
+  char		first_buff[4];
+  char		second_buff[4];
+  char		third_buff[256];
+  int		recvbytes = 0;
 
-	databuf[0].iov_len = 4;
-	databuf[0].iov_base = first_buff;
-	databuf[1].iov_len = 4;
-	databuf[1].iov_base = second_buff;
-	databuf[2].iov_len = 256;
-	databuf[2].iov_base = third_buff;
+  databuf[0].iov_len = 4;
+  databuf[0].iov_base = first_buff;
+  databuf[1].iov_len = 4;
+  databuf[1].iov_base = second_buff;
+  databuf[2].iov_len = 256;
+  databuf[2].iov_base = third_buff;
 
-	if ((sel.Is_readable(_fathersocket)) == true)
+  if ((sel.Is_readable(_fathersocket)) == true)
+    {
+      memset(&first_buff, '\0', 4);
+      memset(&second_buff, '\0', 4);
+      memset(&third_buff, '\0', 256);
+      recvbytes = readv(_fathersocket, databuf, 3);
+      if (recvbytes == 0 || (std::string("").compare((char *)databuf[0].iov_base)) == 0)
 	{
-		memset(&first_buff, '\0', 4);
-		memset(&second_buff, '\0', 4);
-		memset(&third_buff, '\0', 256);
-		recvbytes = readv(_fathersocket, databuf, 3);
-		if (recvbytes == 0 || (std::string("").compare((char *)databuf[0].iov_base)) == 0)
-		{
-			sel.Remove_checkread(_fathersocket);
-			sel.Remove_checkwrite(_fathersocket);
-			if ((close(_fathersocket)) == -1)
-				std::cerr << "Couldn't close the socket" << std::endl;
-			_fathersocket = INVALID_SOCKET;
-			std::cout << "Connection lost with the server" << std::endl;
-			return (false);
-		}
-		std::string		*str = new std::string(databuf[2].iov_base);
-		Message		Message((uint32_t)*((char *)(databuf[0].iov_base)),
-			(uint32_t)*((char *)(databuf[1].iov_base)),
-			(void *)(str->c_str()), str);
-
-		circbuff.add_data(Message);
+	  sel.Remove_checkread(_fathersocket);
+	  sel.Remove_checkwrite(_fathersocket);
+	  if ((close(_fathersocket)) == -1)
+	    std::cerr << "Couldn't close the socket" << std::endl;
+	  _fathersocket = INVALID_SOCKET;
+	  std::cout << "Connection lost with the server" << std::endl;
+	  return (false);
 	}
-	return (true);
+      std::string		*str = new std::string((char *)databuf[2].iov_base);
+      Message		Message((uint32_t)*((char *)(databuf[0].iov_base)),
+				(uint32_t)*((char *)(databuf[1].iov_base)),
+				(void *)(str->c_str()), str);
+
+      circbuff.add_data(Message);
+    }
+  return (true);
 }
 
 void				TCPLinSocket::SendData(CircularBuff &circbuff, Selector &sel)

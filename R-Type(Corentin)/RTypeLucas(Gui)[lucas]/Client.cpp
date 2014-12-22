@@ -47,46 +47,50 @@ bool	Client::init()
 
 bool	Client::update()
 {
-	std::string		line;
-	int				rq_type;
-	//int				ret;
+  std::string		line;
+  int				rq_type;
+  //int				ret;
 	
-	//bails en TCP
-	if (_state["Playing"] == false)
+  //bails en TCP
+  if (_state["Playing"] == false)
+    {
+      std::getline(std::cin, line);
+      rq_type = atoi(line.substr(0, 1).c_str());
+      if (rq_type != 0)
 	{
-		std::getline(std::cin, line);
-		rq_type = atoi(line.substr(0, 1).c_str());
-		if (rq_type != 0)
-		{
-			std::string		*str = new std::string(line.substr(1, std::string::npos));
-			_comhandler->SendCommand(rq_type, str);
-		}
+	  std::string		*str = new std::string(line.substr(1, std::string::npos));
+	  _comhandler->SendCommand(rq_type, str);
+	}
 
-		_sel.Select();
-		_socket->SendData(_writebuff, _sel);
-		if ((_socket->ReadData(_readbuff, _sel)) == false)
-			return (false);
-		_comhandler->ReceiptCommand();
-		//if ((ret = _graphic.affScreen(_state, _comhandler, _availlablerooms, _comhandler->get_room(), _comhandler->get_name())) == Gui::Error)
-		//{
-		//	std::cerr << "graphical error " << std::endl;
-		//	return (false);
-		//}
-		//else if (ret == Gui::Quit)
-		//	return (false);
-	}
-	else // bails en UDP
+      _sel.Select();
+      _socket->SendData(_writebuff, _sel);
+      if ((_socket->ReadData(_readbuff, _sel)) == false)
+	return (false);
+      _comhandler->ReceiptCommand();
+      //if ((ret = _graphic.affScreen(_state, _comhandler, _availlablerooms, _comhandler->get_room(), _comhandler->get_name())) == Gui::Error)
+      //{
+      //	std::cerr << "graphical error " << std::endl;
+      //	return (false);
+      //}
+      //else if (ret == Gui::Quit)
+      //	return (false);
+    }
+  else // bails en UDP
+    {
+      if (_game_socket->is_connected() == false &&
+	  _game_socket->Connect(_comhandler->get_port()) == false)
 	{
-		if (_game_socket->is_connected() == false &&
-			_game_socket->Connect(_comhandler->get_port()) == false)
-		{
-			_state["Playing"] = true;
-			std::cerr << "Error at udp initialisation" << std::endl;
-			return (true);
-		}
-		_game_socket->Receive_data();
-		_game_socket->Send_data();
-		Sleep(1000);
+	  _state["Playing"] = true;
+	  std::cerr << "Error at udp initialisation" << std::endl;
+	  return (true);
 	}
-	return (true);
+      _game_socket->Receive_data();
+      _game_socket->Send_data();
+#ifdef _WIN32
+      Sleep(1000);
+#else
+      sleep(1);
+#endif
+    }
+  return (true);
 }

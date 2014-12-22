@@ -3,7 +3,7 @@
 #ifdef _WIN32
 	#include "TCPWinServSocket.h"
 #else
-	#include "TCPLinServerSocket.h"
+	#include "TCPLinServSocket.h"
 #endif
 
 Server::Server(int port)
@@ -12,7 +12,7 @@ Server::Server(int port)
 	#ifdef _WIN32
 		_socket = new TCPWinServSocket(_clients);
 	#else
-		_socket = new TCPLinServerSocket(_clients);
+		_socket = new TCPLinServSocket(_clients);
 	#endif
 	_comhandler = new CommandHandler(_writebuff, _readbuff, _clients, _rooms);
 }

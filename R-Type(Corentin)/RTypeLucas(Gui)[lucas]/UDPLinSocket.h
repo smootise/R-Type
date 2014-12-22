@@ -8,6 +8,7 @@
 #include <sys/uio.h>
 #include <cstdlib>
 #include <unistd.h> // requis pour gethostbyname
+#include <stdlib.h>
 #include <string.h> //requis pour memset
 #include <netinet/in.h>
 #include <arpa/inet.h>
