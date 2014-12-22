@@ -5,7 +5,9 @@
 #include "CircularBuff.h"
 #include "CommandHandler.h"
 #include "Room.h"
+#include "IUDPSocket.h"
 //#include "Gui.hpp"
+
 
 /* state values :
 Logged => if the client is logged in or not
@@ -16,6 +18,7 @@ Playing => if the client is in game or not
 class Client
 {
 protected:
+	// pre-game related
 	std::string						_hostname;
 	std::string						_strport;
 	ITCPSocket						*_socket;
@@ -27,6 +30,8 @@ protected:
 	int								_lastcommand;
 	std::vector<std::string>		*_availlablerooms;
 	//Gui							_graphic;							
+	//in game related
+	IUDPSocket						*_game_socket;
 
 public:
 	Client(std::string &hostname, std::string &strport);

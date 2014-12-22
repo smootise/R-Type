@@ -12,9 +12,12 @@ LinThread::~LinThread()
 
 }
 
-void	LinThread::start()
+bool	LinThread::start()
 {
-
+	_socket = new UDPLinServSocket();
+	if (_socket->Connect(_port) == false)
+		return (false);
+	return (true);
 }
 
 bool	LinThread::run()
@@ -35,6 +38,6 @@ void	LinThread::call_run(void *ptr)
 	LinThread		*T;
 	T = reinterpret_cast<LinThread *>(ptr);
 
-	T->start();
-	T->run();
+	if (T->start() == true)
+		T->run();
 }

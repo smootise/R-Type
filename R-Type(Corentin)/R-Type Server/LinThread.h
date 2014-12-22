@@ -10,13 +10,13 @@
 class LinThread : public IThread
 {
 protected:
-	int		_port;
-
+	int				_port;
+	IUDPServSocket	*_socket;
 public:
 	LinThread(int port);
 	virtual ~LinThread();
 
-	virtual void	start();
+	virtual bool	start();
 	virtual bool	run();
 	static void		call_run(void *ptr);
 };

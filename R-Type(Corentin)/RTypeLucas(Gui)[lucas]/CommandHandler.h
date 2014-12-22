@@ -21,6 +21,7 @@ protected:
 	Room							*_room;
 	std::vector<std::string>		*_availlablerooms;
 	std::string						*_name;
+	int								_wantedport;
 
 public:
 	CommandHandler(CircularBuff &writebuff, CircularBuff &readbuff, std::map<std::string, bool> &state,
@@ -54,5 +55,6 @@ protected:
 public:
 	Room		*get_room() const;
 	std::string	*get_name() const;
+	int			 get_port() const;
 };
 

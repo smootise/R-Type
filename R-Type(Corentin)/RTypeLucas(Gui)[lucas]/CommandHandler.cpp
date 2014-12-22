@@ -174,6 +174,8 @@ void	CommandHandler::StartGameAnswer(Message &answer)
 
 void	CommandHandler::GameStartedAnswer(Message &answer)
 {
+	_state["Playing"] = true;
+	_wantedport = atoi((char *)answer.get_packet());
 	std::cout << "tu vas commencer ta game sur le port " << (char *)answer.get_packet() << std::endl;
 }
 
@@ -243,4 +245,9 @@ Room			*CommandHandler::get_room() const
 std::string		*CommandHandler::get_name() const
 {
 	return (_name);
+}
+
+int				CommandHandler::get_port() const
+{
+	return (_wantedport);
 }

@@ -70,6 +70,7 @@
     <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="IThread.h" />
+    <ClInclude Include="IUDPServSocket.h" />
     <ClInclude Include="LinThread.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="ITCPServSocket.h" />
@@ -80,6 +81,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="TCPWinServSocket.h" />
+    <ClInclude Include="UDPLinServSocket.h" />
+    <ClInclude Include="UDPWinServSocket.h" />
     <ClInclude Include="WinThread.h" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +101,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="TCPWinServSocket.cpp" />
+    <ClCompile Include="UDPLinServSocket.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="UDPWinServSocket.cpp" />
     <ClCompile Include="WinThread.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

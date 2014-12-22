@@ -52,9 +52,6 @@
     <ClCompile Include="HudWindow.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="OLDmain.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="Client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -90,6 +87,12 @@
     </ClCompile>
     <ClCompile Include="RoomFirstMenu.cpp">
       <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPWinSocket.cpp">
+      <Filter>Source Files\Windows Only</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPLinSocket.cpp">
+      <Filter>Source Files\Linux Only</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +152,18 @@
     </ClInclude>
     <ClInclude Include="RoomFirstMenu.hpp">
       <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPLinSocket.h">
+      <Filter>Header Files\Linux Only</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPWinSocket.h">
+      <Filter>Header Files\Windows Only</Filter>
+    </ClInclude>
+    <ClInclude Include="IUDPSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPLinSocket.h">
+      <Filter>Header Files\Linux Only</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

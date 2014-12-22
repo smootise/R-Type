@@ -22,6 +22,9 @@
     <Filter Include="Header Files\LinuxOnly">
       <UniqueIdentifier>{b1a81e84-6463-4f54-8887-ac7b3646a217}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{ffb0bec7-9fc3-4532-9f89-1d3e83ab4c2e}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files\WindowsOnly">
       <UniqueIdentifier>{583465f7-2ace-4db4-9d76-77cf7321441d}</UniqueIdentifier>
     </Filter>
@@ -60,14 +63,23 @@
     <ClInclude Include="CircularBuff.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IThread.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="WinThread.h">
       <Filter>Header Files\WindowsOnly</Filter>
     </ClInclude>
     <ClInclude Include="LinThread.h">
       <Filter>Header Files\LinuxOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="IUDPServSocket.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPLinServSocket.h">
+      <Filter>Header Files\LinuxOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPWinServSocket.h">
+      <Filter>Header Files\WindowsOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="IThread.h">
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +118,12 @@
     </ClCompile>
     <ClCompile Include="LinThread.cpp">
       <Filter>Source Files\LinuxOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPLinServSocket.cpp">
+      <Filter>Source Files\LinuxOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPWinServSocket.cpp">
+      <Filter>Source Files\WindowsOnly</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

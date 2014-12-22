@@ -12,22 +12,19 @@ WinThread::~WinThread()
 
 }
 
-void	WinThread::start()
+bool	WinThread::start()
 {
-
+	_socket = new UDPWinServSocket();
+	if (_socket->Connect(_port) == false)
+		return (false);
+	return (true);
 }
 
 bool	WinThread::run()
 {
-	int			i;
-
-	i = 0;
-	while (i < 100)
-	{
-		std::cout << "je run ! : " << _port << std::endl;
-		i++;
-	}
-		return (false);
+	while (42)
+		_socket->Receive_data();
+	return (false);
 }
 
 void	WinThread::call_run(void *ptr)
@@ -35,6 +32,6 @@ void	WinThread::call_run(void *ptr)
 	WinThread		*T;
 	T = reinterpret_cast<WinThread *>(ptr);
 
-	T->start();
-	T->run();
+	if (T->start() == true)
+		T->run();
 }
