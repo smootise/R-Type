@@ -9,18 +9,12 @@ _rq_type(rq_type), _data_length(data_length), _packet(packet), _src(src), _clien
 Message::Message(const Message &mess) :
   _client(mess._client)
 {
-  std::string		*str;
-
   this->_rq_type = mess._rq_type;
   this->_data_length = mess._data_length;
   this->_packet = mess._packet;
   this->_src = mess._src;
 
-  (str = const_cast<std::string *>(mess._src)) = NULL;
-  /*
-    str = const_cast<std::string *>(mess._src);
-    str = NULL;
-  */
+  const_cast<std::string *>(mess._src) = NULL;
 }
 
 Message::~Message(void)

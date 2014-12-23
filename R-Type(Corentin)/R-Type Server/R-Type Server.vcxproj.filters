@@ -19,14 +19,14 @@
     <Filter Include="Source Files\WindowsOnly">
       <UniqueIdentifier>{34f86eeb-d7c6-4674-b8a7-994b74e9ba2f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\LinuxOnly">
-      <UniqueIdentifier>{b1a81e84-6463-4f54-8887-ac7b3646a217}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Game">
       <UniqueIdentifier>{ffb0bec7-9fc3-4532-9f89-1d3e83ab4c2e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\WindowsOnly">
       <UniqueIdentifier>{583465f7-2ace-4db4-9d76-77cf7321441d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LinuxOnly">
+      <UniqueIdentifier>{b1a81e84-6463-4f54-8887-ac7b3646a217}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +80,12 @@
     </ClInclude>
     <ClInclude Include="IThread.h">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerMessage.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

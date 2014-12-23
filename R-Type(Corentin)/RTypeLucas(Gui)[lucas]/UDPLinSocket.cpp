@@ -50,7 +50,7 @@ bool	UDPLinSocket::Connect(int port)
   return (true);
 } 
 
-bool	UDPLinSocket::Send_data()
+bool	UDPLinSocket::Send_data(ClientMesssage *send_msg)
 {
   int		send_flags = 0;
   int		sent_bytes = 0;
@@ -73,7 +73,7 @@ bool	UDPLinSocket::Send_data()
   return (true);
 }
 
-bool	UDPLinSocket::Receive_data()
+bool	UDPLinSocket::Receive_data(ServerMessage *recv_msg)
 {
   int				recv_flags = 0;
   int				recv_bytes = 0;

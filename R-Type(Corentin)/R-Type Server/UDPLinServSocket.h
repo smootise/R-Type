@@ -23,15 +23,15 @@ class UDPLinServSocket :  public IUDPServSocket
 {
  protected:
   struct sockaddr_in		_serv;
-  int				_socket;
+  int					_socket;
 
  public:
   UDPLinServSocket();
   virtual ~UDPLinServSocket();
 
   virtual bool	Connect(int port);
-  virtual bool	Receive_data();
+  virtual bool	Receive_data(ClientMessage *, ServerMessage *);
  protected:
-  virtual bool	send_data(struct sockaddr_in *target);
+  virtual bool	send_data(struct sockaddr_in *target, ServerMessage *);
 };
 

@@ -99,7 +99,7 @@ bool	UDPWinSocket::Connect(int port)
 	return (true);
 } 
 
-bool	UDPWinSocket::Send_data()
+bool	UDPWinSocket::Send_data(ClientMessage *send_msg)
 {
 	DWORD				send_flags = 0;
 	DWORD				sent_bytes = 0;
@@ -114,7 +114,7 @@ bool	UDPWinSocket::Send_data()
 	//on memset le buff
 	memset(buff, '\0', 8192);
 	//on copie les bails
-	memcpy(&buff, std::string("test").c_str(), 4);
+	memcpy(&buff, (void *)send_msg, sizeof(ClientMessage));
 	if ((WSASendTo(_socket, sendbuff, 1, &sent_bytes, send_flags, (struct sockaddr *)&_server, server_length, NULL, NULL)) == SOCKET_ERROR)
 	{
 		if (WSAGetLastError() == WSAEWOULDBLOCK)
@@ -128,7 +128,7 @@ bool	UDPWinSocket::Send_data()
 	return (true);
 }
 
-bool	UDPWinSocket::Receive_data()
+bool	UDPWinSocket::Receive_data(ServerMessage *recv_msg)
 {
 	DWORD				recv_flags = 0;
 	DWORD				recv_bytes = 0;
@@ -154,7 +154,11 @@ bool	UDPWinSocket::Receive_data()
 			return (true);
 		}
 	}
-	std::cout << "j'ai recu : " << recvbuff[0].buf << std::endl;
+	memcpy(recv_msg, (void *)buff, sizeof(ServerMessage));
+	std::cout << "Nom du j1: " << recv_msg->nameA << std::endl;
+	std::cout << "Nom du j2: " << recv_msg->nameB << std::endl;
+	std::cout << "Nom du j3: " << recv_msg->nameC << std::endl;
+	std::cout << "Nom du j4: " << recv_msg->nameD << std::endl;
 	return (true);
 }
 

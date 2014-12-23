@@ -165,6 +165,12 @@
     <ClInclude Include="TCPLinSocket.h">
       <Filter>Header Files\Linux Only</Filter>
     </ClInclude>
+    <ClInclude Include="ClientMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\x64\Debug\Font.ttf">

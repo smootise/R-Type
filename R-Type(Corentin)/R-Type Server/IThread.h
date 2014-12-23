@@ -8,6 +8,9 @@
 	#include "UDPLinServSocket.h"
 #endif
 
+#include "ClientMessage.h"
+#include "ServerMessage.h"
+
 class IThread
 {
 public:

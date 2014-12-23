@@ -176,6 +176,7 @@
     <ClInclude Include="BaseMenu.hpp" />
     <ClInclude Include="CircularBuff.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="ClientMessage.h" />
     <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="CreateRoomMenu.hpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomFirstMenu.hpp" />
     <ClInclude Include="Selector.h" />
+    <ClInclude Include="ServerMessage.h" />
     <ClInclude Include="TCPLinSocket.h" />
     <ClInclude Include="TCPWinSocket.h" />
     <ClInclude Include="UDPLinSocket.h" />

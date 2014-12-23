@@ -51,7 +51,8 @@ bool			UDPLinServSocket::Connect(int port)
   return (true);
 }
 
-bool			UDPLinServSocket::Receive_data()
+// a modifier
+bool			UDPLinServSocket::Receive_data(ClientMessage *recv_msg, ServerMessage *send_msg)
 {
   int				recv_flags = 0;
   int				recv_bytes = 0;
@@ -72,12 +73,12 @@ bool			UDPLinServSocket::Receive_data()
   if (recv_bytes != -1)
     {
       std::cout << "j'ai recu : " << buff << std::endl;
-      return (this->send_data(&client));
+      return (this->send_data(&client, send_msg));
     }
   return (true);
 }
 
-bool			UDPLinServSocket::send_data(struct sockaddr_in *target)
+bool			UDPLinServSocket::send_data(struct sockaddr_in *target, ServerMessage *send_msg)
 {
   int				send_flags = 0;
   int				sent_bytes = 0;

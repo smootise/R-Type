@@ -32,8 +32,8 @@ class UDPLinSocket : public IUDPSocket
   virtual ~UDPLinSocket();
 
   virtual bool	Connect(int port);
-  virtual bool	Send_data();
-  virtual bool	Receive_data();
+  virtual bool	Send_data(ClientMessage *);
+  virtual bool	Receive_data(ServerMessage *recv_msg);
   virtual bool	is_connected();
 };
 

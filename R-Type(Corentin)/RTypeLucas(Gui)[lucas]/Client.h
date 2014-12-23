@@ -6,6 +6,7 @@
 #include "CommandHandler.h"
 #include "Room.h"
 #include "IUDPSocket.h"
+#include "ClientMessage.h"
 //#include "Gui.hpp"
 
 
@@ -32,6 +33,8 @@ protected:
 	//Gui							_graphic;							
 	//in game related
 	IUDPSocket						*_game_socket;
+	ClientMessage					*_send_msg;
+	ServerMessage					*_recv_msg;
 
 public:
 	Client(std::string &hostname, std::string &strport);

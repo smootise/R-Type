@@ -63,7 +63,7 @@ bool			UDPWinServSocket::Connect(int port)
 	return (true);
 }
 
-bool			UDPWinServSocket::Receive_data()
+bool			UDPWinServSocket::Receive_data(ClientMessage *recv_msg, ServerMessage *send_msg)
 {
 	DWORD				recv_flags = 0;
 	DWORD				recv_bytes = 0;
@@ -89,12 +89,14 @@ bool			UDPWinServSocket::Receive_data()
 			return (true);
 		}
 	}
-	std::cout << "j'ai recu : " << buff << std::endl;
-	return (this->send_data(&client));
+	memcpy(recv_msg, (void *)buff, sizeof(ClientMessage));
+	recv_msg->has_been_read = false;
+	std::cout << "j'ai recu un message de :" << recv_msg->name << std::endl;
+	return (this->send_data(&client, send_msg));
 	return (true);
 }
 
-bool			UDPWinServSocket::send_data(struct sockaddr_in *target)
+bool			UDPWinServSocket::send_data(struct sockaddr_in *target, ServerMessage *send_msg)
 {
 	DWORD				send_flags = 0;
 	DWORD				sent_bytes = 0;
@@ -108,7 +110,7 @@ bool			UDPWinServSocket::send_data(struct sockaddr_in *target)
 
 	memset(buff, '\0', 8192);
 	//on copie les bails
-	memcpy(&buff, std::string("test").c_str(), 4);
+	memcpy(&buff, send_msg, sizeof(ServerMessage));
 	if ((WSASendTo(_socket, sendbuff, 1, &sent_bytes, send_flags, (struct sockaddr *)target, client_length, NULL, NULL)) == SOCKET_ERROR)
 	{
 		std::cerr << "coudldn't use send to" << std::endl;
