@@ -1,27 +1,21 @@
 #pragma once
 
+enum
+{
+	J1,
+	J2,
+	J3,
+	J4,
+};
+
 struct ServerMessage
 {
-	//J1
-	char	nameA[256];
-	double	posxA;
-	double	posyA;
-	int		directionA;
-	//J2
-	char	nameB[256];
-	double	posxB;
-	double	posyB;
-	int		directionB;
-	//J3
-	char	nameC[256];
-	double	posxC;
-	double	posyC;
-	int		directionC;
-	//J4
-	char	nameD[256];
-	double	posxD;
-	double	posyD;
-	int		directionD;
+	//PLayers info
+	char	name[4][256];
+	double	posx[4];
+	double	posy[4];
+	int		direction[4];
+
 	//additional data
 	char	add_info[4096];
 };

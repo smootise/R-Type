@@ -25,10 +25,10 @@ bool	WinThread::start()
 
 	_send_msg = new ServerMessage;
 	memset(_send_msg, '\0', sizeof(ServerMessage));
-	memcpy(_send_msg->nameA, name_default.c_str(), name_default.size());
-	memcpy(_send_msg->nameB, name_default.c_str(), name_default.size());
-	memcpy(_send_msg->nameC, name_default.c_str(), name_default.size());
-	memcpy(_send_msg->nameD, name_default.c_str(), name_default.size());
+	memcpy(_send_msg->name[J1], name_default.c_str(), name_default.size());
+	memcpy(_send_msg->name[J2], name_default.c_str(), name_default.size());
+	memcpy(_send_msg->name[J3], name_default.c_str(), name_default.size());
+	memcpy(_send_msg->name[J4], name_default.c_str(), name_default.size());
 	return (true);
 }
 
@@ -60,59 +60,57 @@ void				WinThread::analyse_data()
 		return;
 	_recv_msg->has_been_read = true;
 	//s'il n'existe pas on l'ajoute
-	if (sendername != std::string(_send_msg->nameA) &&
-		sendername != std::string(_send_msg->nameB) &&
-		sendername != std::string(_send_msg->nameC) &&
-		sendername != std::string(_send_msg->nameD))
+	if (sendername != std::string(_send_msg->name[J1]) &&
+		sendername != std::string(_send_msg->name[J2]) &&
+		sendername != std::string(_send_msg->name[J3]) &&
+		sendername != std::string(_send_msg->name[J4]))
 	{
-		if (defaultname == std::string(_send_msg->nameA))
+		if (defaultname == std::string(_send_msg->name[J1]))
 		{
-			std::cout << "je clean le 1er" << std::endl;
-			memset(_send_msg->nameA, '\0', 256);
-			memcpy(_send_msg->nameA, sendername.c_str(), sendername.size());
+			memset(_send_msg->name[J1], '\0', 256);
+			memcpy(_send_msg->name[J1], sendername.c_str(), sendername.size());
 		}
-		else if (defaultname == std::string(_send_msg->nameB))
+		else if (defaultname == std::string(_send_msg->name[J2]))
 		{
-			std::cout << "je clean le second" << std::endl;
-			memset(_send_msg->nameB, '\0', 256);
-			memcpy(_send_msg->nameB, sendername.c_str(), sendername.size());
+			memset(_send_msg->name[J2], '\0', 256);
+			memcpy(_send_msg->name[J2], sendername.c_str(), sendername.size());
 		}
-		else if (defaultname == std::string(_send_msg->nameC))
+		else if (defaultname == std::string(_send_msg->name[J3]))
 		{
-			memset(_send_msg->nameC, '\0', 256);
-			memcpy(_send_msg->nameC, sendername.c_str(), sendername.size());
+			memset(_send_msg->name[J3], '\0', 256);
+			memcpy(_send_msg->name[J3], sendername.c_str(), sendername.size());
 		}
-		else if (defaultname == std::string(_send_msg->nameD))
+		else if (defaultname == std::string(_send_msg->name[J4]))
 		{
-			memset(_send_msg->nameD, '\0', 256);
-			memcpy(_send_msg->nameD, sendername.c_str(), sendername.size());
+			memset(_send_msg->name[J4], '\0', 256);
+			memcpy(_send_msg->name[J4], sendername.c_str(), sendername.size());
 		}
 		else
 			std::cerr << "corrupted informations received by the server" << std::endl;
 	}
 	//on mets ses bails a jours
-	if (sendername == std::string(_send_msg->nameA))
+	if (sendername == std::string(_send_msg->name[J1]))
 	{
-		_send_msg->directionA = _recv_msg->direction;
-		_send_msg->posxA = _recv_msg->posx;
-		_send_msg->posyA = _recv_msg->posy;
+		_send_msg->direction[J1] = _recv_msg->direction;
+		_send_msg->posx[J1] = _recv_msg->posx;
+		_send_msg->posy[J1] = _recv_msg->posy;
 	}
-	else if (sendername == std::string(_send_msg->nameB))
+	else if (sendername == std::string(_send_msg->name[J2]))
 	{
-		_send_msg->directionB = _recv_msg->direction;
-		_send_msg->posxB = _recv_msg->posx;
-		_send_msg->posyB = _recv_msg->posy;
+		_send_msg->direction[J2] = _recv_msg->direction;
+		_send_msg->posx[J2] = _recv_msg->posx;
+		_send_msg->posy[J2] = _recv_msg->posy;
 	}
-	else if (sendername == std::string(_send_msg->nameC))
+	else if (sendername == std::string(_send_msg->name[J3]))
 	{
-		_send_msg->directionC = _recv_msg->direction;
-		_send_msg->posxC = _recv_msg->posx;
-		_send_msg->posyC = _recv_msg->posy;
+		_send_msg->direction[J3] = _recv_msg->direction;
+		_send_msg->posx[J3] = _recv_msg->posx;
+		_send_msg->posy[J3] = _recv_msg->posy;
 	}
 	else
 	{
-		_send_msg->directionD = _recv_msg->direction;
-		_send_msg->posxD = _recv_msg->posx;
-		_send_msg->posyD = _recv_msg->posy;
+		_send_msg->direction[J4] = _recv_msg->direction;
+		_send_msg->posx[J4] = _recv_msg->posx;
+		_send_msg->posy[J4] = _recv_msg->posy;
 	}
 }
