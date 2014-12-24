@@ -8,7 +8,7 @@
 	#include "UDPLinServSocket.h"
 #endif
 
-#include "ClientMessage.h"
+#include "Client.h"
 #include "ServerMessage.h"
 
 class IThread

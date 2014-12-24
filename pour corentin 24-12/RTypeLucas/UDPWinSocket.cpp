@@ -17,8 +17,6 @@ UDPWinSocket::~UDPWinSocket()
 bool	UDPWinSocket::Connect(int port)
 {
 	u_short				rethtons;
-	char				host_name[256];
-	struct hostent		*hp;
 	std::vector<int>	separated_ip(4, 0);
 	size_t				dot_pos;
 	int					i = 0;
@@ -66,20 +64,7 @@ bool	UDPWinSocket::Connect(int port)
 	_client.sin_family = AF_INET;
 	WSAHtons(_socket, 0, &rethtons);
 	_client.sin_port = rethtons;
-
-
-	/* Get host name of this computer */
-	gethostname(host_name, sizeof(host_name));
-	if ((hp = gethostbyname(host_name)) == NULL)
-	{
-		std::cerr << "Couldn't get hostname" << std::endl;
-		return (false);
-	}
-	/* Assign the address */
-	_client.sin_addr.S_un.S_un_b.s_b1 = hp->h_addr_list[0][0];
-	_client.sin_addr.S_un.S_un_b.s_b2 = hp->h_addr_list[0][1];
-	_client.sin_addr.S_un.S_un_b.s_b3 = hp->h_addr_list[0][2];
-	_client.sin_addr.S_un.S_un_b.s_b4 = hp->h_addr_list[0][3];
+	_client.sin_addr.s_addr = htonl(INADDR_ANY);
 
 	/* Bind local address to socket */
 	if (bind(_socket, (struct sockaddr *)&_client, sizeof(struct sockaddr_in)) == -1)
@@ -143,7 +128,6 @@ bool	UDPWinSocket::Receive_data(ServerMessage *recv_msg)
 	memset(buff, '\0', 8192);
 
 	/* Receive bytes from client */
-	std::cout << "avant recv from" << std::endl;
 	if ((WSARecvFrom(_socket, recvbuff, 1, &recv_bytes, &recv_flags, (struct sockaddr *)&_server, &server_length, NULL, NULL)) == SOCKET_ERROR)
 	{
 		if (WSAGetLastError() == WSAEWOULDBLOCK)

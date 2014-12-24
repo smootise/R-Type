@@ -21,8 +21,11 @@ void	Room::Add_Ally(Client &client, CircularBuff &writebuff)
 	//we send to this client all other people in this room
 	for (size_t i = 0; i < _people.size() - 1; i++)
 	{
-		std::string	*allyname = new std::string(_people[i].get_nickname());
-		Message		newmess(ADD_ALLY, allyname->size(), (void *)(allyname->c_str()), allyname, client);
+		int			len = _people[i].get_nickname().size();
+		char		*allyname = new char[len + 1];
+		
+		memcpy(allyname, _people[i].get_nickname().c_str(), len + 1);
+		Message		newmess(ADD_ALLY, len, allyname, client);
 
 		writebuff.add_data(newmess);
 	}
@@ -30,8 +33,11 @@ void	Room::Add_Ally(Client &client, CircularBuff &writebuff)
 	//we send to all other people in the room his arrival.
 	for (size_t i = 0; i < _people.size() - 1; i++)
 	{
-		std::string	*allyname = new std::string(client.get_nickname());
-		Message		newmess(ADD_ALLY, allyname->size(), (void *)(allyname->c_str()), allyname, _people.at(i));
+		int			len = client.get_nickname().size();
+		char		*allyname = new char[len + 1];
+
+		memcpy(allyname, client.get_nickname().c_str(), len + 1);
+		Message		newmess(ADD_ALLY, len, allyname, _people.at(i));
 
 		writebuff.add_data(newmess);
 	}
@@ -56,7 +62,7 @@ void	Room::Remove_Ally(Client &client, CircularBuff &writebuff)
 	//on envoi la reponse
 	if (ret == OK)
 	{
-		Message		newmess(ret, 0, NULL, NULL, client);
+		Message		newmess(ret, 0, NULL, client);
 		writebuff.add_data(newmess);
 	}
 	//si le gars a bien été viré
@@ -65,8 +71,11 @@ void	Room::Remove_Ally(Client &client, CircularBuff &writebuff)
 		//we send to all other people in the room his leaving
 		for (size_t i = 0; i < _people.size(); i++)
 		{
-			std::string	*allyname = new std::string(client.get_nickname());
-			Message		newmess(REMOVE_ALLY, allyname->size(), (void *)(allyname->c_str()), allyname, _people.at(i));
+			int			len = client.get_nickname().size();
+			char		*allyname = new char[len + 1];
+
+			memcpy(allyname, client.get_nickname().c_str(), len + 1);
+			Message		newmess(REMOVE_ALLY, len, allyname, _people.at(i));
 			
 			writebuff.add_data(newmess);
 		}

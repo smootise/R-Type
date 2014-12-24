@@ -59,58 +59,26 @@ void				WinThread::analyse_data()
 	if (_recv_msg->has_been_read == true)
 		return;
 	_recv_msg->has_been_read = true;
+
+	//s'il existe on lui mets ses infos a jours
+	for (size_t i = J1; i <= J4; i++)
+		if (sendername == std::string(_send_msg->name[i]))
+		{
+			_send_msg->direction[i] = _recv_msg->direction;
+			_send_msg->posx[i] = _recv_msg->posx;
+			_send_msg->posy[i] = _recv_msg->posy;
+			return ;
+		}
 	//s'il n'existe pas on l'ajoute
-	if (sendername != std::string(_send_msg->name[J1]) &&
-		sendername != std::string(_send_msg->name[J2]) &&
-		sendername != std::string(_send_msg->name[J3]) &&
-		sendername != std::string(_send_msg->name[J4]))
-	{
-		if (defaultname == std::string(_send_msg->name[J1]))
+	for (size_t i = J1; i <= J4; i++)
+		if (defaultname == std::string(_send_msg->name[i]))
 		{
-			memset(_send_msg->name[J1], '\0', 256);
-			memcpy(_send_msg->name[J1], sendername.c_str(), sendername.size());
+			memset(_send_msg->name[i], '\0', 256);
+			memcpy(_send_msg->name[i], sendername.c_str(), sendername.size());
+			_send_msg->direction[i] = _recv_msg->direction;
+			_send_msg->posx[i] = _recv_msg->posx;
+			_send_msg->posy[i] = _recv_msg->posy;
+			return;
 		}
-		else if (defaultname == std::string(_send_msg->name[J2]))
-		{
-			memset(_send_msg->name[J2], '\0', 256);
-			memcpy(_send_msg->name[J2], sendername.c_str(), sendername.size());
-		}
-		else if (defaultname == std::string(_send_msg->name[J3]))
-		{
-			memset(_send_msg->name[J3], '\0', 256);
-			memcpy(_send_msg->name[J3], sendername.c_str(), sendername.size());
-		}
-		else if (defaultname == std::string(_send_msg->name[J4]))
-		{
-			memset(_send_msg->name[J4], '\0', 256);
-			memcpy(_send_msg->name[J4], sendername.c_str(), sendername.size());
-		}
-		else
-			std::cerr << "corrupted informations received by the server" << std::endl;
-	}
-	//on mets ses bails a jours
-	if (sendername == std::string(_send_msg->name[J1]))
-	{
-		_send_msg->direction[J1] = _recv_msg->direction;
-		_send_msg->posx[J1] = _recv_msg->posx;
-		_send_msg->posy[J1] = _recv_msg->posy;
-	}
-	else if (sendername == std::string(_send_msg->name[J2]))
-	{
-		_send_msg->direction[J2] = _recv_msg->direction;
-		_send_msg->posx[J2] = _recv_msg->posx;
-		_send_msg->posy[J2] = _recv_msg->posy;
-	}
-	else if (sendername == std::string(_send_msg->name[J3]))
-	{
-		_send_msg->direction[J3] = _recv_msg->direction;
-		_send_msg->posx[J3] = _recv_msg->posx;
-		_send_msg->posy[J3] = _recv_msg->posy;
-	}
-	else
-	{
-		_send_msg->direction[J4] = _recv_msg->direction;
-		_send_msg->posx[J4] = _recv_msg->posx;
-		_send_msg->posy[J4] = _recv_msg->posy;
-	}
+	std::cerr << "Corrupted messsage received (3)" << std::endl;
 }

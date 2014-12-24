@@ -41,7 +41,7 @@ AMenu	*LoginMenu::onEnter(std::map <std::string, bool>	&state, CommandHandler	*c
 	if (selected == 0 && Menu[0]->getText().size() >= 3)
 	{
 		inLoading = true;
-		comhandler->SendCommand(LOGIN, new std::string(Menu[0]->getText()));
+		comhandler->SendCommand(LOGIN, std::string(Menu[0]->getText()));
 	}
 	if (selected == 1)
 		return (new BaseMenu());

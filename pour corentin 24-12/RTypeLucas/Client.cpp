@@ -52,21 +52,11 @@ bool	Client::init()
 
 bool	Client::update()
 {
-  //std::string		line;
-  //int				rq_type;
   int				ret;
 	
   //bails en TCP
   if (_state["Playing"] == false)
-    {/*
-      std::getline(std::cin, line);
-      rq_type = atoi(line.substr(0, 1).c_str());
-      if (rq_type != 0)
-		{
-		  std::string		*str = new std::string(line.substr(1, std::string::npos));
-		  _comhandler->SendCommand(rq_type, str);
-		}
-		*/
+    {
       _sel.Select();
       _socket->SendData(_writebuff, _sel);
       if ((_socket->ReadData(_readbuff, _sel)) == false)
@@ -93,12 +83,7 @@ bool	Client::update()
 		  memcpy(_send_msg->name, _comhandler->get_name()->c_str(), _comhandler->get_name()->size());
       _game_socket->Receive_data(_recv_msg);
       _game_socket->Send_data(_send_msg);
-	  _graphic.affGame(_recv_msg, _send_msg);/*
-#ifdef _WIN32
-      Sleep(500);
-#else
-      sleep(1);
-#endif*/
+	  _graphic.affGame(_recv_msg, _send_msg);
     }
   return (true);
 }

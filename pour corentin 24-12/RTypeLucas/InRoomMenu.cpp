@@ -38,12 +38,12 @@ AMenu	*InRoomMenu::onEnter(std::map <std::string, bool>	&state, CommandHandler	*
 	{
 		if (selected == 0)
 		{
-			comhandler->SendCommand(START_GAME, new std::string(""));
+			comhandler->SendCommand(START_GAME, std::string(""));
 			return (NULL);
 		}
 		if (selected == 1)
 		{
-			comhandler->SendCommand(LEAVE_ROOM, new std::string(""));
+			comhandler->SendCommand(LEAVE_ROOM, std::string(""));
 			return (new JoinRoomMenu());
 		}
 	}

@@ -105,8 +105,11 @@ void				TCPWinServSocket::ReadData(CircularBuff &circbuff, Selector &sel)
 			}
 			else
 			{	
-				std::string		*str = new std::string(databuf[2].buf);
-				Message		message((uint32_t)*(databuf[0].buf), (uint32_t)*(databuf[1].buf), (void *)(str->c_str()), str, _clients[i]);
+				int				len = strlen(databuf[2].buf);
+				char			*packet = new char[len + 1];
+
+				memcpy(packet, databuf[2].buf, len + 1);
+				Message		message((uint32_t)*(databuf[0].buf), (uint32_t)*(databuf[1].buf), packet, _clients[i]);
 
 				std::cout << "je recois :"; message.to_string(); std::cout << std::endl;
 				circbuff.add_data(message);
@@ -117,7 +120,7 @@ void				TCPWinServSocket::ReadData(CircularBuff &circbuff, Selector &sel)
 // ICI l'id du client correspond a l'id du client auquel on veut envoyer les bails
 void		TCPWinServSocket::SendData(CircularBuff &circbuff, Selector &sel)
 {
-	std::vector<Message>		*to_send;
+	std::vector<Message>		&to_send = circbuff.get_data();
 	DWORD						sentbytes;
 	WSABUF						databuf[3];
 	char						first_buff[4];
@@ -131,10 +134,9 @@ void		TCPWinServSocket::SendData(CircularBuff &circbuff, Selector &sel)
 	databuf[2].len = 256;
 	databuf[2].buf = third_buff;
 
-	to_send = circbuff.get_data();
 	//pour tous les messages
-	for (size_t i = 0; i < to_send->size(); i++)
-	if (sel.Is_writable(to_send->at(i).get_client().get_socket()))
+	for (size_t i = 0; i < to_send.size(); i++)
+	if (sel.Is_writable(to_send.at(i).get_client().get_socket()))
 	{
 		//reset des buffers
 		memset(&first_buff, '\0', 4);
@@ -142,19 +144,20 @@ void		TCPWinServSocket::SendData(CircularBuff &circbuff, Selector &sel)
 		memset(&third_buff, '\0', 256);
 
 		// on crée des variables parce qu'on a besoin d'une adresse pour memcpy (donc juste des getters ca suffit pas)
-		int		rq_type = to_send->at(i).get_rq_type();
-		int		data_length = to_send->at(i).get_data_length();
+		int		rq_type = to_send.at(i).get_rq_type();
+		int		data_length = to_send.at(i).get_data_length();
 
 		//on rempli nos 3 buffers
 		memcpy(&first_buff, (char *)&(rq_type), 4);
 		memcpy(&second_buff, (char *)&(data_length), 4);
-		memcpy(&third_buff, (char *)(to_send->at(i).get_packet()), data_length);
+		memcpy(&third_buff, to_send.at(i).get_packet(), data_length);
 
 		// et on les envoi
-		std::cout << "j'envois :"; to_send->at(i).to_string(); std::cout << std::endl;
-		WSASend(to_send->at(i).get_client().get_socket(), databuf, 3, &sentbytes, 0, NULL, NULL);
+		std::cout << "j'envois :"; to_send.at(i).to_string(); std::cout << std::endl;
+		WSASend(to_send.at(i).get_client().get_socket(), databuf, 3, &sentbytes, 0, NULL, NULL);
+		delete[]	to_send.at(i).get_packet();
 	}
 	else
 		std::cerr << "Corruption possible (1)" << std::endl;
-	delete to_send;
+	to_send.clear();
 }

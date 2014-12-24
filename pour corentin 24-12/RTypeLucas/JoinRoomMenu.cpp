@@ -25,7 +25,7 @@ AMenu	*JoinRoomMenu::myUpdate(sf::Event *event, std::map <std::string, bool>	&st
 	{
 		firstTry = false;
 		inLoading = true;
-		comhandler->SendCommand(GET_ROOMS, new std::string(""));
+		comhandler->SendCommand(GET_ROOMS, std::string(""));
 		return (NULL);
 	}
 	if (inLoading == false)
@@ -98,7 +98,7 @@ AMenu	*JoinRoomMenu::onEnter(std::map <std::string, bool>	&state, CommandHandler
 		if (selected == 0 && inLoading == false)
 		{
 			inLoading = true;
-			comhandler->SendCommand(GET_ROOMS, new std::string(""));
+			comhandler->SendCommand(GET_ROOMS, std::string(""));
 			return (NULL);
 		}
 		if (selected == 1)
@@ -109,7 +109,7 @@ AMenu	*JoinRoomMenu::onEnter(std::map <std::string, bool>	&state, CommandHandler
 		if (Menu.size() > 0)
 		{
 			inLoading = true;
-			comhandler->SendCommand(JOIN_ROOM, new std::string(Menu[selected]->getText()));
+			comhandler->SendCommand(JOIN_ROOM, std::string(Menu[selected]->getText()));
 			return (NULL);
 		}
 	}

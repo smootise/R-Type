@@ -40,7 +40,7 @@ AMenu	*CreateRoomMenu::onEnter(std::map <std::string, bool>	&state, CommandHandl
 	if (selected == 0 && Menu[0]->getText().size() >= 3)
 	{
 		inLoading = true;
-		comhandler->SendCommand(CREATE_ROOM, new std::string(Menu[0]->getText()));
+		comhandler->SendCommand(CREATE_ROOM, std::string(Menu[0]->getText()));
 	}
 	if (selected == 1)
 		return (new RoomFirstMenu());

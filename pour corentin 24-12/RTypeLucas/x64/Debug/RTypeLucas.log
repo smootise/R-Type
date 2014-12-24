@@ -1,85 +1,17 @@
-﻿Build started 23/12/2014 06:49:26.
-     1>Project "C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\RTypeLucas\RTypeLucas.vcxproj" on node 2 (build target(s)).
+﻿Build started 24/12/2014 19:23:39.
+     1>Project "D:\Github\R-Type\pour corentin 24-12\RTypeLucas\RTypeLucas.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Touching "x64\Debug\RTypeLucas.unsuccessfulbuild".
+         Creating "x64\Debug\RTypeLucas.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          All outputs are up-to-date.
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\RTypeLucas.exe" /NOLOGO /LIBPATH:"E:\Sfml\SFML-2.1-windows-vc10-64bits\SFML-2.1\lib" "sfml-graphics-s-d.lib" "sfml-window-s-d.lib" "sfml-system-s-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Debug\RTypeLucas.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\RTypeLucas.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\RTypeLucas.lib" /MACHINE:X64 x64\Debug\AllyObject.obj
-         x64\Debug\AMenu.obj
-         x64\Debug\AMovingObject.obj
-         x64\Debug\BaseMenu.obj
-         x64\Debug\CircularBuff.obj
-         x64\Debug\Client.obj
-         x64\Debug\CommandHandler.obj
-         x64\Debug\CreateRoomMenu.obj
-         x64\Debug\Gui.obj
-         x64\Debug\HeroObject.obj
-         x64\Debug\HudTextField.obj
-         x64\Debug\HudWindow.obj
-         x64\Debug\InRoomMenu.obj
-         x64\Debug\JoinRoomMenu.obj
-         x64\Debug\LoginMenu.obj
-         x64\Debug\main.obj
-         x64\Debug\Message.obj
-         x64\Debug\Room.obj
-         x64\Debug\RoomFirstMenu.obj
-         x64\Debug\ScrollingBg.obj
-         x64\Debug\Selector.obj
-         x64\Debug\TCPWinSocket.obj
-         x64\Debug\UDPWinSocket.obj
-     1>sfml-graphics-s-d.lib(Color.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Color.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(Font.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Font.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(GLCheck.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(GLCheck.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(Image.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Image.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(ImageLoader.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(ImageLoader.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(RenderStates.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(RenderStates.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(RenderTarget.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(RenderTarget.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(RenderWindow.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(RenderWindow.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(Shader.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Shader.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(Texture.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Texture.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(TextureSaver.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(TextureSaver.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(Transform.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Transform.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(Transformable.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Transformable.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(View.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(View.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(Vertex.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Vertex.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(Shape.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Shape.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(RectangleShape.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(RectangleShape.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(Sprite.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Sprite.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(Text.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Text.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-graphics-s-d.lib(VertexArray.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(VertexArray.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
-     1>sfml-window-s-d.lib(GlContext.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(GlContext.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
-     1>sfml-window-s-d.lib(GlResource.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(GlResource.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
-     1>sfml-window-s-d.lib(JoystickManager.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(JoystickManager.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
-     1>sfml-window-s-d.lib(Keyboard.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(Keyboard.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
-     1>sfml-window-s-d.lib(VideoMode.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(VideoMode.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
-     1>sfml-window-s-d.lib(Window.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(Window.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
-     1>sfml-window-s-d.lib(WindowImpl.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(WindowImpl.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
-     1>sfml-window-s-d.lib(WglContext.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(WglContext.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
-     1>sfml-window-s-d.lib(InputImpl.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(InputImpl.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
-     1>sfml-window-s-d.lib(JoystickImpl.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(JoystickImpl.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
-     1>sfml-window-s-d.lib(VideoModeImpl.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(VideoModeImpl.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
-     1>sfml-window-s-d.lib(WindowImplWin32.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(WindowImplWin32.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
-     1>sfml-system-s-d.lib(Clock.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(Clock.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
-     1>sfml-system-s-d.lib(Err.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(Err.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
-     1>sfml-system-s-d.lib(Lock.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(Lock.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
-     1>sfml-system-s-d.lib(Mutex.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(Mutex.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
-     1>sfml-system-s-d.lib(Sleep.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(Sleep.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
-     1>sfml-system-s-d.lib(String.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(String.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
-     1>sfml-system-s-d.lib(ThreadLocal.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(ThreadLocal.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
-     1>sfml-system-s-d.lib(Time.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(Time.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
-     1>sfml-system-s-d.lib(ClockImpl.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(ClockImpl.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
-     1>sfml-system-s-d.lib(MutexImpl.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(MutexImpl.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
-     1>sfml-system-s-d.lib(SleepImpl.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(SleepImpl.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
-     1>sfml-system-s-d.lib(ThreadLocalImpl.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(ThreadLocalImpl.cpp.obj)' or at 'C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
-         RTypeLucas.vcxproj -> C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\RTypeLucas.exe
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\x64\Debug\RTypeLucas.exe;#1" /manifest x64\Debug\RTypeLucas.exe.intermediate.manifest
+         All outputs are up-to-date.
+         RTypeLucas.vcxproj -> D:\Github\R-Type\pour corentin 24-12\RTypeLucas\x64\Debug\RTypeLucas.exe
        FinalizeBuildStatus:
          Deleting file "x64\Debug\RTypeLucas.unsuccessfulbuild".
          Touching "x64\Debug\RTypeLucas.lastbuildstate".
-     1>Done Building Project "C:\Users\PC-Lucas-Epitech\documents\visual studio 2010\Projects\RTypeLucas\RTypeLucas\RTypeLucas.vcxproj" (build target(s)).
+     1>Done Building Project "D:\Github\R-Type\pour corentin 24-12\RTypeLucas\RTypeLucas.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.53
+Time Elapsed 00:00:00.05

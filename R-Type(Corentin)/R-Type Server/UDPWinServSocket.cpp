@@ -16,8 +16,6 @@ UDPWinServSocket::~UDPWinServSocket()
 bool			UDPWinServSocket::Connect(int port)
 {
 	u_short				rethtons;
-	char				host_name[256];
-	struct hostent		*hp;
 
 	/* Open a datagram socket */
 	if ((_socket = WSASocket(AF_INET, SOCK_DGRAM, IPPROTO_UDP, 0, NULL, WSA_FLAG_OVERLAPPED)) == INVALID_SOCKET)
@@ -32,19 +30,7 @@ bool			UDPWinServSocket::Connect(int port)
 	_serv.sin_family = AF_INET;
 	WSAHtons(_socket, port, &rethtons);
 	_serv.sin_port = rethtons;
-
-	/* Get host name of this computer */
-	gethostname(host_name, sizeof(host_name));
-	if ((hp = gethostbyname(host_name)) == NULL)
-	{
-		std::cerr << "Couldn't get hostname" << std::endl;
-		return (false);
-	}
-	/* Assign the address */
-	_serv.sin_addr.S_un.S_un_b.s_b1 = hp->h_addr_list[0][0];
-	_serv.sin_addr.S_un.S_un_b.s_b2 = hp->h_addr_list[0][1];
-	_serv.sin_addr.S_un.S_un_b.s_b3 = hp->h_addr_list[0][2];
-	_serv.sin_addr.S_un.S_un_b.s_b4 = hp->h_addr_list[0][3];
+	_serv.sin_addr.s_addr = htonl(INADDR_ANY);
 
 	/* Bind address to socket */
 	if (bind(_socket, (struct sockaddr *)&_serv, sizeof(struct sockaddr_in)) == SOCKET_ERROR)

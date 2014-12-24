@@ -7,7 +7,7 @@
 
 class CommandHandler;
 
-typedef void (CommandHandler::*FuncType1)(std::string *arg);
+typedef void (CommandHandler::*FuncType1)(char *arg, int arglen);
 typedef void (CommandHandler::*FuncType2)(Message &answer);
 
 class CommandHandler
@@ -29,18 +29,18 @@ class CommandHandler
 		 int *lastcommand, std::vector<std::string> *availlablerooms);
   virtual ~CommandHandler();
 
-  void	SendCommand(int value, std::string *arg);
+  void	SendCommand(int value, std::string &arg);
   void	ReceiptCommand();
 
   //sendcommands
  protected:
-  void	SendLogin(std::string *arg);
-  void	SendLogout(std::string *arg);
-  void	SendGetRooms(std::string *arg);
-  void	SendJoinRoom(std::string *arg);
-  void	SendLeaveRoom(std::string *arg);
-  void	SendCreateRoom(std::string *arg);
-  void	SendStartGame(std::string *arg);
+  void	SendLogin(char *arg, int arglen);
+  void	SendLogout(char *arg, int arglen);
+  void	SendGetRooms(char *arg, int arglen);
+  void	SendJoinRoom(char *arg, int arglen);
+  void	SendLeaveRoom(char *arg, int arglen);
+  void	SendCreateRoom(char *arg, int arglen);
+  void	SendStartGame(char *arg, int arglen);
 
   //receiptcommands
   void	AddAllyAnswer(Message &answer);

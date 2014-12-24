@@ -35,7 +35,7 @@ CommandHandler::~CommandHandler()
 		delete _name;
 }
 
-void	CommandHandler::SendCommand(int value, std::string *arg)
+void	CommandHandler::SendCommand(int value, std::string &arg)
 {
 	
 	if (_state["Logged"] == false && value != LOGIN)
@@ -46,41 +46,51 @@ void	CommandHandler::SendCommand(int value, std::string *arg)
 	// to verrify that he is not currently waiting for server answer
 	if (_state["Pending"] == false)
 	{
-		(this->*_sendfunctions[value])(arg);
+		if (arg == std::string(""))
+			(this->*_sendfunctions[value])(NULL, 0);
+		else
+		{
+			int		len = arg.size();
+			char	*param = new char[len + 1];
+
+			memcpy(param, arg.c_str(), len + 1);
+			(this->*_sendfunctions[value])(param, len);
+		}
 		*_lastcommand = value;
 	}
 }
 
 void							CommandHandler::ReceiptCommand(void)
 {
-	std::vector<Message>		*answers;
+	std::vector<Message>		&answers = _readbuff.get_data();
 
-	answers = _readbuff.get_data();
-	for (size_t i = 0; i < answers->size(); i++)
+	for (size_t i = 0; i < answers.size(); i++)
 	{
 		// If answers are OK/NOK we use the _lastcommand to determine the function.
 		// Else we use the rq_type.
-		if (answers->at(i).get_rq_type() == OK || answers->at(i).get_rq_type() == NOK)
+		if (answers.at(i).get_rq_type() == OK || answers.at(i).get_rq_type() == NOK)
 		{	
 			if (*_lastcommand != NONE)
-				(this->*_receiptfunctions[*_lastcommand])(answers->at(i));
+				(this->*_receiptfunctions[*_lastcommand])(answers.at(i));
 			else
 				std::cerr << "Corrupted answer received from server " << std::endl;
 			*_lastcommand = NONE;
 			_state["Pending"] = false;
 		}
-		else if (answers->at(i).get_rq_type() == REMOVE_ALLY || answers->at(i).get_rq_type() == ADD_ALLY || answers->at(i).get_rq_type() == GAME_STARTED)
-			(this->*_receiptfunctions[answers->at(i).get_rq_type()])(answers->at(i));
+		else if (answers.at(i).get_rq_type() == REMOVE_ALLY || answers.at(i).get_rq_type() == ADD_ALLY || answers.at(i).get_rq_type() == GAME_STARTED)
+			(this->*_receiptfunctions[answers.at(i).get_rq_type()])(answers.at(i));
 		else
 			std::cerr << "INVALID ANSWER RECEVEID FROM THE SERVER" << std::endl;
+		delete[]	answers.at(i).get_packet();
 	}
+	answers.clear();
 }
 
 
 // fonctions that analyse received data
 void	CommandHandler::AddAllyAnswer(Message &answer)
 {
-	std::string		allyname((char *)answer.get_packet());
+	std::string		allyname(answer.get_packet());
 
 	if (_room != NULL)
 		_room->Add_Ally(allyname);
@@ -93,7 +103,7 @@ void	CommandHandler::AddAllyAnswer(Message &answer)
 
 void	CommandHandler::RemoveAllyAnswer(Message &answer)
 {
-	std::string		allyname((char *)answer.get_packet());
+	std::string		allyname(answer.get_packet());
 
 	if (_room != NULL)
 		_room->Remove_Ally(allyname);
@@ -111,7 +121,7 @@ void		CommandHandler::LoginAnswer(Message &answer)
 	if (rq_type == OK)
 	{
 		_state["Logged"] = true;
-		_name = new std::string((char *)answer.get_packet());
+		_name = new std::string(answer.get_packet());
 		std::cout << "Je suis logged in !" << std::endl;
 	}
 }
@@ -119,7 +129,7 @@ void		CommandHandler::LoginAnswer(Message &answer)
 void				CommandHandler::GetRoomsAnswer(Message &answer)
 {
 	int				rq_type = answer.get_rq_type();
-	std::string		roomanswer((char *)answer.get_packet());
+	std::string		roomanswer(answer.get_packet());
 	int				pos_start = 0;
 	int				pos_end = 0;
 	int				ret;
@@ -140,7 +150,7 @@ void				CommandHandler::GetRoomsAnswer(Message &answer)
 
 void	CommandHandler::JoinRoomAnswer(Message &answer)
 {
-  std::string		roomname((char *)answer.get_packet());
+  std::string		roomname(answer.get_packet());
 
   if (answer.get_rq_type() == OK)
     {
@@ -161,7 +171,7 @@ void	CommandHandler::LeaveRoomAnswer(Message &answer)
 
 void	CommandHandler::CreateRoomAnswer(Message &answer)
 {	
-  std::string		roomname((char *)answer.get_packet());
+  std::string		roomname(answer.get_packet());
 
   if (answer.get_rq_type() == OK)
     {
@@ -179,64 +189,66 @@ void	CommandHandler::StartGameAnswer(Message &answer)
 void	CommandHandler::GameStartedAnswer(Message &answer)
 {
 	_state["Playing"] = true;
-	_wantedport = atoi((char *)answer.get_packet());
-	std::cout << "tu vas commencer ta game sur le port " << (char *)answer.get_packet() << std::endl;
+	_wantedport = atoi(answer.get_packet());
+	std::cout << "tu vas commencer ta game sur le port " << answer.get_packet() << std::endl;
 }
 
 
 // fonctions that send data
-void	CommandHandler::SendLogin(std::string *arg)
+void	CommandHandler::SendLogin(char *arg, int arglen)
 {
-	Message		mess(LOGIN, arg->size(), (void *)(arg->c_str()), arg);
+	Message		mess(LOGIN, arglen, arg);
 
 	_writebuff.add_data(mess);
 	_state["Pending"] = true;
 }
 
-void	CommandHandler::SendLogout(std::string *arg)
+void	CommandHandler::SendLogout(char *arg, int arglen)
 {
-	Message		mess(LOGOUT, arg->size(), (void *)(arg->c_str()), arg);
+	Message		mess(LOGOUT, arglen, arg);
 
 	_writebuff.add_data(mess);
 }
 
-void	CommandHandler::SendGetRooms(std::string *arg)
+void	CommandHandler::SendGetRooms(char *arg, int arglen)
 {
-	Message		mess(GET_ROOMS, arg->size(), (void *)(arg->c_str()), arg);
-
-	_writebuff.add_data(mess);
-	_state["Pending"] = true;
-}
-
-void	CommandHandler::SendJoinRoom(std::string *arg)
-{
-	Message		mess(JOIN_ROOM, arg->size(), (void *)(arg->c_str()), arg);
+	Message		mess(GET_ROOMS, arglen, arg);
 
 	_writebuff.add_data(mess);
 	_state["Pending"] = true;
 }
 
-void	CommandHandler::SendLeaveRoom(std::string *arg)
+void	CommandHandler::SendJoinRoom(char *arg, int arglen)
 {
-	std::string	*str = new std::string(_room->get_name());
-	Message		mess(LEAVE_ROOM, str->size(), (void *)(str->c_str()), str);
-
-	delete arg;
-	_writebuff.add_data(mess);
-	_state["Pending"] = true;
-}
-
-void	CommandHandler::SendCreateRoom(std::string *arg)
-{
-	Message		mess(CREATE_ROOM, arg->size(), (void *)(arg->c_str()), arg);
+	Message		mess(JOIN_ROOM, arglen, arg);
 
 	_writebuff.add_data(mess);
 	_state["Pending"] = true;
 }
 
-void	CommandHandler::SendStartGame(std::string *arg)
+void	CommandHandler::SendLeaveRoom(char *arg, int arglen)
 {
-	Message		mess(START_GAME, arg->size(), (void *)(arg->c_str()), arg);
+	int		len = _room->get_name().size();
+	char	*roomname = new char[len + 1];
+
+	memcpy(roomname, _room->get_name().c_str(), len + 1); 
+	Message		mess(LEAVE_ROOM, len, roomname);
+
+	_writebuff.add_data(mess);
+	_state["Pending"] = true;
+}
+
+void	CommandHandler::SendCreateRoom(char *arg, int arglen)
+{
+	Message		mess(CREATE_ROOM, arglen, arg);
+
+	_writebuff.add_data(mess);
+	_state["Pending"] = true;
+}
+
+void	CommandHandler::SendStartGame(char *arg, int arglen)
+{
+	Message		mess(START_GAME, arglen, arg);
 
 	_writebuff.add_data(mess);
 }

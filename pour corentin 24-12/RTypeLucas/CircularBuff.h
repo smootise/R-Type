@@ -12,6 +12,6 @@ public:
 	virtual ~CircularBuff(void);
 
 void						add_data(Message &msg);
-std::vector<Message>		*get_data();
+std::vector<Message>		&get_data();
 };
 

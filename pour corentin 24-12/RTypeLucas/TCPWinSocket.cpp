@@ -65,8 +65,11 @@ bool				TCPWinSocket::ReadData(CircularBuff &circbuff, Selector &sel)
 			std::cout << "Connection lost with the server" << std::endl;
 			return (false);
 		}
-		std::string		*str = new std::string(databuf[2].buf);
-		Message			Message((uint32_t)*(databuf[0].buf), (uint32_t)*(databuf[1].buf), (void *)(str->c_str()), str);
+		int				len = strlen(databuf[2].buf);
+		char			*packet = new char[len + 1];
+
+		memcpy(packet, databuf[2].buf, len + 1);
+		Message			Message((uint32_t)*(databuf[0].buf), (uint32_t)*(databuf[1].buf), packet);
 
 		std::cout << "je recois :"; Message.to_string(); std::cout << std::endl;
 		circbuff.add_data(Message);
@@ -76,7 +79,7 @@ bool				TCPWinSocket::ReadData(CircularBuff &circbuff, Selector &sel)
 
 void	TCPWinSocket::SendData(CircularBuff &circbuff, Selector &sel)
 {
-	std::vector<Message>		*to_send;
+	std::vector<Message>		&to_send = circbuff.get_data();
 	DWORD						sentbytes;
 	WSABUF						databuf[3];
 	char						first_buff[4];
@@ -90,8 +93,7 @@ void	TCPWinSocket::SendData(CircularBuff &circbuff, Selector &sel)
 	databuf[2].len = 256;
 	databuf[2].buf = third_buff;
 
-	to_send = circbuff.get_data();
-	for (size_t i = 0; i < to_send->size(); i ++)
+	for (size_t i = 0; i < to_send.size(); i ++)
 		if (sel.Is_writable(_fathersocket))
 		{
 			memset(&first_buff, '\0', 4);
@@ -99,18 +101,19 @@ void	TCPWinSocket::SendData(CircularBuff &circbuff, Selector &sel)
 			memset(&third_buff, '\0', 256);
 			
 			// on crée des variables parce qu'on a besoin d'une adresse pour memcpy (donc juste des getters ca suffit pas)
-			int		rq_type = to_send->at(i).get_rq_type();
-			int		data_length = to_send->at(i).get_data_length();
+			int		rq_type = to_send.at(i).get_rq_type();
+			int		data_length = to_send.at(i).get_data_length();
 
 			//on rempli nos 3 buffers
 			memcpy(&first_buff, (char *)&(rq_type), 4);
 			memcpy(&second_buff, (char *)&(data_length), 4);
-			memcpy(&third_buff, (char *)(to_send->at(i).get_packet()), data_length);
+			memcpy(&third_buff, to_send.at(i).get_packet(), data_length);
 
-			std::cout << "j'envoi :"; to_send->at(i).to_string(); std::cout << std::endl;
+			std::cout << "j'envoi :"; to_send.at(i).to_string(); std::cout << std::endl;
 			
 			// et on envoi
-			WSASend(_fathersocket, databuf, 3, &sentbytes, 0, NULL, NULL);  
+			WSASend(_fathersocket, databuf, 3, &sentbytes, 0, NULL, NULL);
+			delete[] to_send.at(i).get_packet();
 		}
-	delete to_send;
+	to_send.clear();
 }

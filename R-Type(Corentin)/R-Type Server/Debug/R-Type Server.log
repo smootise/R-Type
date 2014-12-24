@@ -1,15 +1,8 @@
-﻿Build started 23/12/2014 04:28:24.
+﻿Build started 24/12/2014 19:15:49.
      1>Project "D:\Github\R-Type\R-Type(Corentin)\R-Type Server\R-Type Server.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Work\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CommandHandler.cpp Server.cpp UDPWinServSocket.cpp WinThread.cpp main.cpp
-         WinThread.cpp
-         Generating Code...
-         Compiling...
-         main.cpp
-         UDPWinServSocket.cpp
-         Server.cpp
+         D:\Work\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CommandHandler.cpp
          CommandHandler.cpp
-         Generating Code...
        Link:
          D:\Work\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.lib" /MACHINE:X86 Debug\CircularBuff.obj
          Debug\Client.obj
@@ -27,4 +20,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.29
+Time Elapsed 00:00:01.34
