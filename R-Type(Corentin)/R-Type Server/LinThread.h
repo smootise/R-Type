@@ -26,7 +26,7 @@ public:
 
 protected:
 	virtual void	analyse_data();
-
+public:
 	static void	*call_run(void *ptr);
 };
 

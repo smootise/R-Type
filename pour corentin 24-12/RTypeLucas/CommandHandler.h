@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <stdlib.h>
+#include <string.h>
 #include "Commands.h"
 #include "CircularBuff.h"
 #include "Room.h"

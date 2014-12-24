@@ -50,7 +50,7 @@ bool	UDPLinSocket::Connect(int port)
   return (true);
 } 
 
-bool	UDPLinSocket::Send_data(ClientMesssage *send_msg)
+bool	UDPLinSocket::Send_data(ClientMessage *send_msg)
 {
   int		send_flags = 0;
   int		sent_bytes = 0;
@@ -62,8 +62,7 @@ bool	UDPLinSocket::Send_data(ClientMesssage *send_msg)
   //on memset le buff
   memset(buff, '\0', 8192);
   //on copie les bails
-  memcpy(&buff, std::string("test").c_str(), 4);
-  std::cout << "j'ai envoyé  :"  << buff << std::endl;
+  memcpy(&buff, (void *)send_msg, sizeof(ClientMessage));
   if ((sent_bytes = sendto(_socket, buff, 8192, send_flags,
 			   (struct sockaddr *)&_server, server_length)) == 0)
     {
@@ -90,7 +89,13 @@ bool	UDPLinSocket::Receive_data(ServerMessage *recv_msg)
       return (false);
     }
   if (recv_bytes != -1)
-    std::cout << "j'ai recu : " << buff << std::endl;
+    {
+      memcpy(recv_msg, (void *)buff, sizeof(ServerMessage));
+      std::cout << "Nom du j1: " << recv_msg->name[J1] << std::endl;
+      std::cout << "Nom du j2: " << recv_msg->name[J2] << std::endl;
+      std::cout << "Nom du j3: " << recv_msg->name[J3] << std::endl;
+      std::cout << "Nom du j4: " << recv_msg->name[J4] << std::endl;
+    }
   return (true);
 }
 

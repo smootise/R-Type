@@ -72,7 +72,9 @@ bool			UDPLinServSocket::Receive_data(ClientMessage *recv_msg, ServerMessage *se
     }
   if (recv_bytes != -1)
     {
-      std::cout << "j'ai recu : " << buff << std::endl;
+      memcpy(recv_msg, (void *)buff, sizeof(ClientMessage));
+      recv_msg->has_been_read = false;
+      std::cout << "j'ai recu un message de :" << recv_msg->name << std::endl;
       return (this->send_data(&client, send_msg));
     }
   return (true);
@@ -89,13 +91,12 @@ bool			UDPLinServSocket::send_data(struct sockaddr_in *target, ServerMessage *se
 
   memset(buff, '\0', 8192);
   //on copie les bails
-  memcpy(&buff, std::string("test").c_str(), 4);
+  memcpy(&buff, send_msg, sizeof(ServerMessage));
   if ((sent_bytes = sendto(_socket, buff, 8192, send_flags,
 			   (struct sockaddr *)target, client_length)) == 0)
     {
       std::cerr << "coudldn't use send to" << std::endl;
       return (false);
     }
-  std::cout << " j'ai renvoyé " << buff << std::endl;
   return (true);
 }
