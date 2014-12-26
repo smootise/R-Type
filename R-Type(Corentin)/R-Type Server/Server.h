@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
 #include "CommandHandler.h"
 #include "ITCPServSocket.h"
 #include "CircularBuff.h"

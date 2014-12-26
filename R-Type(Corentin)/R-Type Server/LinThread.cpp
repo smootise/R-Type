@@ -29,6 +29,9 @@ bool		LinThread::start()
   memcpy(_send_msg->name[J2], name_default.c_str(), name_default.size());
   memcpy(_send_msg->name[J3], name_default.c_str(), name_default.size());
   memcpy(_send_msg->name[J4], name_default.c_str(), name_default.size());
+
+  //we start at lvl1
+  _spawner.LoadMonsters("Level1.txt");
   return (true);
 }
 

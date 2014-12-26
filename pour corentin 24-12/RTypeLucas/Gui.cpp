@@ -3,6 +3,7 @@
 #include "ScrollingBg.hpp"
 #include "HeroObject.hpp"
 #include "AllyObject.hpp"
+
 Gui::Gui(void)
 {
 	menu = NULL;

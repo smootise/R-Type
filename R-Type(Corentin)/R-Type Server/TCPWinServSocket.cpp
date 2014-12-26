@@ -111,7 +111,7 @@ void				TCPWinServSocket::ReadData(CircularBuff &circbuff, Selector &sel)
 				memcpy(packet, databuf[2].buf, len + 1);
 				Message		message((uint32_t)*(databuf[0].buf), (uint32_t)*(databuf[1].buf), packet, _clients[i]);
 
-				std::cout << "je recois :"; message.to_string(); std::cout << std::endl;
+				//std::cout << "je recois :"; message.to_string(); std::cout << std::endl;
 				circbuff.add_data(message);
 			}
 		}
@@ -153,7 +153,7 @@ void		TCPWinServSocket::SendData(CircularBuff &circbuff, Selector &sel)
 		memcpy(&third_buff, to_send.at(i).get_packet(), data_length);
 
 		// et on les envoi
-		std::cout << "j'envois :"; to_send.at(i).to_string(); std::cout << std::endl;
+		//std::cout << "j'envois :"; to_send.at(i).to_string(); std::cout << std::endl;
 		WSASend(to_send.at(i).get_client().get_socket(), databuf, 3, &sentbytes, 0, NULL, NULL);
 		delete[]	to_send.at(i).get_packet();
 	}

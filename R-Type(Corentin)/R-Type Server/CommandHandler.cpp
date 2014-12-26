@@ -47,10 +47,8 @@ void	CommandHandler::ReceiptLogin(Message &mess)
 		ret = NOK;
 	
 	if (ret == OK)
-	{
 		mess.get_client().set_nickname(wantedname);
-		std::cout << "desormais ton nom est : " << wantedname << std::endl;
-	}
+
 	int			len = wantedname.size();
 	char		*name = new char[len + 1];
 

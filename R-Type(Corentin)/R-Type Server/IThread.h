@@ -10,6 +10,7 @@
 
 #include "Client.h"
 #include "ServerMessage.h"
+#include "Spawner.h"
 
 class IThread
 {

@@ -6,9 +6,11 @@ class AllyObject :
 {
 protected:
 	int	id;
+
 public:
 	AllyObject(int);
 	~AllyObject(void);
-	IGameObject::State	AllyObject::update(sf::Event *, const sf::Clock &, ServerMessage *, ClientMessage *);
+
+	IGameObject::State	update(sf::Event *, const sf::Clock &, ServerMessage *, ClientMessage *);
 };
 

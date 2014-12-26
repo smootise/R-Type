@@ -1,0 +1,31 @@
+﻿Build started 26/12/2014 21:53:53.
+     1>Project "c:\Users\Corentin\documents\visual studio 2010\Projects\M_light\M_heavy\M_heavy.vcxproj" on node 2 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\M_heavy.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_HEAVY_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\M_heavy.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_HEAVY_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\M_heavy.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AMonster.cpp M_heavy.cpp
+         M_heavy.cpp
+         AMonster.cpp
+         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_HEAVY_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt dllmain.cpp
+         dllmain.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\users\corentin\documents\visual studio 2010\Projects\M_light\Debug\M_heavy.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\M_heavy.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"c:\users\corentin\documents\visual studio 2010\Projects\M_light\Debug\M_heavy.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\users\corentin\documents\visual studio 2010\Projects\M_light\Debug\M_heavy.lib" /MACHINE:X86 /DLL Debug\AMonster.obj
+         Debug\dllmain.obj
+         Debug\M_heavy.obj
+         Debug\stdafx.obj
+     1>AMonster.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
+            Creating library c:\users\corentin\documents\visual studio 2010\Projects\M_light\Debug\M_heavy.lib and object c:\users\corentin\documents\visual studio 2010\Projects\M_light\Debug\M_heavy.exp
+         M_heavy.vcxproj -> c:\users\corentin\documents\visual studio 2010\Projects\M_light\Debug\M_heavy.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"c:\users\corentin\documents\visual studio 2010\Projects\M_light\Debug\M_heavy.dll;#2" /manifest Debug\M_heavy.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\M_heavy.unsuccessfulbuild".
+         Touching "Debug\M_heavy.lastbuildstate".
+     1>Done Building Project "c:\Users\Corentin\documents\visual studio 2010\Projects\M_light\M_heavy\M_heavy.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.23

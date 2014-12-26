@@ -16,6 +16,7 @@ protected:
 	IUDPServSocket	*_socket;
 	ClientMessage	*_recv_msg;
 	ServerMessage	*_send_msg;
+	Spawner			_spawner;
 
 public:
 	LinThread(int port);

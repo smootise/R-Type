@@ -24,12 +24,12 @@ Server::~Server(void)
 	delete _comhandler;
 }
 
-bool		Server::init(void)
+bool				Server::init(void)
 {
 	return (_socket->Connect(_port, _sel));
 }
 
-bool		Server::update(void)
+bool				Server::update(void)
 {
 	_sel.Select();
 	if (_socket->SearchNewClients(_sel) == false)

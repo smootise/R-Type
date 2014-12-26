@@ -74,7 +74,6 @@ bool			UDPLinServSocket::Receive_data(ClientMessage *recv_msg, ServerMessage *se
     {
       memcpy(recv_msg, (void *)buff, sizeof(ClientMessage));
       recv_msg->has_been_read = false;
-      std::cout << "j'ai recu un message de :" << recv_msg->name << std::endl;
       return (this->send_data(&client, send_msg));
     }
   return (true);

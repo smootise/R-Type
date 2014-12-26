@@ -1,13 +1,3 @@
-//
-// Operand.hpp for Igraphic in /home/sarkad_l/Dropbox/Projets/nibbler_theo_lulu
-// 
-// Made by Lucas SARKADI
-// Login   <sarkad_l@epitech.net>
-// 
-// Started on  Fri Apr  4 00:07:37 2014 Lucas SARKADI
-// Last update Sun Apr  6 23:25:31 2014 theo richard
-//
-
 #ifndef GRAPHICSDL_H_
 #define GRAPHICSDL_H_
 

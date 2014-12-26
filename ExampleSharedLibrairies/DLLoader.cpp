@@ -1,13 +1,3 @@
-//
-// DLLoader.cpp for dllloader in /home/sarkad_l/Dropbox/Projets/nibbler_theo_lulu/cpy
-// 
-// Made by Lucas SARKADI
-// Login   <sarkad_l@epitech.net>
-// 
-// Started on  Sun Apr  6 19:01:09 2014 Lucas SARKADI
-// Last update Sun Apr  6 21:23:45 2014 Lucas SARKADI
-//
-
 #include <dlfcn.h>
 #include "DLLoader.hpp"
 #include "raise.hpp"

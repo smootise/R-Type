@@ -16,9 +16,6 @@
     <Filter Include="Source Files\LinuxOnly">
       <UniqueIdentifier>{9f8c3630-f0c7-4a3f-8415-c044df3c7fa9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\WindowsOnly">
-      <UniqueIdentifier>{34f86eeb-d7c6-4674-b8a7-994b74e9ba2f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Game">
       <UniqueIdentifier>{ffb0bec7-9fc3-4532-9f89-1d3e83ab4c2e}</UniqueIdentifier>
     </Filter>
@@ -27,6 +24,12 @@
     </Filter>
     <Filter Include="Header Files\LinuxOnly">
       <UniqueIdentifier>{b1a81e84-6463-4f54-8887-ac7b3646a217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WindowsOnly">
+      <UniqueIdentifier>{34f86eeb-d7c6-4674-b8a7-994b74e9ba2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{726e441a-85a7-4d58-ab62-acffec768644}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +90,21 @@
     <ClInclude Include="ServerMessage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="IDllLoader.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="AMonster.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="WinDllLoader.h">
+      <Filter>Header Files\WindowsOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="LinDllLoader.h">
+      <Filter>Header Files\LinuxOnly</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -131,5 +149,27 @@
     <ClCompile Include="UDPWinServSocket.cpp">
       <Filter>Source Files\WindowsOnly</Filter>
     </ClCompile>
+    <ClCompile Include="Spawner.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="WinDllLoader.cpp">
+      <Filter>Source Files\WindowsOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="LinDllLoader.cpp">
+      <Filter>Source Files\LinuxOnly</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Level1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Libs\Librairies.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Libs\M_light.dll">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

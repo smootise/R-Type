@@ -65,13 +65,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AMonster.h" />
     <ClInclude Include="CircularBuff.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="ClientMessage.h" />
     <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="Commands.h" />
+    <ClInclude Include="IDllLoader.h" />
     <ClInclude Include="IThread.h" />
     <ClInclude Include="IUDPServSocket.h" />
+    <ClInclude Include="LinDllLoader.h" />
     <ClInclude Include="LinThread.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="ITCPServSocket.h" />
@@ -79,18 +82,23 @@
     <ClInclude Include="Selector.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="ServerMessage.h" />
+    <ClInclude Include="Spawner.h" />
     <ClInclude Include="TCPLinServSocket.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="TCPWinServSocket.h" />
     <ClInclude Include="UDPLinServSocket.h" />
     <ClInclude Include="UDPWinServSocket.h" />
+    <ClInclude Include="WinDllLoader.h" />
     <ClInclude Include="WinThread.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CircularBuff.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="CommandHandler.cpp" />
+    <ClCompile Include="LinDllLoader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="LinThread.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -99,6 +107,7 @@
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="Selector.cpp" />
     <ClCompile Include="Server.cpp" />
+    <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="TCPLinServSocket.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -107,7 +116,15 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="UDPWinServSocket.cpp" />
+    <ClCompile Include="WinDllLoader.cpp" />
     <ClCompile Include="WinThread.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Level1.txt" />
+    <Text Include="Libs\Librairies.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Libs\M_light.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

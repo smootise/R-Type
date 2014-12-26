@@ -77,9 +77,7 @@ bool			UDPWinServSocket::Receive_data(ClientMessage *recv_msg, ServerMessage *se
 	}
 	memcpy(recv_msg, (void *)buff, sizeof(ClientMessage));
 	recv_msg->has_been_read = false;
-	std::cout << "j'ai recu un message de :" << recv_msg->name << std::endl;
 	return (this->send_data(&client, send_msg));
-	return (true);
 }
 
 bool			UDPWinServSocket::send_data(struct sockaddr_in *target, ServerMessage *send_msg)
