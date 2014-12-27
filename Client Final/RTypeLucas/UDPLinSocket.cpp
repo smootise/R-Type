@@ -91,10 +91,6 @@ bool	UDPLinSocket::Receive_data(ServerMessage *recv_msg)
   if (recv_bytes != -1)
     {
       memcpy(recv_msg, (void *)buff, sizeof(ServerMessage));
-      std::cout << "Nom du j1: " << recv_msg->name[J1] << std::endl;
-      std::cout << "Nom du j2: " << recv_msg->name[J2] << std::endl;
-      std::cout << "Nom du j3: " << recv_msg->name[J3] << std::endl;
-      std::cout << "Nom du j4: " << recv_msg->name[J4] << std::endl;
     }
   return (true);
 }

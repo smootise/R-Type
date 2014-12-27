@@ -61,6 +61,8 @@ Gui::State	Gui::affGame(ServerMessage *_recv_msg, ClientMessage *_send_msg)
 			}
 			for (std::vector<IGameObject *>::iterator it = gObjects.begin(); it != gObjects.end(); it++)
 				((*it)->update((ret == true) ? &event : NULL, clock, _recv_msg, _send_msg));
+			if (!_recv_msg->has_been_read)
+				_recv_msg->has_been_read = true;
         }
         window.clear();
 		for (std::vector<IGameObject *>::iterator it = gObjects.begin(); it != gObjects.end(); it++)

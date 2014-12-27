@@ -42,10 +42,7 @@ IGameObject::State	AllyObject::update(sf::Event *event, const sf::Clock &clock, 
 		toDraw = true;
 	}
 	if (!_recv_msg->has_been_read)
-	{
 		setMovement(_recv_msg->direction[id], _recv_msg->posx[id], _recv_msg->posy[id]);
-		_recv_msg->has_been_read = true;
-	}
 	move(clock);
 	posX = (posX >= WIDTH - 99) ? WIDTH - 100 : posX;
 	posY = (posY >= LENGTH - 51) ? LENGTH - 52 : posY;

@@ -1,5 +1,5 @@
 #pragma once
-#include "hudwindow.hpp"
+#include "HudWindow.hpp"
 
 class HudTextField :
 	public HudWindow
