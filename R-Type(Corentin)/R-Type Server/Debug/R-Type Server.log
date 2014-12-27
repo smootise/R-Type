@@ -1,4 +1,4 @@
-﻿Build started 26/12/2014 22:01:18.
+﻿Build started 27/12/2014 15:39:23.
      1>Project "D:\Github\R-Type\R-Type(Corentin)\R-Type Server\R-Type Server.vcxproj" on node 2 (Build target(s)).
      1>Link:
          R-Type Server.vcxproj -> D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.exe
@@ -6,4 +6,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.04
+Time Elapsed 00:00:00.20
