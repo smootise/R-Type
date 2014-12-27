@@ -19,7 +19,7 @@ LinDllLoader::~LinDllLoader()
 void				LinDllLoader::loadfromfile(const std::string &filename)
 {
 	std::string		line;
-	std::ifstream	myfile(filename);
+	std::ifstream	myfile(filename.c_str());
 
 	if (myfile.is_open())
 	{
@@ -50,10 +50,12 @@ void				LinDllLoader::loadfromfile(const std::string &filename)
 AMonster	*LinDllLoader::get_instance(const std::string &type, int timing)
 {
 	AMonster	*(*external_creator)(int);
+	std::string	so(type);
 
-	if (_availlable_libs.count(type) != NULL)
+	so.append(".so");
+	if (_availlable_libs.count(so) > 0)
 	{
-		external_creator = reinterpret_cast<AMonster* (*)(int)>(dlsym(_availlable_libs[type], "create"));
+		external_creator = reinterpret_cast<AMonster* (*)(int)>(dlsym(_availlable_libs[so], "create"));
 		AMonster	*ret;
 
 		ret = external_creator(timing);

@@ -52,7 +52,7 @@ AMonster	*WinDllLoader::get_instance(const std::string &type, int timing)
 {
 	AMonster	*(*external_creator)(int);
 
-	if (_availlable_libs.count(type) != NULL)
+	if (_availlable_libs.count(type) > 0)
 	{
 		external_creator = reinterpret_cast<AMonster* (*)(int)>(GetProcAddress(_availlable_libs[type], "create"));
 		AMonster	*ret;
