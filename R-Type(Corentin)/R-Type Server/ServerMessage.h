@@ -1,12 +1,7 @@
 #pragma once
 
-enum monsters_type
-{
-	LIGHT,
-	MEDIUM,
-	HEAVY,
-	BOSS
-};
+//enum monster_type :
+// ==> AMonster.h
 
 enum shots_type
 {

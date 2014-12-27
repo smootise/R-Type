@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "M_boss.h"
 
-M_boss::M_boss(int time) : AMonster(time)
+M_boss::M_boss(int time) : AMonster(time, BOSS)
 {
 	std::cout << "Creation of a GOOD Monster" << std::endl;
 }
