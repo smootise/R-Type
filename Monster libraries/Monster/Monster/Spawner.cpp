@@ -42,7 +42,7 @@ bool Spawner::LoadMonsters(char *fileName)
 			{
 				timing = line.substr(line.find_first_of(":") + 1, 5);
 				type = line.substr(0, line.find_first_of(":"));
-				std::cout << "type :" << type << ", timing :" << timing << std::endl;
+				//std::cout << "type :" << type << ", timing :" << timing << std::endl;
 				if (_monster_creation.count(type) > 0)
 					(this->*_monster_creation[type])(timing.c_str());
 				else

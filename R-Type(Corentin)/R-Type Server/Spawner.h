@@ -8,6 +8,7 @@
 #include <fstream>
 
 #include "AMonster.h"
+#include "ServerMessage.h"
 #include "IDllLoader.h"
 
 class Spawner;
@@ -32,6 +33,6 @@ public:
 	~Spawner();
 
 	bool		LoadMonsters(const char *filename);
-	void		update();
+	void		update(float dtime, ServerMessage message);
 };
 

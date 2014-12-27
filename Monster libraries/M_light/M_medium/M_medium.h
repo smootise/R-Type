@@ -4,9 +4,14 @@
 
 class M_medium : public AMonster
 {
+private:
+	bool _going_up;
+	float _cd;
 public:
 	M_medium(int time);
 	~M_medium();
 
-	void			update();
+	void tryMove();
+	void tryShoot(float dtime);
+	void update(float dtime, ServerMessage message);
 };

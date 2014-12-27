@@ -12,7 +12,7 @@ M_boss::~M_boss()
 	std::cout << "Destruction of a Monster" << std::endl;
 }
 
-void M_boss::update()
+void M_boss::update(float dtime, ServerMessage message)
 {
 	std::cout << "udpate the monster" << std::endl;
 }

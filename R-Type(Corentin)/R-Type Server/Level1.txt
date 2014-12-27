@@ -12,4 +12,3 @@ heavy:500
 heavy:505
 heavy:510
 
-boss:770

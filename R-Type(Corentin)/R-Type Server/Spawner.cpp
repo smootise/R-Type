@@ -102,11 +102,11 @@ void Spawner::CreateBoss(const char *timing)
 }
 
 
-void Spawner::update()
+void Spawner::update(float dtime, ServerMessage message)
 {
 	for (unsigned int i = 0; i < _mobs.size(); ++i)
 	{
-		_mobs[i]->update();
+		_mobs[i]->update(dtime, message);
 		if (_mobs[i]->isDead() == true)
 		{
 			if (_mobs.size() == 1)

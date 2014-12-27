@@ -4,9 +4,15 @@
 
 class M_heavy : public AMonster
 {
+private:
+	float _cd;
+	int _target;
 public:
 	M_heavy(int time);
 	~M_heavy();
 
-	void			update();
+	void			update(float dtime, ServerMessage message);
+	void			tryMove(float dtime, float target_x, float target_y);
+	void			setTarget(float dtime, ServerMessage message);
+	void			tryShoot(float dtime, int i);
 };
