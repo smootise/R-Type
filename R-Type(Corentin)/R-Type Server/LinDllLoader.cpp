@@ -30,7 +30,7 @@ void				LinDllLoader::loadfromfile(const std::string &filename)
 			{
 				void				*lib = NULL;
 
-				lib = dlopen(line.append(".so").c_str(), RTD_LAZY); //on load la librairie
+				lib = dlopen(line.append(".so").c_str(), RTLD_LAZY); //on load la librairie
 				if (lib != NULL)
 				{
 					_availlable_libs[line] = lib;
