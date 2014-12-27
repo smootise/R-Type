@@ -33,6 +33,6 @@ public:
 	~Spawner();
 
 	bool		LoadMonsters(const char *filename);
-	void		update(float dtime, ServerMessage message);
+	void		update(float begintime, float dtime, ServerMessage *message);
 };
 

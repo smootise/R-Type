@@ -102,12 +102,15 @@ void Spawner::CreateBoss(const char *timing)
 }
 
 
-void Spawner::update(float dtime, ServerMessage message)
+void Spawner::update(float begintime, float dtime, ServerMessage *message)
 {
 	for (unsigned int i = 0; i < _mobs.size(); ++i)
 	{
-		_mobs[i]->update(dtime, message);
-		if (_mobs[i]->isDead() == true)
+		if ((begintime / 100000) >= _mobs[i]->get_time() && _mobs[i]->isAlive() == false) // s'il ne sont encor en vie
+			_mobs[i]->set_alive(true);
+		if (_mobs[i]->isAlive() == true) // si ils sont vivant
+			_mobs[i]->update(dtime, message);
+		if (_mobs[i]->isDead() == true) // si ils sont mort
 		{
 			if (_mobs.size() == 1)
 			{

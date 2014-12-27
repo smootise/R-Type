@@ -15,6 +15,8 @@ protected:
 	ClientMessage	*_recv_msg;
 	ServerMessage	*_send_msg;
 	Spawner			_spawner;
+	ClockObj		_diff_clock;
+	ClockObj		_start_clock;
 
 public:
 	WinThread(int port);

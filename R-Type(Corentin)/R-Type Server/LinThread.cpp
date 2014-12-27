@@ -39,6 +39,8 @@ bool	LinThread::run()
 {
   while (42)
     {
+	  _spawner.update(_start_clock.getElapsedTime(), _diff_clock.getElapsedTime(), _send_msg);
+	  _diff_clock.restart();
       _socket->Receive_data(_recv_msg, _send_msg);
       this->analyse_data();
     }

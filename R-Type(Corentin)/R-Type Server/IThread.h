@@ -11,6 +11,7 @@
 #include "Client.h"
 #include "ServerMessage.h"
 #include "Spawner.h"
+#include "ClockObj.h"
 
 class IThread
 {
