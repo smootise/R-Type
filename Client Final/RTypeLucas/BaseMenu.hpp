@@ -1,5 +1,5 @@
 #pragma once
-#include "Amenu.hpp"
+#include "AMenu.hpp"
 #include "LoginMenu.hpp"
 
 class BaseMenu :

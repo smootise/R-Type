@@ -142,6 +142,7 @@
     <ClCompile Include="LoginMenu.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Message.cpp" />
+    <ClCompile Include="MonstersObject.cpp" />
     <ClCompile Include="OLDmain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -157,6 +158,7 @@
     <ClCompile Include="TCPWinSocket.cpp" />
     <ClCompile Include="UDPLinSocket.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="UDPWinSocket.cpp" />
   </ItemGroup>
@@ -182,6 +184,7 @@
     <ClInclude Include="JoinRoomMenu.hpp" />
     <ClInclude Include="LoginMenu.hpp" />
     <ClInclude Include="Message.h" />
+    <ClInclude Include="MonstersObject.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomFirstMenu.hpp" />
