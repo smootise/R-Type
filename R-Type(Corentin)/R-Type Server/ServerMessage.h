@@ -16,6 +16,7 @@ struct ServerMessage
 	double	posy[4];
 	int		direction[4];
 
-	//additional data
+	//additional data 
 	char	add_info[4096];
+	bool	has_been_read;
 };

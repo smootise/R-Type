@@ -69,6 +69,7 @@
     <ClInclude Include="CircularBuff.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="ClientMessage.h" />
+    <ClInclude Include="ClockObj.h" />
     <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="IDllLoader.h" />
@@ -95,6 +96,7 @@
   <ItemGroup>
     <ClCompile Include="CircularBuff.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="ClockObj.cpp" />
     <ClCompile Include="CommandHandler.cpp" />
     <ClCompile Include="LinDllLoader.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

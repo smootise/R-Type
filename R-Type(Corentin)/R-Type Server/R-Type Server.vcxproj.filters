@@ -105,6 +105,9 @@
     <ClInclude Include="LinDllLoader.h">
       <Filter>Header Files\LinuxOnly</Filter>
     </ClInclude>
+    <ClInclude Include="ClockObj.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -157,6 +160,9 @@
     </ClCompile>
     <ClCompile Include="LinDllLoader.cpp">
       <Filter>Source Files\LinuxOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="ClockObj.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

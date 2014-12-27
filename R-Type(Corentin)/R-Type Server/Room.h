@@ -13,6 +13,7 @@ class Room
 protected:
 	std::string					_name;
 	std::vector<Client>			_people;
+	bool						_locked;
 
 public:
 	Room(std::string &name);
@@ -26,5 +27,8 @@ public:
 	//getters
 	const std::string		&Get_Name() const;
 	int						Get_Nb_People() const;
+
+	bool				is_locked() const;
+	void				set_locked(bool val);
 };
 

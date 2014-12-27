@@ -1,4 +1,4 @@
-﻿Build started 27/12/2014 15:39:34.
+﻿Build started 27/12/2014 18:51:25.
      1>Project "D:\Github\R-Type\pour corentin 24-12\RTypeLucas\RTypeLucas.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "x64\Debug\RTypeLucas.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -14,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.09
+Time Elapsed 00:00:00.06

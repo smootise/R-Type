@@ -68,11 +68,13 @@ void				CommandHandler::ReceiptGetRooms(Message &mess)
 	std::string		roomlist;
 
 	for (size_t i = 0; i < _rooms.size(); i++)
+	if (_rooms[i].is_locked() == false)
 	{
 		if (i != 0)
 			roomlist.append("|");
 		roomlist.append(_rooms.at(i).Get_Name().c_str());
 	}
+
 	int			len = roomlist.size();
 	char		*packet = new char[len + 1];
 
@@ -88,7 +90,8 @@ void				CommandHandler::ReceiptJoinRoom(Message &mess)
 	size_t			id;
 
 	for (size_t i = 0; i < _rooms.size(); i++)
-		if (_rooms[i].Get_Name() == wantedroom && _rooms[i].Get_Nb_People() < 4)
+		if (_rooms[i].Get_Name() == wantedroom && _rooms[i].Get_Nb_People() < 4 
+			&& _rooms[i].is_locked() == false)
 		{
 			ret = OK;
 			id = i;
@@ -195,6 +198,10 @@ void	CommandHandler::ReceiptStartGame(Message &mess)
   _writebuff.add_data(retmess);
   if (ret == OK)
     {
+	  //on lock sa room
+	  for (size_t i = 0; i < _rooms.size(); i++)
+		if (_rooms[i].Get_Name() == mess.get_client().get_room())
+			_rooms[i].set_locked(true);
 #ifdef _WIN32
       IThread		*T1 = new WinThread(_nextport);
       _beginthread(&WinThread::call_run, 0, T1);

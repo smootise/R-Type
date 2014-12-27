@@ -2,7 +2,7 @@
 
 
 Room::Room(std::string &name) :
-	_name(name)
+	_name(name), _locked(false)
 {
 
 }
@@ -104,4 +104,14 @@ int				Room::Get_Nb_People() const
 std::vector<Client>		&Room::get_people()
 {
 	return (_people);
+}
+
+bool				Room::is_locked() const
+{
+	return (_locked);
+}
+
+void				Room::set_locked(bool val)
+{
+	_locked = val;
 }
