@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "AMonster.h"
 
-AMonster::AMonster(int time, int type)
-: _timing(time), _type(type)
+AMonster::AMonster(int time, int type, int id)
+: _timing(time), _type(type), _id(id)
 {
 	_alive = false;
 	_dead = false;
@@ -42,22 +42,27 @@ void	AMonster::Die()
 	_alive = false;
 }
 
-int		AMonster::get_type()
+int		AMonster::get_type() const
 {
 	return (_type);
 }
 
-int		AMonster::get_pos_x()
+int		AMonster::get_pos_x() const
 {
 	return ((int)_x);
 }
 
-int		AMonster::get_pos_y()
+int		AMonster::get_pos_y() const
 {
 	return ((int)_y);
 }
 
-int		AMonster::get_direction()
+int		AMonster::get_direction() const
 {
 	return (_direction);
+}
+
+int		AMonster::get_id() const
+{
+	return (_id);
 }

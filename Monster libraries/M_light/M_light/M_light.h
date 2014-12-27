@@ -7,7 +7,7 @@ class M_light : public AMonster
 private:
 	int _target;
 public:
-	M_light(int time);
+	M_light(int time, int id);
 	~M_light();
 
 	void			update(float dtime, ServerMessage message);

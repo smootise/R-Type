@@ -47,18 +47,18 @@ void				LinDllLoader::loadfromfile(const std::string &filename)
 }
 
 //le nom envoyé doit correspondre a celui qui est dans le fichier a la lettre près !
-AMonster	*LinDllLoader::get_instance(const std::string &type, int timing)
+AMonster	*LinDllLoader::get_instance(const std::string &type, int timing, int id)
 {
-	AMonster	*(*external_creator)(int);
+	AMonster	*(*external_creator)(int, int);
 	std::string	so(type);
 
 	so.append(".so");
 	if (_availlable_libs.count(so) > 0)
 	{
-		external_creator = reinterpret_cast<AMonster* (*)(int)>(dlsym(_availlable_libs[so], "create"));
+		external_creator = reinterpret_cast<AMonster* (*)(int, int)>(dlsym(_availlable_libs[so], "create"));
 		AMonster	*ret;
 
-		ret = external_creator(timing);
+		ret = external_creator(timing, id);
 		return (ret);
 	}
 	else

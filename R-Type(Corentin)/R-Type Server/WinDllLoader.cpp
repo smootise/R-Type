@@ -48,16 +48,16 @@ void				WinDllLoader::loadfromfile(const std::string &filename)
 }
 
 //le nom envoyé doit correspondre a celui qui est dans le fichier a la lettre près !
-AMonster	*WinDllLoader::get_instance(const std::string &type, int timing)
+AMonster	*WinDllLoader::get_instance(const std::string &type, int timing, int id)
 {
-	AMonster	*(*external_creator)(int);
+	AMonster	*(*external_creator)(int, int);
 
 	if (_availlable_libs.count(type) > 0)
 	{
-		external_creator = reinterpret_cast<AMonster* (*)(int)>(GetProcAddress(_availlable_libs[type], "create"));
+		external_creator = reinterpret_cast<AMonster* (*)(int, int)>(GetProcAddress(_availlable_libs[type], "create"));
 		AMonster	*ret;
 
-		ret = external_creator(timing);
+		ret = external_creator(timing, id);
 		return (ret);
 	}
 	else

@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "M_light.h"
 
-M_light::M_light(int time) : AMonster(time, LIGHT)
+M_light::M_light(int time, int id) : AMonster(time, LIGHT, id)
 {
 	_target = -1;
 	std::cout << "Creation of a GOOD Monster" << std::endl;

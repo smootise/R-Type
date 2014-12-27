@@ -21,6 +21,7 @@ private:
 	std::vector<AMonster *>				_mobs;
 	std::map<std::string, FuncType>		_monster_creation;
 	IDllLoader							*_LibLoader;
+	int									_lowestid;
 
 protected:
 	void		CreateLight(const char *timing);

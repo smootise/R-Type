@@ -22,6 +22,7 @@ Spawner::Spawner()
 #endif
 
 	_LibLoader->loadfromfile("Libs/Librairies.txt");
+	_lowestid = 1;
 }
 
 Spawner::~Spawner()
@@ -69,7 +70,8 @@ void Spawner::CreateLight(const char *timing)
 {
 	AMonster	*ret = NULL;
 
-	ret = _LibLoader->get_instance("Libs/M_light", atoi(timing));
+	ret = _LibLoader->get_instance("Libs/M_light", atoi(timing), _lowestid);
+	_lowestid++;
 	if (ret != NULL)
 		_mobs.push_back(ret);
 }
@@ -78,7 +80,8 @@ void Spawner::CreateMedium(const char *timing)
 {
 	AMonster	*ret = NULL;
 
-	ret = _LibLoader->get_instance("Libs/M_medium", atoi(timing));
+	ret = _LibLoader->get_instance("Libs/M_medium", atoi(timing), _lowestid);
+	_lowestid++;
 	if (ret != NULL)
 		_mobs.push_back(ret);
 }
@@ -87,7 +90,8 @@ void Spawner::CreateHeavy(const char *timing)
 {
 	AMonster	*ret = NULL;
 
-	ret = _LibLoader->get_instance("Libs/M_heavy", atoi(timing));
+	ret = _LibLoader->get_instance("Libs/M_heavy", atoi(timing), _lowestid);
+	_lowestid++;
 	if (ret != NULL)
 		_mobs.push_back(ret);
 }
@@ -96,7 +100,8 @@ void Spawner::CreateBoss(const char *timing)
 {
 	AMonster	*ret = NULL;
 
-	ret = _LibLoader->get_instance("Libs/M_boss", atoi(timing));
+	ret = _LibLoader->get_instance("Libs/M_boss", atoi(timing), _lowestid);
+	_lowestid++;
 	if (ret != NULL)
 		_mobs.push_back(ret);
 }

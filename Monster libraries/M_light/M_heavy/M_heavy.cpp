@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "M_heavy.h"
 
-M_heavy::M_heavy(int time) : AMonster(time, HEAVY)
+M_heavy::M_heavy(int time, int id) : AMonster(time, HEAVY, id)
 {
 	std::cout << "Creation of a GOOD Monster" << std::endl;
 }

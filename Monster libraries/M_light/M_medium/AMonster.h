@@ -39,9 +39,10 @@ protected:
 	bool		_dead;
 	int			_type; // le type du monstre (t'occupe pas)
 	int			_direction; // la direction du monstre !
+	int			_id;
 
 public:
-	AMonster(int, int);
+	AMonster(int, int, int);
 	virtual ~AMonster();
 
 	virtual void	update(float dtime, ServerMessage *message) = 0;
@@ -50,7 +51,11 @@ public:
 	virtual bool	isDead();
 	virtual void	move(float x, float y);
 	virtual bool	set_alive(bool alive);
+	virtual int		get_pos_x() const;
+	virtual int		get_pos_y() const;
+	virtual int		get_direction() const;
 	virtual int		get_time() const;
 	virtual int		get_type() const;
+	virtual int		get_id() const;
 };
 

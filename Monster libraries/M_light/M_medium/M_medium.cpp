@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "M_medium.h"
 
-M_medium::M_medium(int time) : AMonster(time, MEDIUM)
+M_medium::M_medium(int time, int id) : AMonster(time, MEDIUM, id)
 {
 	//set les parametres Monsters;
 

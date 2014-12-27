@@ -8,7 +8,7 @@ private:
 	float _cd;
 	int _target;
 public:
-	M_heavy(int time);
+	M_heavy(int time, int id;
 	~M_heavy();
 
 	void			update(float dtime, ServerMessage message);

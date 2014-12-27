@@ -8,7 +8,7 @@ private:
 	bool _going_up;
 	float _cd;
 public:
-	M_medium(int time);
+	M_medium(int time, int id);
 	~M_medium();
 
 	void tryMove();
