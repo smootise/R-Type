@@ -30,6 +30,8 @@ bool		LinThread::start()
   memcpy(_send_msg->name[J3], name_default.c_str(), name_default.size());
   memcpy(_send_msg->name[J4], name_default.c_str(), name_default.size());
 
+  _send_msg->is_game_over = false;
+
   //we start at lvl1
   _spawner.LoadMonsters("Level1.txt");
   return (true);
@@ -37,14 +39,26 @@ bool		LinThread::start()
 
 bool	LinThread::run()
 {
-  while (42)
-    {
-	  _spawner.update(_start_clock.getElapsedTime(), _diff_clock.getElapsedTime(), _send_msg);
-	  _diff_clock.restart();
-      _socket->Receive_data(_recv_msg, _send_msg);
-      this->analyse_data();
-    }
-  return (false);
+	bool	first = false;
+
+	while (true)
+	{
+		if (_spawner.is_over() == false) // si on joue
+			_spawner.update(_start_clock.getElapsedTime(), _diff_clock.getElapsedTime(), _send_msg);
+		else // si c'est fini
+		{
+			if (first == false)
+			{
+				_start_clock.restart();
+				first = true;
+			}
+			else if ((_start_clock.getElapsedTime() / 1000000) > 10) // si ca fait plus de 10 secondes
+				return (false);
+		}
+		_diff_clock.restart();
+		_socket->Receive_data(_recv_msg, _send_msg);
+		this->analyse_data();
+	}
 }
 
 void	 *LinThread::call_run(void *ptr)

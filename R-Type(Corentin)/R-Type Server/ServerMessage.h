@@ -57,4 +57,5 @@ struct ServerMessage
 
 	//used client side only
 	bool	has_been_read;
+	bool	is_game_over;
 };

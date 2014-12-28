@@ -1,14 +1,14 @@
 #type:timing d'apparition
 
-light:25
-light:30
-light:35
+#light:5
+#light:10
+#light:15
 
-medium:240
-medium:245
-medium:250
+medium:3
+medium:4
+medium:5
 
-heavy:500
-heavy:505
-heavy:510
+heavy:100
+heavy:120
+heavy:140
 

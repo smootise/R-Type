@@ -22,6 +22,8 @@ private:
 	std::map<std::string, FuncType>		_monster_creation;
 	IDllLoader							*_LibLoader;
 	int									_lowestid;
+	int									_level;
+	bool								_over;
 
 protected:
 	void		CreateLight(const char *timing);
@@ -35,5 +37,8 @@ public:
 
 	bool		LoadMonsters(const char *filename);
 	void		update(float begintime, float dtime, ServerMessage *message);
+	void		write_mobs(ServerMessage *message);
+	bool		is_over() const;
+	void		set_over(bool over, ServerMessage *mess);
 };
 

@@ -8,7 +8,7 @@
 #endif
 
 
-Spawner::Spawner()
+Spawner::Spawner() : _level(1), _over(false)
 {
 	_monster_creation["light"] = &Spawner::CreateLight;
 	_monster_creation["medium"] = &Spawner::CreateMedium;
@@ -109,10 +109,25 @@ void Spawner::CreateBoss(const char *timing)
 
 void Spawner::update(float begintime, float dtime, ServerMessage *message)
 {
+	//on check si tous les mobs du lvl sont finis et si oui on quit
+	if (_mobs.size() == 0)
+	{
+		if (_level == 1)
+			this->LoadMonsters("Level2.txt");
+		else if (_level == 2)
+			this->LoadMonsters("Level3.txt");
+		else
+			this->set_over(true, message);
+		_level++;
+	}
+
 	for (unsigned int i = 0; i < _mobs.size(); ++i)
 	{
-		if ((begintime / 100000) >= _mobs[i]->get_time() && _mobs[i]->isAlive() == false) // s'il ne sont encor en vie
+		if ((begintime / 1000000) >= _mobs[i]->get_time() && _mobs[i]->isAlive() == false) // s'il ne sont encor en vie
+		{
 			_mobs[i]->set_alive(true);
+			std::cout << "je mets un mob alive" << std::endl;
+		}
 		if (_mobs[i]->isAlive() == true) // si ils sont vivant
 			_mobs[i]->update(dtime, message);
 		if (_mobs[i]->isDead() == true) // si ils sont mort
@@ -126,4 +141,39 @@ void Spawner::update(float begintime, float dtime, ServerMessage *message)
 			_mobs.erase(_mobs.begin() + i);
 		}
 	}
+	this->write_mobs(message);
+}
+
+void	Spawner::write_mobs(ServerMessage *message)
+{
+	int		count = 0;
+	// on mets tous les champs a -1
+	for (size_t i = 0; i < 30; i++)
+		for (size_t j = 0; j < 6; j++)
+			message->monsters[i][j] = -1;
+
+	for (unsigned int i = 0; i < _mobs.size(); ++i)
+	{
+		if (_mobs[i]->isAlive() == true) // pour chaque mob en vie on write ses infos
+		{
+			message->monsters[count][TYPE] = _mobs[i]->get_type();
+			message->monsters[count][ID] = _mobs[i]->get_id();
+			message->monsters[count][POS_X] = _mobs[i]->get_pos_x();
+			message->monsters[count][POS_Y] = _mobs[i]->get_pos_y();
+			message->monsters[count][DIRECTION] = _mobs[i]->get_direction();
+			//message->monsters[count][HP] = _mobs[i]->get_hp(); => a faire plus tard
+			count++;
+		}
+	}
+}
+
+bool	Spawner::is_over() const
+{
+	return (_over);
+}
+
+void	Spawner::set_over(bool over, ServerMessage *mess)
+{
+	_over = over;
+	mess->is_game_over = true;
 }
