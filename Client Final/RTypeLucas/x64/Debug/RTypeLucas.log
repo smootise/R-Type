@@ -1,12 +1,20 @@
-﻿Build started 28/12/2014 11:33:31.
+﻿Build started 28/12/2014 13:33:25.
      1>Project "F:\GIT\R-Type\Client Final\RTypeLucas\RTypeLucas.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Touching "x64\Debug\RTypeLucas.unsuccessfulbuild".
+         Creating "x64\Debug\RTypeLucas.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"E:\Sfml\SFML-2.1-windows-vc10-64bits\SFML-2.1\include" /Zi /nologo /W3 /WX- /Od /D SFML_STATIC /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt MonsterEntity.cpp
-         MonsterEntity.cpp
-     1>MonsterEntity.cpp(43): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>MonsterEntity.cpp(43): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"E:\Sfml\SFML-2.1-windows-vc10-64bits\SFML-2.1\include" /Zi /nologo /W3 /WX- /Od /D SFML_STATIC /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt Gui.cpp ShotEntity.cpp ShotsObject.cpp
+         ShotsObject.cpp
+         ShotEntity.cpp
+     1>ShotEntity.cpp(62): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>ShotEntity.cpp(63): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>ShotEntity.cpp(64): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>ShotEntity.cpp(65): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+         Generating Code...
+         Compiling...
+         Gui.cpp
+         Generating Code...
+     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"F:\GIT\R-Type\Client Final\RTypeLucas\x64\Debug\RTypeLucas.exe" /NOLOGO /LIBPATH:"E:\Sfml\SFML-2.1-windows-vc10-64bits\SFML-2.1\lib" "sfml-graphics-s-d.lib" "sfml-window-s-d.lib" "sfml-system-s-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Debug\RTypeLucas.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\GIT\R-Type\Client Final\RTypeLucas\x64\Debug\RTypeLucas.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\GIT\R-Type\Client Final\RTypeLucas\x64\Debug\RTypeLucas.lib" /MACHINE:X64 x64\Debug\AllyObject.obj
          x64\Debug\AMenu.obj
@@ -31,6 +39,8 @@
          x64\Debug\RoomFirstMenu.obj
          x64\Debug\ScrollingBg.obj
          x64\Debug\Selector.obj
+         x64\Debug\ShotEntity.obj
+         x64\Debug\ShotsObject.obj
          x64\Debug\TCPWinSocket.obj
          x64\Debug\UDPWinSocket.obj
          LINK : F:\GIT\R-Type\Client Final\RTypeLucas\x64\Debug\RTypeLucas.exe not found or not built by the last incremental link; performing full link
@@ -88,4 +98,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.73
+Time Elapsed 00:00:03.43

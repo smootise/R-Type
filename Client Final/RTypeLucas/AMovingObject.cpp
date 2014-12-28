@@ -37,10 +37,6 @@ void	AMovingObject::move(const sf::Clock &clock)
 	float	dist;
 
 	dist = clock.getElapsedTime().asMicroseconds() * speed;
-	if (direction != 5)
-	{
-		//std::cout << dist << ":" << clock.getElapsedTime().asMicroseconds() << std::endl;
-	}
 	if (direction % 2 == 1)
 		dist /= 1.4f;
 	if (direction >= 7)

@@ -4,6 +4,7 @@
 #include "HeroObject.hpp"
 #include "AllyObject.hpp"
 #include "MonstersObject.hpp"
+#include "ShotsObject.hpp"
 
 Gui::Gui(void)
 {
@@ -41,6 +42,7 @@ bool	Gui::loadGame()
 	gObjects.push_back(new AllyObject(2));
 	gObjects.push_back(new AllyObject(3));
 	gObjects.push_back(new MonstersObject());
+	gObjects.push_back(new ShotsObject());
 	for (std::vector<IGameObject *>::iterator it = gObjects.begin(); it != gObjects.end(); it++)
 		if (!(*it)->init())
 		return (false);

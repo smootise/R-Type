@@ -154,6 +154,8 @@
     <ClCompile Include="RoomFirstMenu.cpp" />
     <ClCompile Include="ScrollingBg.cpp" />
     <ClCompile Include="Selector.cpp" />
+    <ClCompile Include="ShotEntity.cpp" />
+    <ClCompile Include="ShotsObject.cpp" />
     <ClCompile Include="TCPLinSocket.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -195,6 +197,8 @@
     <ClInclude Include="ScrollingBg.hpp" />
     <ClInclude Include="Selector.h" />
     <ClInclude Include="ServerMessage.h" />
+    <ClInclude Include="ShotEntity.hpp" />
+    <ClInclude Include="ShotsObject.hpp" />
     <ClInclude Include="TCPLinSocket.h" />
     <ClInclude Include="TCPWinSocket.h" />
     <ClInclude Include="UDPLinSocket.h" />
