@@ -7,7 +7,7 @@ M_heavy::M_heavy(int time, int id) : AMonster(time, HEAVY, id)
 	_speed = 0.001f;
 	_health = 9;
 	_dmg = 1;
-	_fire_rate = 2.0f;
+	_fire_rate = 2000000;
 	_size = 96;
 	_cd = _fire_rate;
 	_target = -1;
@@ -23,7 +23,7 @@ void M_heavy::update(float dtime, ServerMessage *message, std::vector<Shots> &sh
 {
 	setTarget(dtime, message);
 	tryMove(dtime, message->posx[_target], message->posy[_target], shots, lowestshotid);
-	setMovement(_direction, _x, _y);
+	//setMovement(_direction, _x, _y);
 	move(dtime);
 }
 
@@ -50,9 +50,13 @@ void M_heavy::tryMove(float dtime, float target_x, float target_y, std::vector<S
 	else
 	{
 		_direction = Default;
-		tryShoot(dtime, 0, shots, lowestshotid);
+		if (_cd <= 0)
+		{
+			this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
+			_cd = _fire_rate;
+		}	
 	}
-	tryShoot(dtime, 1, shots, lowestshotid);
+	_cd -= dtime;
 }
 
 void M_heavy::tryShoot(float dtime, int i, std::vector<Shots> &shots, int *lowestshotid)

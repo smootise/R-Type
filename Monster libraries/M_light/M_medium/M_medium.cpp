@@ -7,10 +7,10 @@ M_medium::M_medium(int time, int id) : AMonster(time, MEDIUM, id)
 	_speed = 0.001f;
 	_health = 6;
 	_dmg = 1;
-	_fire_rate = 1.0f;
+	_fire_rate = 1000000;
 	_size = 94;
 	_going_up = true;
-	_cd = _fire_rate;
+	_cd = 0;
 	setPosition(time);
 }
 
@@ -23,7 +23,7 @@ void M_medium::update(float dtime, ServerMessage *message, std::vector<Shots> &s
 {
 	tryMove();
 	tryShoot(dtime, shots, lowestshotid);
-	setMovement(_direction, _x, _y);
+	//setMovement(_direction, _x, _y);
 	move(dtime);
 }
 

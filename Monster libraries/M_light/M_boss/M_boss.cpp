@@ -7,7 +7,7 @@ M_boss::M_boss(int time, int id) : AMonster(time, BOSS, id)
 	_speed = 0.001f;
 	_health = 30;
 	_dmg = 3;
-	_fire_rate = 1.0f;
+	_fire_rate = 1000000;
 	_size = 192;
 	_walking = true;
 	_shot = 0;
