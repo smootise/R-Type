@@ -1,4 +1,4 @@
-﻿Build started 28/12/2014 17:46:17.
+﻿Build started 28/12/2014 17:56:22.
      1>Project "C:\Users\theo\Documents\R-Type\Monster libraries\M_light\M_boss\M_boss.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\M_boss.lastbuildstate".
@@ -38,4 +38,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.90
+Time Elapsed 00:00:02.88

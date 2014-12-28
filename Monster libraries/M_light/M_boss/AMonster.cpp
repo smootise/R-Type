@@ -18,7 +18,9 @@ void	AMonster::shoot(std::vector<Shots> &shots, int *lowestshotid, float dir_x, 
 	Shots		newshot(*lowestshotid, ENEMI, _dmg, _x - (_size / 2), _y -(_size / 2 - 7), dir_x, dir_y);   
 
 	(*lowestshotid)++;
+	std::cout << "apres avoir crée l'objet" << std::endl;
 	shots.push_back(newshot);
+	std::cout << "apres avoir push back" << std::endl;
 }
 
 void	AMonster::setMovement(int param, float startingX, float startingY)
