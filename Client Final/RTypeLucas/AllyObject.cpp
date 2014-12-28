@@ -36,6 +36,8 @@ IGameObject::State	AllyObject::update(sf::Event *event, const sf::Clock &clock, 
 {
 	if (!toDraw)
 	{
+		if (_recv_msg->has_been_read)
+			return (IGameObject::Default);
 		std::string	tmp(_recv_msg->name[id]);
 		if (tmp == "DefaultName" || tmp == "")
 			return (IGameObject::Default);

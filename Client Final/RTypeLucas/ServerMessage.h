@@ -2,38 +2,38 @@
 
 enum monsters_type
 {
-	light,
-	medium,
-	heavy,
-	boss
+	LIGHT,
+	MEDIUM,
+	HEAVY,
+	BOSS
 };
 
 enum shots_type
 {
-	ally,
-	enemi,
+	ALLY,
+	ENEMI,
 };
 
 //this one is used for monsters and shots
 enum info
 {
-	type,
-	id,
-	pos_x,
-	pos_y,
+	TYPE,
+	ID,
+	POS_X,
+	POS_Y,
 };
 
 //this one is for monsters
 enum monsters
 {
-	direction = 4,
-	hp,
+	DIRECTION = 4,
+	HP,
 };
 
 enum shots
 {
-	dir_x = 4,
-	dir_y,
+	DIR_X = 4,
+	DIR_Y,
 };
 
 
@@ -62,4 +62,6 @@ struct ServerMessage
 
 	//used client side only
 	bool	has_been_read;
+
+	bool is_game_over;
 };

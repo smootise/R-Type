@@ -1,7 +1,10 @@
 #include "MonstersObject.hpp"
+#include <iostream>
 
 MonstersObject::MonstersObject(void)
 {
+	inited = false;
+	tabMob.resize(0);
 }
 
 
@@ -14,24 +17,28 @@ bool	MonstersObject::init()
 {
 	if (inited)
 		return true;
-	if (!tabTexture["Light"].loadFromFile("r-typesheet42custom.gif", sf::IntRect(0, 0, 33, 17)))
-		return false;
-		/*
-	if (!texture->loadFromFile("r-typesheet42custom.gif", sf::IntRect(0, id * 17, 33, 17)))
-		return false;
-	spriteBase.setTexture(*texture);
-	spriteBase.setScale(3.0f, 3.0f);
-	*/
+	MonsterEntity	*tmp;
+	for (unsigned int i = 0; i < 30; i++)
+	{
+		tmp = new MonsterEntity(i);
+		tabMob.push_back(tmp);
+		if (!tabMob[i]->init())
+			return (false);
+	}
 	inited = true;
 	return true;
 }
 
-IGameObject::State	MonstersObject::update(sf::Event *, const sf::Clock &, ServerMessage *, ClientMessage *)
+IGameObject::State	MonstersObject::update(sf::Event *event, const sf::Clock &clock, ServerMessage *_recv_msg, ClientMessage *_send_msg)
 {
-
+	for (std::vector<MonsterEntity *>::iterator it = tabMob.begin(); it != tabMob.end(); it++)
+		(*it)->update(event, clock, _recv_msg, _send_msg);
+	return (IGameObject::Default);
 }
 
-IGameObject::State	MonstersObject::draw(sf::RenderWindow &)
+IGameObject::State	MonstersObject::draw(sf::RenderWindow &window)
 {
-
+	for (std::vector<MonsterEntity *>::iterator it = tabMob.begin(); it != tabMob.end(); it++)
+		(*it)->draw(window);
+	return (IGameObject::Default);
 }

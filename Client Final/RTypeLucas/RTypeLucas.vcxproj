@@ -142,7 +142,10 @@
     <ClCompile Include="LoginMenu.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Message.cpp" />
-    <ClCompile Include="MonstersObject.cpp" />
+    <ClCompile Include="MonsterEntity.cpp" />
+    <ClCompile Include="MonstersObject.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="OLDmain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -184,6 +187,7 @@
     <ClInclude Include="JoinRoomMenu.hpp" />
     <ClInclude Include="LoginMenu.hpp" />
     <ClInclude Include="Message.h" />
+    <ClInclude Include="MonsterEntity.hpp" />
     <ClInclude Include="MonstersObject.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Room.h" />
