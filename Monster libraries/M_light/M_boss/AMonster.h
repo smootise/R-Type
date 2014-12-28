@@ -51,6 +51,7 @@ public:
 	virtual bool	isDead();
 	virtual void	setMovement(int param, float pos_x, float pos_y);
 	virtual void	move(float dtime);
+	virtual bool	checkCollision(int size, float posx, float posy);
 	virtual void	set_alive(bool alive);
 	virtual int		get_pos_x() const;
 	virtual int		get_pos_y() const;

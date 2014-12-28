@@ -49,6 +49,22 @@ void	AMonster::move(float dtime)
 	_y = (_y < 0) ? 0 : (_y >= 540) ? 540 - 1 : _y;
 }
 
+bool AMonster::checkCollision(int s, float posx, float posy)
+{
+	float size;
+
+	size = (float)s;
+	if (_x > posx + size)
+		return (false);
+	if (_y > posy + size)
+		return (false);
+	if (_x + _size < posx)
+		return (false);
+	if (_y + _size < posy)
+		return (false);
+	return (true);
+}
+
 void AMonster::set_alive(bool alive)
 {
 	_alive = alive;
