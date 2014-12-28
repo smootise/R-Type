@@ -20,7 +20,7 @@ public:
 	ShotEntity(int);
 	~ShotEntity(void);
 	virtual	bool	init();
-	virtual	bool	ShotEntity::init(sf::Texture *, sf::Texture *);
+	virtual	bool	init(sf::Texture *, sf::Texture *);
 	virtual State	update(sf::Event *, const sf::Clock &, ServerMessage *, ClientMessage *);
 	virtual State	draw(sf::RenderWindow &);
 };
