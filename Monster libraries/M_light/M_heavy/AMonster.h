@@ -53,6 +53,8 @@ public:
 	virtual void	move(float dtime);
 	virtual bool	checkCollision(int size, float posx, float posy);
 	virtual void	set_alive(bool alive);
+	virtual void	hitme(int degats);
+	virtual int		get_health() const;
 	virtual int		get_pos_x() const;
 	virtual int		get_pos_y() const;
 	virtual int		get_direction() const;

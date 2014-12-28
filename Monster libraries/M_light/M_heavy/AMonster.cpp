@@ -65,6 +65,14 @@ bool AMonster::checkCollision(int s, float posx, float posy)
 	return (true);
 }
 
+void AMonster::hitme(int dps)
+{
+	_health -= dps;
+	if (_health <= 0)
+		Die();
+}
+
+
 void AMonster::set_alive(bool alive)
 {
 	_alive = alive;
@@ -86,6 +94,11 @@ void	AMonster::Die()
 {
 	_dead = true;
 	_alive = false;
+}
+
+int		AMonster::get_health() const
+{
+	return (_health);
 }
 
 int		AMonster::get_time() const

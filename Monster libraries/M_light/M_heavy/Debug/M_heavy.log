@@ -1,18 +1,18 @@
-﻿Build started 28/12/2014 13:49:57.
+﻿Build started 28/12/2014 15:03:41.
      1>Project "C:\Users\theo\Documents\R-Type\Monster libraries\M_light\M_heavy\M_heavy.vcxproj" on node 3 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\M_heavy.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_HEAVY_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\M_heavy.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
-         stdafx.cpp
+         All outputs are up-to-date.
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_HEAVY_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\M_heavy.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AMonster.cpp M_heavy.cpp
+         AMonster.cpp
+         Generating Code...
+         Compiling...
          M_heavy.cpp
      1>c:\users\theo\documents\r-type\monster libraries\m_light\m_heavy\m_heavy.cpp(25): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\theo\documents\r-type\monster libraries\m_light\m_heavy\m_heavy.cpp(25): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-         AMonster.cpp
          Generating Code...
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_HEAVY_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt dllmain.cpp
-         dllmain.cpp
+         All outputs are up-to-date.
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\theo\Documents\R-Type\Monster libraries\M_light\Debug\M_heavy.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\M_heavy.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\theo\Documents\R-Type\Monster libraries\M_light\Debug\M_heavy.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\theo\Documents\R-Type\Monster libraries\M_light\Debug\M_heavy.lib" /MACHINE:X86 /DLL Debug\AMonster.obj
          Debug\dllmain.obj
@@ -30,4 +30,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.36
+Time Elapsed 00:00:01.80
