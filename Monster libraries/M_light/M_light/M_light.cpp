@@ -9,9 +9,8 @@ M_light::M_light(int time, int id) : AMonster(time, LIGHT, id)
 	_health = 1;
 	_dmg = 1;
 	_fire_rate = 0;
-	//_size = ;
+	_size = 100;
 	setPosition(time);
-	std::cout << "Creation of a GOOD Monster" << std::endl;
 }
 
 M_light::~M_light()
@@ -21,7 +20,6 @@ M_light::~M_light()
 
 void M_light::update(float dtime, ServerMessage *message)
 {
-	std::cout << "udpate the monster" << std::endl;
 	setTarget(dtime, message);
 	tryMove(message->posx[_target], message->posy[_target]);
 }
@@ -30,25 +28,29 @@ void M_light::setPosition(int time)
 {
 	if (time % 2 == 0)
 	{
-		_x = 500;
-		_y = 20;
+		_x = 960 - _size;
+		_y = 0;
 	}
 	else
 	{
-		_x = 500;
-		_y = 120;
+		_x = 960 - _size;
+		_y = 540 - _size;
 	}
 }
 
 void M_light::setTarget(float dtime, ServerMessage *message)
 {
-	if (_target != -1 && message->name[_target] != "DefaultName")
+	std::string target_name(message->name[_target]);
+	std::string default_name("DefaultName");
+
+	if (_target != -1 && target_name != default_name)
 		return ;
 	if ((int)(dtime * 100) % 2 == 0)
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			if (message->name[i] != "DefaultName")
+			std::string name(message->name[i]);
+			if (name != default_name)
 			{
 				_target = i;
 				return ;
@@ -59,7 +61,8 @@ void M_light::setTarget(float dtime, ServerMessage *message)
 	{
 			for (int i = 3; i >= 0; i--)
 		{
-			if (message->name[i] != "DefaultName")
+			std::string name(message->name[i]);
+			if (name != default_name)
 			{
 				_target = i;
 				return ;

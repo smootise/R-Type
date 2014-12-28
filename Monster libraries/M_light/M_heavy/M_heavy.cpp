@@ -8,11 +8,10 @@ M_heavy::M_heavy(int time, int id) : AMonster(time, HEAVY, id)
 	_health = 3;
 	_dmg = 1;
 	_fire_rate = 2.0f;
-	//_size = ;
+	_size = 100;
 	_cd = _fire_rate;
 	_target = -1;
 	setPosition(time);
-	std::cout << "Creation of a GOOD Monster" << std::endl;
 }
 
 M_heavy::~M_heavy()
@@ -22,7 +21,6 @@ M_heavy::~M_heavy()
 
 void M_heavy::update(float dtime, ServerMessage *message)
 {
-	std::cout << "udpate the monster" << std::endl;
 	setTarget(dtime, message);
 	tryMove(dtime, message->posx[_target], message->posy[_target]);
 }
@@ -31,21 +29,21 @@ void M_heavy::setPosition(int time)
 {
 	if (time % 2 == 0)
 	{
-		_x = 500;
-		_y = 20;
+		_x = 960 - _size;
+		_y = 0;
 	}
 	else
 	{
-		_x = 500;
-		_y = 120;
+		_x = 960 - _size;
+		_y = 540 - _size;
 	}
 }
 
 void M_heavy::tryMove(float dtime, float target_x, float target_y)
 {
-	if (target_y > _y)
+	if (target_y > _y && _y < 540 - _size)
 		_direction = Bot;
-	else if (target_y < _y)
+	else if (target_y < _y && _y > 0)
 		_direction = Up;
 	else
 	{
@@ -68,13 +66,17 @@ void M_heavy::tryShoot(float dtime, int i)
 
 void M_heavy::setTarget(float dtime, ServerMessage *message)
 {
-	if (_target != -1 && message->name[_target] != "DefaultName")
+	std::string target_name(message->name[_target]);
+	std::string default_name("DefaultName");
+
+	if (_target != -1 && target_name != default_name)
 		return ;
 	if ((int)(dtime * 100) % 2 == 0)
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			if (message->name[i] != "DefaultName")
+			std::string name(message->name[i]);
+			if (name != default_name)
 			{
 				_target = i;
 				return ;
@@ -85,7 +87,8 @@ void M_heavy::setTarget(float dtime, ServerMessage *message)
 	{
 			for (int i = 3; i >= 0; i--)
 		{
-			if (message->name[i] != "DefaultName")
+			std::string name(message->name[i]);
+			if (name != default_name)
 			{
 				_target = i;
 				return ;
