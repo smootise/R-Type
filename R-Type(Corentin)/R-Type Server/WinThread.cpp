@@ -85,6 +85,9 @@ void				WinThread::analyse_data()
 			_send_msg->direction[i] = _recv_msg->direction;
 			_send_msg->posx[i] = _recv_msg->posx;
 			_send_msg->posy[i] = _recv_msg->posy;
+			//if (_recv_msg->current_coldown < _send_msg->current_cd[i])
+				//shots fired !
+			_send_msg->current_cd[i] = _recv_msg->current_coldown;
 			return ;
 		}
 	//s'il n'existe pas on l'ajoute

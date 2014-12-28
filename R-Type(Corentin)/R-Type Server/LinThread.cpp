@@ -83,21 +83,24 @@ void			LinThread::analyse_data()
   for (size_t i = J1; i <= J4; i++)
     if (sendername == std::string(_send_msg->name[i]))
       {
-	_send_msg->direction[i] = _recv_msg->direction;
-	_send_msg->posx[i] = _recv_msg->posx;
-	_send_msg->posy[i] = _recv_msg->posy;
-	return ;
+		_send_msg->direction[i] = _recv_msg->direction;
+		_send_msg->posx[i] = _recv_msg->posx;
+		_send_msg->posy[i] = _recv_msg->posy;
+		//if (_recv_msg->current_coldown < _send_msg->current_cd[i])
+		//shots fired !
+		_send_msg->current_cd[i] = _recv_msg->current_coldown;
+		return ;
       }
   //s'il n'existe pas on l'ajoute
   for (size_t i = J1; i <= J4; i++)
     if (defaultname == std::string(_send_msg->name[i]))
       {
-	memset(_send_msg->name[i], '\0', 256);
-	memcpy(_send_msg->name[i], sendername.c_str(), sendername.size());
-	_send_msg->direction[i] = _recv_msg->direction;
-	_send_msg->posx[i] = _recv_msg->posx;
-	_send_msg->posy[i] = _recv_msg->posy;
-	return;
+		memset(_send_msg->name[i], '\0', 256);
+		memcpy(_send_msg->name[i], sendername.c_str(), sendername.size());
+		_send_msg->direction[i] = _recv_msg->direction;
+		_send_msg->posx[i] = _recv_msg->posx;
+		_send_msg->posy[i] = _recv_msg->posy;
+		return;
       }
   std::cerr << "Corrupted messsage received (3)" << std::endl;
 }

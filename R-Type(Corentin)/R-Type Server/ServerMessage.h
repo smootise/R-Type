@@ -48,6 +48,7 @@ struct ServerMessage
 	double	posx[4];
 	double	posy[4];
 	int		direction[4];
+	double	current_cd[4];
 
 	//monsters data
 	int		monsters[30][6];

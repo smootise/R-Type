@@ -1,14 +1,16 @@
-﻿Build started 28/12/2014 11:55:33.
+﻿Build started 28/12/2014 12:38:52.
      1>Project "D:\Github\R-Type\R-Type(Corentin)\R-Type Server\R-Type Server.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Work\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CommandHandler.cpp Server.cpp Spawner.cpp UDPWinServSocket.cpp WinDllLoader.cpp WinThread.cpp main.cpp
-         UDPWinServSocket.cpp
+         WinThread.cpp
+         Generating Code...
+         Compiling...
          Spawner.cpp
          Generating Code...
          Skipping... (no relevant changes detected)
          main.cpp
-         WinThread.cpp
          WinDllLoader.cpp
+         UDPWinServSocket.cpp
          Server.cpp
          CommandHandler.cpp
        Link:
@@ -31,4 +33,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.84
+Time Elapsed 00:00:03.54
