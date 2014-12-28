@@ -22,6 +22,8 @@ void M_light::update(float dtime, ServerMessage *message)
 {
 	setTarget(dtime, message);
 	tryMove(message->posx[_target], message->posy[_target]);
+	setMovement(_direction, _x, _y);
+	move(dtime);
 }
 
 void M_light::setPosition(int time)

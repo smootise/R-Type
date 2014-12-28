@@ -23,6 +23,8 @@ void M_medium::update(float dtime, ServerMessage *message)
 {
 	tryMove();
 	tryShoot(dtime);
+	setMovement(_direction, _x, _y);
+	move(dtime);
 }
 
 void M_medium::setPosition(int time)
@@ -44,14 +46,22 @@ void M_medium::tryMove()
 	if (_going_up == true)
 	{
 		if (_y <= 0)
+		{
 			_going_up = false;
+			_direction = Bot;
+		}
 		else
+		{
 			_direction = Up;
+		}
 	}
 	else
 	{
 		if (_y >= 540 - _size)
+		{
 			_going_up = true;
+			_direction = Up;
+		}
 		else
 			_direction = Bot;
 	}
