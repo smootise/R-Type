@@ -17,6 +17,7 @@ void	AMonster::shoot(std::vector<Shots> &shots, int *lowestshotid, float dir_x, 
 {
 	Shots		newshot(*lowestshotid, ENEMI, _dmg, _x - (_size / 2), _y -(_size / 2 - 7), dir_x, dir_y);   
 
+	(*lowestshotid)++;
 	shots.push_back(newshot);
 }
 

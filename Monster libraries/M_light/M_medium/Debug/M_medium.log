@@ -1,12 +1,25 @@
-﻿Build started 28/12/2014 17:33:57.
-     1>Project "C:\Users\theo\Documents\R-Type\Monster libraries\M_light\M_medium\M_medium.vcxproj" on node 4 (build target(s)).
-     1>InitializeBuildStatus:
+﻿Build started 28/12/2014 17:46:17.
+     1>Project "C:\Users\theo\Documents\R-Type\Monster libraries\M_light\M_medium\M_medium.vcxproj" on node 4 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Debug\M_medium.lastbuildstate".
+       InitializeBuildStatus:
          Creating "Debug\M_medium.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         All outputs are up-to-date.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_MEDIUM_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\M_medium.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt M_medium.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_MEDIUM_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\M_medium.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_MEDIUM_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\M_medium.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AMonster.cpp M_medium.cpp Shots.cpp
+         Shots.cpp
+     1>c:\users\theo\documents\r-type\monster libraries\m_light\m_medium\shots.cpp(8): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\theo\documents\r-type\monster libraries\m_light\m_medium\shots.cpp(8): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\theo\documents\r-type\monster libraries\m_light\m_medium\shots.cpp(44): warning C4244: 'return' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\theo\documents\r-type\monster libraries\m_light\m_medium\shots.cpp(49): warning C4244: 'return' : conversion from 'const float' to 'int', possible loss of data
          M_medium.cpp
-         All outputs are up-to-date.
+         AMonster.cpp
+     1>c:\users\theo\documents\r-type\monster libraries\m_light\m_medium\amonster.cpp(18): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\theo\documents\r-type\monster libraries\m_light\m_medium\amonster.cpp(18): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_MEDIUM_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt dllmain.cpp
+         dllmain.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\theo\Documents\R-Type\Monster libraries\M_light\Debug\M_medium.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\M_medium.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\theo\Documents\R-Type\Monster libraries\M_light\Debug\M_medium.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\theo\Documents\R-Type\Monster libraries\M_light\Debug\M_medium.lib" /MACHINE:X86 /DLL Debug\AMonster.obj
          Debug\dllmain.obj
@@ -21,8 +34,8 @@
        FinalizeBuildStatus:
          Deleting file "Debug\M_medium.unsuccessfulbuild".
          Touching "Debug\M_medium.lastbuildstate".
-     1>Done Building Project "C:\Users\theo\Documents\R-Type\Monster libraries\M_light\M_medium\M_medium.vcxproj" (build target(s)).
+     1>Done Building Project "C:\Users\theo\Documents\R-Type\Monster libraries\M_light\M_medium\M_medium.vcxproj" (rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.73
+Time Elapsed 00:00:02.83
