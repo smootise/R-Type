@@ -1,0 +1,25 @@
+#type:timing d'apparition
+
+
+
+light:13
+light:14
+light:15
+
+medium:10
+medium:11
+medium:12
+
+light:15
+light:16
+light:17
+light:18
+light:19
+light:20
+
+medium:16
+medium:17
+
+heavy:13
+
+boss:16

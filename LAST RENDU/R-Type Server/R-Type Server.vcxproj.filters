@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\LinuxOnly">
+      <UniqueIdentifier>{9f8c3630-f0c7-4a3f-8415-c044df3c7fa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{ffb0bec7-9fc3-4532-9f89-1d3e83ab4c2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WindowsOnly">
+      <UniqueIdentifier>{583465f7-2ace-4db4-9d76-77cf7321441d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LinuxOnly">
+      <UniqueIdentifier>{b1a81e84-6463-4f54-8887-ac7b3646a217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WindowsOnly">
+      <UniqueIdentifier>{34f86eeb-d7c6-4674-b8a7-994b74e9ba2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{726e441a-85a7-4d58-ab62-acffec768644}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ITCPServSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPWinServSocket.h">
+      <Filter>Header Files\WindowsOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPLinServSocket.h">
+      <Filter>Header Files\LinuxOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="Selector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Message.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CircularBuff.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinThread.h">
+      <Filter>Header Files\WindowsOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="LinThread.h">
+      <Filter>Header Files\LinuxOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="IUDPServSocket.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPLinServSocket.h">
+      <Filter>Header Files\LinuxOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPWinServSocket.h">
+      <Filter>Header Files\WindowsOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="IThread.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="IDllLoader.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="AMonster.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="WinDllLoader.h">
+      <Filter>Header Files\WindowsOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="LinDllLoader.h">
+      <Filter>Header Files\LinuxOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="ClockObj.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Shots.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPWinServSocket.cpp">
+      <Filter>Source Files\WindowsOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPLinServSocket.cpp">
+      <Filter>Source Files\LinuxOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Selector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Message.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CircularBuff.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinThread.cpp">
+      <Filter>Source Files\WindowsOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="LinThread.cpp">
+      <Filter>Source Files\LinuxOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPLinServSocket.cpp">
+      <Filter>Source Files\LinuxOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPWinServSocket.cpp">
+      <Filter>Source Files\WindowsOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawner.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="WinDllLoader.cpp">
+      <Filter>Source Files\WindowsOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="LinDllLoader.cpp">
+      <Filter>Source Files\LinuxOnly</Filter>
+    </ClCompile>
+    <ClCompile Include="ClockObj.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Shots.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Level1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Libs\Librairies.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Libs\M_light.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

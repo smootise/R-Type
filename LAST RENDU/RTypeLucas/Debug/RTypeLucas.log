@@ -1,0 +1,37 @@
+﻿Build started 28/12/2014 02:23:52.
+     1>Project "F:\GIT\R-Type\Client Final\RTypeLucas\RTypeLucas.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\RTypeLucas.unsuccessfulbuild".
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\GIT\R-Type\Client Final\RTypeLucas\Debug\RTypeLucas.exe" /NOLOGO /LIBPATH:"E:\Sfml\SFML-2.1-windows-vc10-64bits\SFML-2.1\lib" "sfml-graphics-s-d.lib" "sfml-window-s-d.lib" "sfml-system-s-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\RTypeLucas.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\GIT\R-Type\Client Final\RTypeLucas\Debug\RTypeLucas.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\GIT\R-Type\Client Final\RTypeLucas\Debug\RTypeLucas.lib" /MACHINE:X64 Debug\AllyObject.obj
+         Debug\AMenu.obj
+         Debug\AMovingObject.obj
+         Debug\BaseMenu.obj
+         Debug\CircularBuff.obj
+         Debug\Client.obj
+         Debug\CommandHandler.obj
+         Debug\CreateRoomMenu.obj
+         Debug\Gui.obj
+         Debug\HeroObject.obj
+         Debug\HudTextField.obj
+         Debug\HudWindow.obj
+         Debug\InRoomMenu.obj
+         Debug\JoinRoomMenu.obj
+         Debug\LoginMenu.obj
+         Debug\main.obj
+         Debug\Message.obj
+         Debug\MonsterEntity.obj
+         Debug\Room.obj
+         Debug\RoomFirstMenu.obj
+         Debug\ScrollingBg.obj
+         Debug\Selector.obj
+         Debug\TCPWinSocket.obj
+         Debug\UDPWinSocket.obj
+     1>Debug\AllyObject.obj : fatal error LNK1112: module machine type 'X86' conflicts with target machine type 'x64'
+     1>Done Building Project "F:\GIT\R-Type\Client Final\RTypeLucas\RTypeLucas.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.92
