@@ -71,8 +71,8 @@ void M_medium::tryShoot(float dtime, std::vector<Shots> &shots, int *lowestshoti
 {
 	if (_cd <= 0)
 	{
-		//this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
-		std::cout << "PAN" << std::endl;
+		this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
+		//std::cout << "PAN" << std::endl;
 		_cd = _fire_rate;
 	}
 	else

@@ -1,4 +1,4 @@
-﻿Build started 28/12/2014 17:25:24.
+﻿Build started 28/12/2014 17:33:56.
      1>Project "C:\Users\theo\Documents\R-Type\Monster libraries\M_light\M_boss\M_boss.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\M_boss.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -16,4 +16,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.07
+Time Elapsed 00:00:00.28
