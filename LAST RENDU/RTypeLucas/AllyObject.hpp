@@ -10,6 +10,7 @@ protected:
 	sf::Texture	*texture;
 	bool		inited;
 	bool		toDraw;
+	int			hp;
 public:
 	AllyObject(int);
 	~AllyObject(void);

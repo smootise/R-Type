@@ -54,6 +54,7 @@ struct ServerMessage
 	double	posy[4];
 	int		direction[4];
 	double	current_cd[4];
+	int		current_hp[4];
 
 	//monsters data
 	int		monsters[30][6];
@@ -63,6 +64,5 @@ struct ServerMessage
 
 	//used client side only
 	bool	has_been_read;
-
-	bool is_game_over;
+	bool    is_game_over;
 };

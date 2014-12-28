@@ -8,6 +8,7 @@ protected:
 	sf::Sprite	spriteBase;
 	sf::Texture	*texture;
 	bool		inited;
+	float		cd;
 public:
 	HeroObject(void);
 	~HeroObject(void);

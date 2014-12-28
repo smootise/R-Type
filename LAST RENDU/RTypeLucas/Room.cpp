@@ -34,9 +34,7 @@ void	Room::Remove_Ally(const std::string &allyname)
 //used for debug purposes
 void	Room::To_String() const
 {
-	std::cout << "Je suis la room : " << _name << std::endl;
-	for (size_t i = 0; i < _allys.size(); i++)
-		std::cout << "ally n * " << i << " : " << _allys.at(i) << std::endl;
+
 }
 
 const std::string		&Room::get_name() const

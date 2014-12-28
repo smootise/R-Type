@@ -6,6 +6,7 @@ HeroObject::HeroObject(void)
 {
 	speed = 0.005f;
 	setMovement(AMovingObject::Default, 0, 0);
+	cd = 50000.f;
 }
 
 
@@ -33,10 +34,17 @@ IGameObject::State	HeroObject::update(sf::Event *event, const sf::Clock &clock, 
 		direction += 3;
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		direction -= 3;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && cd >= 50000.f)
+		cd = 0;
 	setMovement(direction);
 	_send_msg->direction = direction;
 	_send_msg->posx = posX;
 	_send_msg->posy = posY;
+	_send_msg->current_coldown = cd;
+	if (cd < 50000.f)
+		cd += clock.getElapsedTime().asMicroseconds();
+	if (cd > 50000.f)
+		cd = 50000.f;
 	move(clock);
 	posX = (posX >= WIDTH - 99) ? WIDTH - 100 : posX;
 	posY = (posY >= LENGTH - 51) ? LENGTH - 52 : posY;

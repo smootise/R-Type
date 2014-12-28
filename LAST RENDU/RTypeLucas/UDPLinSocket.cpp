@@ -85,7 +85,7 @@ bool	UDPLinSocket::Receive_data(ServerMessage *recv_msg)
   if ((recv_bytes = recvfrom(_socket, buff, 8192, recv_flags,
 			     (struct sockaddr *)&_server, &server_length)) == 0)
     {
-      std::cerr << "couldn't recv from" << std::endl;
+      //std::cerr << "couldn't recv from" << std::endl;
       return (false);
     }
   if (recv_bytes != -1)

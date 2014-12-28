@@ -12,6 +12,8 @@ protected:
 	bool		inited;
 	bool		toDraw;
 	int			type;
+	int			hp;
+	float		hited;
 public:
 	MonsterEntity(int);
 	~MonsterEntity(void);
