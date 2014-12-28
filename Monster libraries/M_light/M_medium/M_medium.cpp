@@ -8,11 +8,10 @@ M_medium::M_medium(int time, int id) : AMonster(time, MEDIUM, id)
 	_health = 2;
 	_dmg = 1;
 	_fire_rate = 1.0f;
-	//_size = ;
+	_size = 100;
 	_going_up = true;
 	_cd = _fire_rate;
 	setPosition(time);
-	std::cout << "Creation of a GOOD Monster" << std::endl;
 }
 
 M_medium::~M_medium()
@@ -22,7 +21,6 @@ M_medium::~M_medium()
 
 void M_medium::update(float dtime, ServerMessage *message)
 {
-	std::cout << "udpate the monster" << std::endl;
 	tryMove();
 	tryShoot(dtime);
 }
@@ -31,13 +29,13 @@ void M_medium::setPosition(int time)
 {
 	if (time % 2 == 0)
 	{
-		_x = 500;
-		_y = 20;
+		_x = 960 - _size;
+		_y = 0;
 	}
 	else
 	{
-		_x = 500;
-		_y = 120;
+		_x = 960 - _size;
+		_y = 540 - _size;
 	}
 }
 
@@ -52,7 +50,7 @@ void M_medium::tryMove()
 	}
 	else
 	{
-		if (_y >= 100)
+		if (_y >= 540 - _size)
 			_going_up = true;
 		else
 			_direction = Bot;

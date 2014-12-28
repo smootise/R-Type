@@ -1,14 +1,14 @@
 #pragma once
-#include "AMovingObject.hpp"
-#include <map>
+#include "IGameObject.hpp"
+#include "MonsterEntity.hpp"
+#include <vector>
 
 class MonstersObject :
-	public AMovingObject
+	public IGameObject
 {
 protected:
-	std::map<std::string, sf::Texture>		tabTexture;
-	std::map<std::string, sf::Sprite>		tabSprite;
 	bool		inited;
+	std::vector<MonsterEntity *>	tabMob;
 public:
 	MonstersObject(void);
 	~MonstersObject(void);

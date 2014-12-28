@@ -3,6 +3,7 @@
 *.lo
 *.o
 *.obj
+*.ipch
 
 # Compiled Dynamic libraries
 *.dylib
@@ -67,3 +68,9 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+
+# Custom
+# =========================
+
+# visual studio related
+*.ipch

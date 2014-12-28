@@ -114,6 +114,9 @@
     <ClCompile Include="MonstersObject.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="MonsterEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AMenu.hpp">
@@ -211,6 +214,9 @@
     </ClInclude>
     <ClInclude Include="MonstersObject.hpp">
       <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterEntity.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
