@@ -12,18 +12,18 @@ M_boss::~M_boss()
 	std::cout << "Destruction of a Monster" << std::endl;
 }
 
-void M_boss::update(float dtime, ServerMessage message)
+void M_boss::update(float dtime, ServerMessage *message)
 {
 	std::cout << "udpate the monster" << std::endl;
 }
 
 extern "C"
 {
-	__declspec(dllexport) M_boss			*create(int time)
+	__declspec(dllexport) M_boss			*create(int time, int id)
 	{
 		M_boss		*ret = NULL;
 
-		ret = new M_boss(time);
+		ret = new M_boss(time, id);
 		return (ret);
 	}
 }

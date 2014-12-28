@@ -10,7 +10,8 @@ public:
 	M_light(int time, int id);
 	~M_light();
 
-	void			update(float dtime, ServerMessage message);
+	void			update(float dtime, ServerMessage *message);
 	void			tryMove(float target_x, float target_y);
-	void			setTarget(float dtime, ServerMessage message);
+	void			setPosition(int time);
+	void			setTarget(float dtime, ServerMessage *message);
 };

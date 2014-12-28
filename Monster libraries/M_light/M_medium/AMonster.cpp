@@ -19,7 +19,7 @@ void AMonster::move(float x, float y)
 	std::cout << "Move the GodDamn monster !" << std::endl;
 }
 
-bool AMonster::set_alive(bool alive)
+void AMonster::set_alive(bool alive)
 {
 	_alive = alive;
 }
@@ -40,6 +40,11 @@ void	AMonster::Die()
 {
 	_dead = true;
 	_alive = false;
+}
+
+int		AMonster::get_time() const
+{
+	return (_timing);
 }
 
 int		AMonster::get_type() const

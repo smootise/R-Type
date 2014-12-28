@@ -1,13 +1,14 @@
-﻿Build started 27/12/2014 18:48:25.
-     1>Project "C:\Users\theo\Documents\R-Type\Monster libraries\M_light\M_medium\M_medium.vcxproj" on node 3 (build target(s)).
-     1>InitializeBuildStatus:
+﻿Build started 28/12/2014 02:07:13.
+     1>Project "C:\Users\theo\Documents\R-Type\Monster libraries\M_light\M_medium\M_medium.vcxproj" on node 4 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Debug\M_medium.lastbuildstate".
+       InitializeBuildStatus:
          Touching "Debug\M_medium.unsuccessfulbuild".
        ClCompile:
-         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_MEDIUM_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\M_medium.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_MEDIUM_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\M_medium.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AMonster.cpp M_medium.cpp
          M_medium.cpp
-         Generating Code...
-         Compiling...
          AMonster.cpp
          Generating Code...
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_MEDIUM_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt dllmain.cpp
@@ -25,8 +26,8 @@
        FinalizeBuildStatus:
          Deleting file "Debug\M_medium.unsuccessfulbuild".
          Touching "Debug\M_medium.lastbuildstate".
-     1>Done Building Project "C:\Users\theo\Documents\R-Type\Monster libraries\M_light\M_medium\M_medium.vcxproj" (build target(s)).
+     1>Done Building Project "C:\Users\theo\Documents\R-Type\Monster libraries\M_light\M_medium\M_medium.vcxproj" (rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.13
+Time Elapsed 00:00:03.29

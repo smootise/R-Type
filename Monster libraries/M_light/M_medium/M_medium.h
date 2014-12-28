@@ -13,5 +13,6 @@ public:
 
 	void tryMove();
 	void tryShoot(float dtime);
-	void update(float dtime, ServerMessage message);
+	void setPosition(int time);
+	void update(float dtime, ServerMessage *message);
 };

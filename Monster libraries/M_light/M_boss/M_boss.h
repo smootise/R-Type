@@ -8,5 +8,5 @@ public:
 	M_boss(int time, int id);
 	~M_boss();
 
-	void			update(float dtime, ServerMessage message);
+	void			update(float dtime, ServerMessage *message);
 };

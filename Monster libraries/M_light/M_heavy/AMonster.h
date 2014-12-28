@@ -50,7 +50,7 @@ public:
 	virtual void	Die();
 	virtual bool	isDead();
 	virtual void	move(float x, float y);
-	virtual bool	set_alive(bool alive);
+	virtual void	set_alive(bool alive);
 	virtual int		get_pos_x() const;
 	virtual int		get_pos_y() const;
 	virtual int		get_direction() const;
