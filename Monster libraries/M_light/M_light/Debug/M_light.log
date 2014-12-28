@@ -1,4 +1,4 @@
-﻿Build started 28/12/2014 18:34:10.
+﻿Build started 28/12/2014 19:06:50.
      1>Project "D:\Github\R-Type\Monster libraries\M_light\M_light\M_light.vcxproj" on node 5 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\M_light.lastbuildstate".
@@ -14,8 +14,8 @@
      1>d:\github\r-type\monster libraries\m_light\m_light\shots.cpp(43): warning C4244: 'return' : conversion from 'const float' to 'int', possible loss of data
      1>d:\github\r-type\monster libraries\m_light\m_light\shots.cpp(48): warning C4244: 'return' : conversion from 'const float' to 'int', possible loss of data
          M_light.cpp
-     1>d:\github\r-type\monster libraries\m_light\m_light\m_light.cpp(24): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>d:\github\r-type\monster libraries\m_light\m_light\m_light.cpp(24): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>d:\github\r-type\monster libraries\m_light\m_light\m_light.cpp(23): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>d:\github\r-type\monster libraries\m_light\m_light\m_light.cpp(23): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
          AMonster.cpp
      1>d:\github\r-type\monster libraries\m_light\m_light\amonster.cpp(18): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>d:\github\r-type\monster libraries\m_light\m_light\amonster.cpp(18): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
@@ -40,4 +40,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.90
+Time Elapsed 00:00:01.98

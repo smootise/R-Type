@@ -16,7 +16,7 @@ M_heavy::M_heavy(int time, int id) : AMonster(time, HEAVY, id)
 
 M_heavy::~M_heavy()
 {
-	std::cout << "Destruction of a Monster" << std::endl;
+
 }
 
 void M_heavy::update(float dtime, ServerMessage *message, std::vector<Shots> &shots, int *lowestshotid)
@@ -52,7 +52,7 @@ void M_heavy::tryMove(float dtime, float target_x, float target_y, std::vector<S
 		_direction = Default;
 		if (_cd <= 0)
 		{
-			this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
+			//this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
 			_cd = _fire_rate;
 		}	
 	}

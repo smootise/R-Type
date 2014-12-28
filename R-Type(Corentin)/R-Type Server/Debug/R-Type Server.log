@@ -1,30 +1,9 @@
-﻿Build started 28/12/2014 18:35:13.
+﻿Build started 28/12/2014 19:20:58.
      1>Project "D:\Github\R-Type\R-Type(Corentin)\R-Type Server\R-Type Server.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         D:\Work\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Shots.cpp
-         Shots.cpp
-     1>d:\github\r-type\r-type(corentin)\r-type server\shots.cpp(6): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>d:\github\r-type\r-type(corentin)\r-type server\shots.cpp(42): warning C4244: 'return' : conversion from 'const float' to 'int', possible loss of data
-     1>d:\github\r-type\r-type(corentin)\r-type server\shots.cpp(47): warning C4244: 'return' : conversion from 'const float' to 'int', possible loss of data
-       Link:
-         D:\Work\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.lib" /MACHINE:X86 Debug\CircularBuff.obj
-         Debug\Client.obj
-         Debug\ClockObj.obj
-         Debug\CommandHandler.obj
-         Debug\Message.obj
-         Debug\main.obj
-         Debug\Room.obj
-         Debug\Selector.obj
-         Debug\Server.obj
-         Debug\Shots.obj
-         Debug\Spawner.obj
-         Debug\TCPWinServSocket.obj
-         Debug\UDPWinServSocket.obj
-         Debug\WinDllLoader.obj
-         Debug\WinThread.obj
+     1>Link:
          R-Type Server.vcxproj -> D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.exe
      1>Done Building Project "D:\Github\R-Type\R-Type(Corentin)\R-Type Server\R-Type Server.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.65
+Time Elapsed 00:00:00.06

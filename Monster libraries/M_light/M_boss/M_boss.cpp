@@ -28,7 +28,7 @@ M_boss::M_boss(int time, int id) : AMonster(time, BOSS, id)
 
 M_boss::~M_boss()
 {
-	std::cout << "Destruction of a Monster" << std::endl;
+
 }
 
 void M_boss::update(float dtime, ServerMessage *message, std::vector<Shots> &shots, int *lowestshotid)
@@ -52,7 +52,7 @@ void M_boss::tryShoot(float dtime, std::vector<Shots> &shots, int *lowestshotid)
 {
 	if (_cd <= 0)
 	{
-		this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
+		//this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
 		_shot += 1;
 		if (_shot == _shots)
 		{

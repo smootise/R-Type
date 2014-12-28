@@ -110,7 +110,6 @@ void				TCPLinServSocket::ReadData(CircularBuff &circbuff, Selector &sel)
 			memcpy(packet, databuf[2].iov_base, len + 1);
 			Message			message((uint32_t)*((char *)(databuf[0].iov_base)), (uint32_t)*((char *)(databuf[1].iov_base)), packet, _clients[i]);
 
-			//std::cout << "je recois :"; message.to_string(); std::cout << std::endl;
 			circbuff.add_data(message);
 		  }
       }

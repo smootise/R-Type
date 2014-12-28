@@ -15,7 +15,6 @@ M_light::M_light(int time, int id) : AMonster(time, LIGHT, id)
 
 M_light::~M_light()
 {
-	std::cout << "Destruction of a Monster" << std::endl;
 }
 
 void M_light::update(float dtime, ServerMessage *message, std::vector<Shots> &shots, int *lowestshotid)

@@ -1,10 +1,12 @@
-﻿Build started 28/12/2014 18:34:10.
+﻿Build started 28/12/2014 19:06:49.
      1>Project "D:\Github\R-Type\Monster libraries\M_light\M_heavy\M_heavy.vcxproj" on node 3 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\M_heavy.lastbuildstate".
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppClean.targets(74,5): warning : The process cannot access the file 'D:\GITHUB\R-TYPE\MONSTER LIBRARIES\M_LIGHT\M_HEAVY\DEBUG\M_HEAVY.PCH' because it is being used by another process.
        InitializeBuildStatus:
          Creating "Debug\M_heavy.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
+         Deleting file "Debug\M_heavy.pch".
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_HEAVY_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\M_heavy.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
          stdafx.cpp
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D M_HEAVY_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\M_heavy.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AMonster.cpp M_heavy.cpp Shots.cpp
@@ -40,4 +42,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.92
+Time Elapsed 00:00:02.14

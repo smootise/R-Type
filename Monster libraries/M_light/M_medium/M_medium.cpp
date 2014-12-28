@@ -16,13 +16,13 @@ M_medium::M_medium(int time, int id) : AMonster(time, MEDIUM, id)
 
 M_medium::~M_medium()
 {
-	std::cout << "Destruction of a Monster" << std::endl;
+
 }
 
 void M_medium::update(float dtime, ServerMessage *message, std::vector<Shots> &shots, int *lowestshotid)
 {
 	tryMove();
-	tryShoot(dtime, shots, lowestshotid);
+	//tryShoot(dtime, shots, lowestshotid);
 	//setMovement(_direction, _x, _y);
 	move(dtime);
 }
@@ -71,7 +71,7 @@ void M_medium::tryShoot(float dtime, std::vector<Shots> &shots, int *lowestshoti
 {
 	if (_cd <= 0)
 	{
-		this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
+		//this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
 		//std::cout << "PAN" << std::endl;
 		_cd = _fire_rate;
 	}

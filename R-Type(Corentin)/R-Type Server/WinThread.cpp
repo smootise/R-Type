@@ -46,12 +46,15 @@ bool		WinThread::run()
 
 	while (true)
 	{
+		if (_start_clock.getElapsedTime() / 1000000 > 10000) // 1000s temps de jeux max
+			_spawner.set_over(true, _send_msg);
 		if (_spawner.is_over() == false) // si on joue
 			_spawner.update(_start_clock.getElapsedTime(), _diff_clock.getElapsedTime(), _send_msg);
 		else // si c'est fini
 		{
 			if (first == false)
 			{
+				_send_msg->is_game_over = true;
 				_start_clock.restart();
 				first = true;
 			}
