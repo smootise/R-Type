@@ -10,7 +10,7 @@ M_medium::M_medium(int time, int id) : AMonster(time, MEDIUM, id)
 	_fire_rate = 1000000;
 	_size = 94;
 	_going_up = true;
-	_cd = 0;
+	_cd = _fire_rate;
 	setPosition(time);
 }
 
@@ -71,7 +71,8 @@ void M_medium::tryShoot(float dtime, std::vector<Shots> &shots, int *lowestshoti
 {
 	if (_cd <= 0)
 	{
-		this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
+		//this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
+		std::cout << "PAN" << std::endl;
 		_cd = _fire_rate;
 	}
 	else
