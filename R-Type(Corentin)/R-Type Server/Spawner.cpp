@@ -264,4 +264,30 @@ void	Spawner::collide(ServerMessage *mess)
 			}
 		}
 	}
+
+	//collision des tirs enemis avec les joueurs
+	//pour tous les tirs
+	bool	hit;
+	for (size_t i = 0; i < _shots.size(); i++)
+		for (size_t j = J1; j <= J4; j++) // pour tous les joueurs
+		if (_shots[i].get_type() == ENEMI)
+		{
+			float playersize = 54;
+			float bulletsize = 2;
+
+			hit = true;
+			if (mess->posx[j] > _shots[i].get_pos_x() + playersize)
+				hit = false;
+			if (mess->posy[j] > _shots[i].get_pos_y() + playersize)
+				hit = false;
+			if (mess->posx[j] + bulletsize < _shots[i].get_pos_x())
+				hit = false;
+			if (mess->posy[j] + bulletsize < _shots[i].get_pos_y())
+				hit = false;
+			if (hit == true) // si ca collide
+			{
+				mess->current_hp[j] -= _shots[i].get_dmg();
+				_shots[i].set_alive(false);
+			}
+		}
 }
