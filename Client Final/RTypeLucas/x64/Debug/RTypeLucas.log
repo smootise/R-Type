@@ -1,20 +1,18 @@
-﻿Build started 28/12/2014 13:33:25.
+﻿Build started 28/12/2014 19:15:44.
      1>Project "F:\GIT\R-Type\Client Final\RTypeLucas\RTypeLucas.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "x64\Debug\RTypeLucas.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"E:\Sfml\SFML-2.1-windows-vc10-64bits\SFML-2.1\include" /Zi /nologo /W3 /WX- /Od /D SFML_STATIC /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt Gui.cpp ShotEntity.cpp ShotsObject.cpp
-         ShotsObject.cpp
-         ShotEntity.cpp
-     1>ShotEntity.cpp(62): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>ShotEntity.cpp(63): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>ShotEntity.cpp(64): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>ShotEntity.cpp(65): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"E:\Sfml\SFML-2.1-windows-vc10-64bits\SFML-2.1\include" /Zi /nologo /W3 /WX- /Od /D SFML_STATIC /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt CommandHandler.cpp TCPWinSocket.cpp UDPWinSocket.cpp
+         UDPWinSocket.cpp
+     1>UDPWinSocket.cpp(35): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+         TCPWinSocket.cpp
+     1>TCPWinSocket.cpp(68): warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+         CommandHandler.cpp
+     1>CommandHandler.cpp(53): warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+     1>CommandHandler.cpp(140): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>CommandHandler.cpp(229): warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
          Generating Code...
-         Compiling...
-         Gui.cpp
-         Generating Code...
-     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"F:\GIT\R-Type\Client Final\RTypeLucas\x64\Debug\RTypeLucas.exe" /NOLOGO /LIBPATH:"E:\Sfml\SFML-2.1-windows-vc10-64bits\SFML-2.1\lib" "sfml-graphics-s-d.lib" "sfml-window-s-d.lib" "sfml-system-s-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Debug\RTypeLucas.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\GIT\R-Type\Client Final\RTypeLucas\x64\Debug\RTypeLucas.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\GIT\R-Type\Client Final\RTypeLucas\x64\Debug\RTypeLucas.lib" /MACHINE:X64 x64\Debug\AllyObject.obj
          x64\Debug\AMenu.obj
@@ -98,4 +96,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.43
+Time Elapsed 00:00:02.73

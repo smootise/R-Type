@@ -122,7 +122,6 @@ void		CommandHandler::LoginAnswer(Message &answer)
 	{
 		_state["Logged"] = true;
 		_name = new std::string(answer.get_packet());
-		std::cout << "Je suis logged in !" << std::endl;
 	}
 }
 
@@ -190,7 +189,6 @@ void	CommandHandler::GameStartedAnswer(Message &answer)
 {
 	_state["Playing"] = true;
 	_wantedport = atoi(answer.get_packet());
-	std::cout << "tu vas commencer ta game sur le port " << answer.get_packet() << std::endl;
 }
 
 

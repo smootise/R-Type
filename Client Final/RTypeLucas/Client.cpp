@@ -82,6 +82,11 @@ bool	Client::update()
 	  else
 		  memcpy(_send_msg->name, _comhandler->get_name()->c_str(), _comhandler->get_name()->size());
       _game_socket->Receive_data(_recv_msg);
+	  if (_recv_msg->is_game_over == true)
+	  {
+		  std::cout << "je reset l'etat" << std::endl;
+		  _state["Playing"] = false;
+	  }
       _game_socket->Send_data(_send_msg);
 	  _graphic.affGame(_recv_msg, _send_msg);
     }

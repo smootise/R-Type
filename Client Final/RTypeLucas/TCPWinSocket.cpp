@@ -71,7 +71,6 @@ bool				TCPWinSocket::ReadData(CircularBuff &circbuff, Selector &sel)
 		memcpy(packet, databuf[2].buf, len + 1);
 		Message			Message((uint32_t)*(databuf[0].buf), (uint32_t)*(databuf[1].buf), packet);
 
-		std::cout << "je recois :"; Message.to_string(); std::cout << std::endl;
 		circbuff.add_data(Message);
 	}
 	return (true);
@@ -108,8 +107,6 @@ void	TCPWinSocket::SendData(CircularBuff &circbuff, Selector &sel)
 			memcpy(&first_buff, (char *)&(rq_type), 4);
 			memcpy(&second_buff, (char *)&(data_length), 4);
 			memcpy(&third_buff, to_send.at(i).get_packet(), data_length);
-
-			std::cout << "j'envoi :"; to_send.at(i).to_string(); std::cout << std::endl;
 			
 			// et on envoi
 			WSASend(_fathersocket, databuf, 3, &sentbytes, 0, NULL, NULL);

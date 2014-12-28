@@ -38,7 +38,6 @@ bool	UDPWinSocket::Connect(int port)
 		i++;
 	}
 	separated_ip[3] = atoi(_ipsource.substr(pos_start).c_str());
-	std::cout << "ip : " << separated_ip[0] << "." << separated_ip[1] << "." << separated_ip[2] << "." << separated_ip[3] << std::endl;
 
 	/* Open a datagram socket */
 	if ((_socket = WSASocket(AF_INET, SOCK_DGRAM, IPPROTO_UDP, 0, NULL, WSA_FLAG_OVERLAPPED)) == INVALID_SOCKET)
@@ -140,10 +139,6 @@ bool	UDPWinSocket::Receive_data(ServerMessage *recv_msg)
 	}
 	memcpy(recv_msg, (void *)buff, sizeof(ServerMessage));
 	recv_msg->has_been_read = false;
-/*	std::cout << "Nom du j1: " << recv_msg->name[J1] << std::endl;
-	std::cout << "Nom du j2: " << recv_msg->name[J2] << std::endl;
-	std::cout << "Nom du j3: " << recv_msg->name[J3] << std::endl;
-	std::cout << "Nom du j4: " << recv_msg->name[J4] << std::endl;*/
 	return (true);
 }
 

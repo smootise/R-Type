@@ -10,6 +10,7 @@ protected:
 	bool		inited;
 	std::vector<ShotEntity *>	tabShot;
 	sf::Texture	*textureAlly;
+	sf::Texture	*textureEnemy;
 public:
 	ShotsObject(void);
 	~ShotsObject(void);

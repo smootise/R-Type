@@ -113,7 +113,6 @@ void				TCPLinSocket::SendData(CircularBuff &circbuff, Selector &sel)
 		memcpy(&second_buff, (char *)&(data_length), 4);
 		memcpy(&third_buff, to_send.at(i).get_packet(), data_length);
 
-		std::cout << "j'envoi :"; to_send.at(i).to_string(); std::cout << std::endl;
 		// et on envoi
 		sentbytes = writev(_fathersocket, databuf, 3);
 		delete[]	to_send.at(i).get_packet();

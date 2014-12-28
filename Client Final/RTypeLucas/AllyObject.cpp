@@ -9,6 +9,7 @@ AllyObject::AllyObject(int paramId)
 	texture = NULL;
 	inited = false;
 	toDraw = false;
+	hp = 0;
 }
 
 
@@ -44,7 +45,10 @@ IGameObject::State	AllyObject::update(sf::Event *event, const sf::Clock &clock, 
 		toDraw = true;
 	}
 	if (!_recv_msg->has_been_read)
+	{
+		hp = _recv_msg->current_hp[id];
 		setMovement(_recv_msg->direction[id], _recv_msg->posx[id], _recv_msg->posy[id]);
+	}
 	move(clock);
 	posX = (posX >= WIDTH - 99) ? WIDTH - 100 : posX;
 	posY = (posY >= LENGTH - 51) ? LENGTH - 52 : posY;
@@ -53,7 +57,7 @@ IGameObject::State	AllyObject::update(sf::Event *event, const sf::Clock &clock, 
 
 IGameObject::State	AllyObject::draw(sf::RenderWindow &window)
 {
-	if (!toDraw)
+	if (!toDraw || hp <= 0)
 		return (IGameObject::Default);
 	spriteBase.setPosition(posX, posY);
 	window.draw(spriteBase);
