@@ -94,7 +94,7 @@ bool			UDPLinServSocket::send_data(struct sockaddr_in *target, ServerMessage *se
   if ((sent_bytes = sendto(_socket, buff, 8192, send_flags,
 			   (struct sockaddr *)target, client_length)) == 0)
     {
-      std::cerr << "coudldn't use send to" << std::endl;
+     // std::cerr << "coudldn't use send to" << std::endl;
       return (false);
     }
   return (true);

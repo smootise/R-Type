@@ -6,17 +6,47 @@ AMonster::AMonster(int time, int type, int id)
 {
 	_alive = false;
 	_dead = false;
-	std::cout << "Creation of a GOOD Monster (father)" << std::endl;
 }
 
 AMonster::~AMonster()
 {
-	std::cout << "Destruction of a Monster" << std::endl;
+	
 }
 
-void AMonster::move(float x, float y)
+void	AMonster::setMovement(int param, float startingX, float startingY)
 {
-	std::cout << "Move the GodDamn monster !" << std::endl;
+	direction	tab[] = { BotLeft, Bot, BotRight, Left,	Default, Right,	UpLeft,	Up,	UpRight};
+
+	if (param <= 0 || param >= 10)
+		return;
+	_direction = tab[param - 1];
+	if (startingX >= 0)
+		_x = startingX;
+	if (startingY >= 0)
+		_y = startingY;
+}
+
+void	AMonster::move(float dtime)
+{
+	float	dist;
+
+	dist = dtime * _speed;
+	if (_direction != 5)
+	{
+		//std::cout << dist << ":" << clock.getElapsedTime().asMicroseconds() << std::endl;
+	}
+	if (_direction % 2 == 1)
+		dist /= 1.4f;
+	if (_direction >= 7)
+		_y -= dist;
+	else if (_direction <= 3)
+		_y += dist;
+	if (_direction % 3 == 0)
+		_x += dist;
+	if (_direction % 3 == 1)
+		_x -= dist;
+	_x = (_x < 0) ? 0 : (_x >= 960) ? 960 - 1 : _x;
+	_y = (_y < 0) ? 0 : (_y >= 540) ? 540 - 1 : _y;
 }
 
 void AMonster::set_alive(bool alive)
@@ -26,7 +56,7 @@ void AMonster::set_alive(bool alive)
 
 bool AMonster::isAlive()
 {
-	if (_dead != false)
+	if (_dead == false)
 		return (_alive);
 	return (false);
 }

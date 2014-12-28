@@ -97,7 +97,7 @@ bool			UDPWinServSocket::send_data(struct sockaddr_in *target, ServerMessage *se
 	memcpy(&buff, send_msg, sizeof(ServerMessage));
 	if ((WSASendTo(_socket, sendbuff, 1, &sent_bytes, send_flags, (struct sockaddr *)target, client_length, NULL, NULL)) == SOCKET_ERROR)
 	{
-		std::cerr << "coudldn't use send to" << std::endl;
+		//std::cerr << "coudldn't use send to" << std::endl;
 		return (true);
 	}
 	return (true);

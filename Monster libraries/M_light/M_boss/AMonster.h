@@ -49,7 +49,8 @@ public:
 	virtual bool	isAlive();
 	virtual void	Die();
 	virtual bool	isDead();
-	virtual void	move(float x, float y);
+	virtual void	setMovement(int param, float pos_x, float pos_y);
+	virtual void	move(float dtime);
 	virtual void	set_alive(bool alive);
 	virtual int		get_pos_x() const;
 	virtual int		get_pos_y() const;

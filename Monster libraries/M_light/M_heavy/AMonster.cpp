@@ -10,7 +10,7 @@ AMonster::AMonster(int time, int type, int id)
 
 AMonster::~AMonster()
 {
-	std::cout << "Destruction of a Monster" << std::endl;
+	
 }
 
 void	AMonster::setMovement(int param, float startingX, float startingY)
@@ -56,7 +56,7 @@ void AMonster::set_alive(bool alive)
 
 bool AMonster::isAlive()
 {
-	if (_dead != false)
+	if (_dead == false)
 		return (_alive);
 	return (false);
 }
