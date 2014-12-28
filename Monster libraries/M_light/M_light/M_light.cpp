@@ -6,10 +6,10 @@ M_light::M_light(int time, int id) : AMonster(time, LIGHT, id)
 {
 	_target = -1;
 	_speed = 0.002f;
-	_health = 1;
+	_health = 3;
 	_dmg = 1;
 	_fire_rate = 0;
-	_size = 100;
+	_size = 72;
 	setPosition(time);
 }
 

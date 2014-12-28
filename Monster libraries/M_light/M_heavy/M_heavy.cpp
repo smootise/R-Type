@@ -5,10 +5,10 @@
 M_heavy::M_heavy(int time, int id) : AMonster(time, HEAVY, id)
 {
 	_speed = 0.001f;
-	_health = 3;
+	_health = 9;
 	_dmg = 1;
 	_fire_rate = 2.0f;
-	_size = 100;
+	_size = 96;
 	_cd = _fire_rate;
 	_target = -1;
 	setPosition(time);

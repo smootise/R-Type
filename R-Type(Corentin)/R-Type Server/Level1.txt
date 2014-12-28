@@ -7,11 +7,7 @@ light:20
 light:25
 
 medium:3
-heavy:8
 medium:4
 medium:5
 
-heavy:100
-heavy:120
-heavy:140
-
+heavy:8

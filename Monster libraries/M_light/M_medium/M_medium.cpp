@@ -5,10 +5,10 @@
 M_medium::M_medium(int time, int id) : AMonster(time, MEDIUM, id)
 {
 	_speed = 0.001f;
-	_health = 2;
+	_health = 6;
 	_dmg = 1;
 	_fire_rate = 1.0f;
-	_size = 100;
+	_size = 94;
 	_going_up = true;
 	_cd = _fire_rate;
 	setPosition(time);
