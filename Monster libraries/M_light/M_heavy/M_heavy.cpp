@@ -4,7 +4,7 @@
 
 M_heavy::M_heavy(int time, int id) : AMonster(time, HEAVY, id)
 {
-	_speed = 0.004f;
+	_speed = 0.001f;
 	_health = 3;
 	_dmg = 1;
 	_fire_rate = 2.0f;
