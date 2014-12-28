@@ -132,10 +132,7 @@ bool	UDPWinSocket::Receive_data(ServerMessage *recv_msg)
 		if (WSAGetLastError() == WSAEWOULDBLOCK)
 			return (true);
 		else
-		{
-			std::cerr << "couldn't recv from" << std::endl;
-			return (true);
-		}
+			return (false);
 	}
 	memcpy(recv_msg, (void *)buff, sizeof(ServerMessage));
 	recv_msg->has_been_read = false;
