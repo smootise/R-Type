@@ -31,7 +31,7 @@ M_boss::~M_boss()
 	std::cout << "Destruction of a Monster" << std::endl;
 }
 
-void M_boss::update(float dtime, ServerMessage *message)
+void M_boss::update(float dtime, ServerMessage *message, std::vector<Shots> &shots, int *lowestshotid)
 {
 	if (_walking == true && (_x != _tab[0][_pos] || _y != _tab[1][_pos]))
 		tryMove();
@@ -44,15 +44,15 @@ void M_boss::update(float dtime, ServerMessage *message)
 		_direction = Default;
 	}
 	if (_walking == false)
-		tryShoot(dtime);
+		tryShoot(dtime, shots, lowestshotid);
 	move(dtime);
 }
 
-void M_boss::tryShoot(float dtime)
+void M_boss::tryShoot(float dtime, std::vector<Shots> &shots, int *lowestshotid)
 {
 	if (_cd <= 0)
 	{
-		//shoot();
+		this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
 		_shot += 1;
 		if (_shot == _shots)
 		{

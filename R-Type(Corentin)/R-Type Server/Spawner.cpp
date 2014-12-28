@@ -22,7 +22,8 @@ Spawner::Spawner() : _level(1), _over(false)
 #endif
 
 	_LibLoader->loadfromfile("Libs/Librairies.txt");
-	_lowestid = 1;
+	_lowestmobid = 1;
+	_lowestshotid = 1;
 }
 
 Spawner::~Spawner()
@@ -70,8 +71,8 @@ void Spawner::CreateLight(const char *timing)
 {
 	AMonster	*ret = NULL;
 
-	ret = _LibLoader->get_instance("Libs/M_light", atoi(timing), _lowestid);
-	_lowestid++;
+	ret = _LibLoader->get_instance("Libs/M_light", atoi(timing), _lowestmobid);
+	_lowestmobid++;
 	if (ret != NULL)
 		_mobs.push_back(ret);
 }
@@ -80,8 +81,8 @@ void Spawner::CreateMedium(const char *timing)
 {
 	AMonster	*ret = NULL;
 
-	ret = _LibLoader->get_instance("Libs/M_medium", atoi(timing), _lowestid);
-	_lowestid++;
+	ret = _LibLoader->get_instance("Libs/M_medium", atoi(timing), _lowestmobid);
+	_lowestmobid++;
 	if (ret != NULL)
 		_mobs.push_back(ret);
 }
@@ -90,8 +91,8 @@ void Spawner::CreateHeavy(const char *timing)
 {
 	AMonster	*ret = NULL;
 
-	ret = _LibLoader->get_instance("Libs/M_heavy", atoi(timing), _lowestid);
-	_lowestid++;
+	ret = _LibLoader->get_instance("Libs/M_heavy", atoi(timing), _lowestmobid);
+	_lowestmobid++;
 	if (ret != NULL)
 		_mobs.push_back(ret);
 }
@@ -100,8 +101,8 @@ void Spawner::CreateBoss(const char *timing)
 {
 	AMonster	*ret = NULL;
 
-	ret = _LibLoader->get_instance("Libs/M_boss", atoi(timing), _lowestid);
-	_lowestid++;
+	ret = _LibLoader->get_instance("Libs/M_boss", atoi(timing), _lowestmobid);
+	_lowestmobid++;
 	if (ret != NULL)
 		_mobs.push_back(ret);
 }
@@ -124,12 +125,9 @@ void Spawner::update(float begintime, float dtime, ServerMessage *message)
 	for (unsigned int i = 0; i < _mobs.size(); ++i)
 	{
 		if ((begintime / 1000000) >= _mobs[i]->get_time() && _mobs[i]->isAlive() == false) // s'il ne sont encor en vie
-		{
 			_mobs[i]->set_alive(true);
-			std::cout << "je mets un mob alive" << std::endl;
-		}
 		if (_mobs[i]->isAlive() == true) // si ils sont vivant
-			_mobs[i]->update(dtime, message);
+			_mobs[i]->update(dtime, message, _shots, &_lowestshotid);
 		if (_mobs[i]->isDead() == true) // si ils sont mort
 		{
 			if (_mobs.size() == 1)
@@ -137,11 +135,49 @@ void Spawner::update(float begintime, float dtime, ServerMessage *message)
 				delete _mobs.at(0);
 				_mobs.clear();
 			}
-			delete _mobs.at(i);
-			_mobs.erase(_mobs.begin() + i);
+			else
+			{
+				delete _mobs.at(i);
+				_mobs.erase(_mobs.begin() + i);
+			}
 		}
 	}
+	//on check la collision des mobs
+	this->collide(message);
+	//on move les shots
+	for (size_t i = 0; i < _shots.size(); i++)
+		_shots[i].move(dtime);
+	//on check leur mort
+	this->check_shots_death();
+	//on ecrit les shots
+	this->write_shots(message);
+	//on ecrit les mobs
 	this->write_mobs(message);
+
+}
+
+void	Spawner::write_shots(ServerMessage *message)
+{
+	int		count = 0;
+
+	//on reset les shots
+	for (size_t i = 0; i < 100; i++)
+		for (size_t j = 0; j < 6; j++)
+			message->shots[i][j] = -1;
+
+	for (size_t i = 0; i < _shots.size() && i < 100; ++i)
+	{
+		if (_shots[i].is_alive() == true) // pour chaque shots en vie on write ses infos
+		{
+			message->shots[count][TYPE] = _shots[i].get_type();
+			message->shots[count][ID] = _shots[i].get_id();
+			message->shots[count][POS_X] = _shots[i].get_pos_x();
+			message->shots[count][POS_Y] = _shots[i].get_pos_y();
+			message->shots[count][DIR_X] = _shots[i].get_dir_x();
+			message->shots[count][DIR_Y] = _shots[i].get_dir_y();
+			count++;
+		}
+	}
 }
 
 void	Spawner::write_mobs(ServerMessage *message)
@@ -152,7 +188,7 @@ void	Spawner::write_mobs(ServerMessage *message)
 		for (size_t j = 0; j < 6; j++)
 			message->monsters[i][j] = -1;
 
-	for (unsigned int i = 0; i < _mobs.size(); ++i)
+	for (unsigned int i = 0; i < _mobs.size() && i < 30; ++i)
 	{
 		if (_mobs[i]->isAlive() == true) // pour chaque mob en vie on write ses infos
 		{
@@ -167,6 +203,19 @@ void	Spawner::write_mobs(ServerMessage *message)
 	}
 }
 
+void	Spawner::check_shots_death()
+{
+	//on suprime les shots qui doivent l'être
+	for (size_t i = 0; i < _shots.size(); i++)
+		if (_shots[i].is_alive() == false) // si ils sont mort
+		{
+			if (_shots.size() == 1)
+				_shots.clear();
+			else
+				_shots.erase(_shots.begin() + i);
+		}
+}
+
 bool	Spawner::is_over() const
 {
 	return (_over);
@@ -176,4 +225,43 @@ void	Spawner::set_over(bool over, ServerMessage *mess)
 {
 	_over = over;
 	mess->is_game_over = true;
+}
+
+void	Spawner::create_shot(int type, int dmg, int x, int y, int vec_x, int vec_y)
+{
+	Shots	newshot(_lowestshotid, type, dmg, x, y, vec_x, vec_y);
+
+	_lowestshotid++;
+	_shots.push_back(newshot);
+}
+
+void	Spawner::collide(ServerMessage *mess)
+{
+	// pour tous les mobs
+	for (size_t i = 0; i < _mobs.size(); i++)
+	{
+		if (_mobs[i]->isAlive() == true)
+		{
+			//collision avec les  balles
+			for (size_t j = 0; j < _shots.size(); j++)
+			{
+				if (_shots[j].get_type() == ALLY && _mobs[i]->checkCollision(2, _shots[j].get_pos_x(), _shots[j].get_pos_y()) == true)
+				{
+					_mobs[i]->hitme(_shots[j].get_dmg());
+					_shots[j].set_alive(false);
+				}
+			}
+
+			//collision avec les joueurs
+			for (size_t j = J1; j <= J4; j++)
+			{
+				if (_mobs[i]->checkCollision(2, mess->posx[j], mess->posy[j]) == true)
+				{
+					_mobs[i]->hitme(_mobs[i]->get_health() + 1);
+					mess->current_hp[j] -= 4;
+					//provoquer la mort du joueur si sa vie drop trop bas
+				}
+			}
+		}
+	}
 }

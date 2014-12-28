@@ -16,6 +16,6 @@ public:
 	~M_boss();
 
 	void			tryMove();
-	void			tryShoot(float dtime);
-	void			update(float dtime, ServerMessage *message);
+	void			tryShoot(float dtime, std::vector<Shots> &shots, int *lowestshotid);
+	void			update(float dtime, ServerMessage *message, std::vector<Shots> &shots, int *lowestshotid);
 };

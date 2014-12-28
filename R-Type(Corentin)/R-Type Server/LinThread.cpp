@@ -30,6 +30,11 @@ bool		LinThread::start()
   memcpy(_send_msg->name[J3], name_default.c_str(), name_default.size());
   memcpy(_send_msg->name[J4], name_default.c_str(), name_default.size());
 
+
+  for (size_t i = 0; i < 100; i++)
+	for (size_t j = 0; j < 6; j++)
+	  _send_msg->shots[i][j] = -1;
+
   _send_msg->is_game_over = false;
 
   //we start at lvl1
@@ -86,8 +91,8 @@ void			LinThread::analyse_data()
 		_send_msg->direction[i] = _recv_msg->direction;
 		_send_msg->posx[i] = _recv_msg->posx;
 		_send_msg->posy[i] = _recv_msg->posy;
-		//if (_recv_msg->current_coldown < _send_msg->current_cd[i])
-		//shots fired !
+		if (_recv_msg->current_coldown < _send_msg->current_cd[i])
+			_spawner.create_shot(ALLY, 3, _recv_msg->posx, _recv_msg->posy, 10, 0);
 		_send_msg->current_cd[i] = _recv_msg->current_coldown;
 		return ;
       }
@@ -100,6 +105,7 @@ void			LinThread::analyse_data()
 		_send_msg->direction[i] = _recv_msg->direction;
 		_send_msg->posx[i] = _recv_msg->posx;
 		_send_msg->posy[i] = _recv_msg->posy;
+		_send_msg->current_hp[i] = 10;
 		return;
       }
   std::cerr << "Corrupted messsage received (3)" << std::endl;

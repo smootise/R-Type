@@ -1,7 +1,10 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <vector>
+
 #include "ServerMessage.h"
+#include "Shots.h"
 
 enum monsters_type
 {
@@ -45,13 +48,17 @@ public:
 	AMonster(int, int, int);
 	virtual ~AMonster();
 
-	virtual void	update(float dtime, ServerMessage *message) = 0;
+	virtual void	shoot(std::vector<Shots> &shots, int *lowestshotid, float dir_x, float dir_y);
+	virtual void	update(float dtime, ServerMessage *message, std::vector<Shots> &shots, int *lowestshotid) = 0;
 	virtual bool	isAlive();
 	virtual void	Die();
 	virtual bool	isDead();
 	virtual void	setMovement(int param, float pos_x, float pos_y);
 	virtual void	move(float dtime);
+	virtual bool	checkCollision(int size, float posx, float posy);
 	virtual void	set_alive(bool alive);
+	virtual void	hitme(int degats);
+	virtual int		get_health() const;
 	virtual int		get_pos_x() const;
 	virtual int		get_pos_y() const;
 	virtual int		get_direction() const;
@@ -59,4 +66,3 @@ public:
 	virtual int		get_type() const;
 	virtual int		get_id() const;
 };
-

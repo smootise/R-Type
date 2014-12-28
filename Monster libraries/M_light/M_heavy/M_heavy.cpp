@@ -19,10 +19,10 @@ M_heavy::~M_heavy()
 	std::cout << "Destruction of a Monster" << std::endl;
 }
 
-void M_heavy::update(float dtime, ServerMessage *message)
+void M_heavy::update(float dtime, ServerMessage *message, std::vector<Shots> &shots, int *lowestshotid)
 {
 	setTarget(dtime, message);
-	tryMove(dtime, message->posx[_target], message->posy[_target]);
+	tryMove(dtime, message->posx[_target], message->posy[_target], shots, lowestshotid);
 	setMovement(_direction, _x, _y);
 	move(dtime);
 }
@@ -41,7 +41,7 @@ void M_heavy::setPosition(int time)
 	}
 }
 
-void M_heavy::tryMove(float dtime, float target_x, float target_y)
+void M_heavy::tryMove(float dtime, float target_x, float target_y, std::vector<Shots> &shots, int *lowestshotid)
 {
 	if (target_y > _y && _y < 540 - _size)
 		_direction = Bot;
@@ -50,16 +50,16 @@ void M_heavy::tryMove(float dtime, float target_x, float target_y)
 	else
 	{
 		_direction = Default;
-		tryShoot(dtime, 0);
+		tryShoot(dtime, 0, shots, lowestshotid);
 	}
-	tryShoot(dtime, 1);
+	tryShoot(dtime, 1, shots, lowestshotid);
 }
 
-void M_heavy::tryShoot(float dtime, int i)
+void M_heavy::tryShoot(float dtime, int i, std::vector<Shots> &shots, int *lowestshotid)
 {
 	if (_cd <= 0)
 	{
-		//shoot();
+		this->shoot(shots, lowestshotid, -1, 0); // vers la gauche 
 		_cd = _fire_rate;
 	}
 	if (i == 1)

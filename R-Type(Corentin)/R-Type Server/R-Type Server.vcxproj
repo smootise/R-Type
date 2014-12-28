@@ -83,6 +83,7 @@
     <ClInclude Include="Selector.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="ServerMessage.h" />
+    <ClInclude Include="Shots.h" />
     <ClInclude Include="Spawner.h" />
     <ClInclude Include="TCPLinServSocket.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -109,6 +110,7 @@
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="Selector.cpp" />
     <ClCompile Include="Server.cpp" />
+    <ClCompile Include="Shots.cpp" />
     <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="TCPLinServSocket.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

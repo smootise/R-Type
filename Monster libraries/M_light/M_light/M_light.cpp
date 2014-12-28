@@ -18,7 +18,7 @@ M_light::~M_light()
 	std::cout << "Destruction of a Monster" << std::endl;
 }
 
-void M_light::update(float dtime, ServerMessage *message)
+void M_light::update(float dtime, ServerMessage *message, std::vector<Shots> &shots, int *lowestshotid)
 {
 	setTarget(dtime, message);
 	tryMove(message->posx[_target], message->posy[_target]);

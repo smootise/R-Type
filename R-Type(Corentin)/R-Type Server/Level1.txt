@@ -11,3 +11,5 @@ medium:4
 medium:5
 
 heavy:8
+
+boss:10

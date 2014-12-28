@@ -12,7 +12,7 @@ public:
 	~M_medium();
 
 	void tryMove();
-	void tryShoot(float dtime);
+	void tryShoot(float dtime, std::vector<Shots> &shots, int *lowestshotid);
 	void setPosition(int time);
-	void update(float dtime, ServerMessage *message);
+	void update(float dtime, ServerMessage *message, std::vector<Shots> &shots, int *lowestshotid);
 };

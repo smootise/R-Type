@@ -10,7 +10,7 @@ public:
 	M_light(int time, int id);
 	~M_light();
 
-	void			update(float dtime, ServerMessage *message);
+	void			update(float dtime, ServerMessage *message, std::vector<Shots> &shots, int *lowestshotid);
 	void			tryMove(float target_x, float target_y);
 	void			setPosition(int time);
 	void			setTarget(float dtime, ServerMessage *message);

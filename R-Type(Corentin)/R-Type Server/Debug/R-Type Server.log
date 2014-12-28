@@ -1,18 +1,20 @@
-﻿Build started 28/12/2014 12:38:52.
+﻿Build started 28/12/2014 16:44:30.
      1>Project "D:\Github\R-Type\R-Type(Corentin)\R-Type Server\R-Type Server.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Work\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CommandHandler.cpp Server.cpp Spawner.cpp UDPWinServSocket.cpp WinDllLoader.cpp WinThread.cpp main.cpp
-         WinThread.cpp
+         D:\Work\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CommandHandler.cpp Server.cpp Spawner.cpp WinDllLoader.cpp WinThread.cpp main.cpp
+         Spawner.cpp
+     1>d:\github\r-type\r-type(corentin)\r-type server\spawner.cpp(232): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\github\r-type\r-type(corentin)\r-type server\spawner.cpp(248): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\github\r-type\r-type(corentin)\r-type server\spawner.cpp(258): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
          Generating Code...
          Compiling...
-         Spawner.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
          main.cpp
+         WinThread.cpp
+     1>d:\github\r-type\r-type(corentin)\r-type server\winthread.cpp(93): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
          WinDllLoader.cpp
-         UDPWinServSocket.cpp
          Server.cpp
          CommandHandler.cpp
+         Generating Code...
        Link:
          D:\Work\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Github\R-Type\R-Type(Corentin)\Debug\R-Type Server.lib" /MACHINE:X86 Debug\CircularBuff.obj
          Debug\Client.obj
@@ -23,6 +25,7 @@
          Debug\Room.obj
          Debug\Selector.obj
          Debug\Server.obj
+         Debug\Shots.obj
          Debug\Spawner.obj
          Debug\TCPWinServSocket.obj
          Debug\UDPWinServSocket.obj
@@ -33,4 +36,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.54
+Time Elapsed 00:00:05.21

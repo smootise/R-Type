@@ -13,6 +13,13 @@ AMonster::~AMonster()
 	
 }
 
+void	AMonster::shoot(std::vector<Shots> &shots, int *lowestshotid, float dir_x, float dir_y)
+{
+	Shots		newshot(*lowestshotid, ENEMI, _dmg, _x - (_size / 2), _y -(_size / 2 - 7), dir_x, dir_y);   
+
+	shots.push_back(newshot);
+}
+
 void	AMonster::setMovement(int param, float startingX, float startingY)
 {
 	direction	tab[] = { BotLeft, Bot, BotRight, Left,	Default, Right,	UpLeft,	Up,	UpRight};
