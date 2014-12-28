@@ -1,6 +1,5 @@
 #include "Shots.h"
 
-
 //vec_x => 50 droite vec_y => gauche
 Shots::Shots(int id, int type, int dmg, int x, int y, float vec_x, float vec_y)
 	: _id(id), _type(type), _dmg(dmg), _x(x + 50), _y(y + 26 - 7), _dir_x(vec_x), _dir_y(vec_y)
